@@ -1,0 +1,26 @@
+{
+  "double" : "3.1415926",
+  "age" : 24,
+  "date" : "2018-2-6 12:20:20",
+  "students" : [
+    {
+      "name" : null,
+      "age" : "12",
+      "paren" : {
+        "father" : "helloFather",
+        "mather" : "helloMather"
+      }
+    },
+    {
+      "name" : "stu2",
+      "age" : "234",
+      "paren" : {
+        "father" : "helloFather",
+        "mather" : "helloMather"
+      }
+    }
+  ],
+  "bool" : "true",
+  "float" : "3.14",
+  "name" : "weixhe"
+}

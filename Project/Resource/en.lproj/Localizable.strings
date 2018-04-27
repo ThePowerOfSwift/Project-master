@@ -1,0 +1,59 @@
+
+"Tip" = "Tips";
+"Cancel" = "Cancel";
+"Sure" = "Sure";
+"Done" = "Done";
+"PullToRefresh" = "Pull to refresh";
+"ReleaseToRefresh" = "Release to refresh";
+"LoadingRefresh" = "Loading...";
+"PullToLoadingMore" = "Pull to loading more";
+"ReleaseToLoadingMore" = "Release to loading more";
+"NoMoreData" = "No more data";
+"LoadingMore" = "Load more...";
+/******************************************
+ ******************************************/
+// Tabbar
+"HEBaseTabbarController.Home" = "Home";
+"HEBaseTabbarController.Mine" = "Mine";
+
+// 首页 - 标题
+"HEHomeViewController.Title" = "Home";
+// 首页 - 下一个
+"HEHomeViewController.Next" = "Next";
+// 首页 - 隐藏
+"HEHomeViewController.Hiden" = "Hiden";
+
+// 我的
+"HEMineViewController.Title" = "Mine";
+// 我的 - 设置
+"HEMineViewController.Setting" = "Setting";
+
+// 设置
+"HESettingViewController.Title" = "Setting";
+
+// 设置 - 语言设置
+"HESettingViewController.LanguageSetting" = "Multiple languages";
+// 设置 - 清空缓存
+"HESettingViewController.CleanCache" = "CleanCache";
+// 设置 - 版本号
+"HESettingViewController.AppVersion" = "AppVersion";
+
+// 语言设置
+"HELanguageViewController.Title" = "Multiple languages";
+// 语言设置 - 跟随系统
+"HELanguageViewController.FollowSystem" = "Auto";
+// 语言设置 - 简体中文
+"HELanguageViewController.SimpliedChinese" = "简体中文";
+// 语言设置 - 英文
+"HELanguageViewController.English" = "English";
+
+// 设置 - 语言设置 - 正在设置语言
+"HEChangeLanguageViewController.LanguageIsChanging" = "Language is Changing...";
+
+// 选择图片
+"HECameraPhoto.Title" = "chooseImage";
+"HECameraPhoto.Camera" = "From Camera";
+"HECameraPhoto.Photo" = "From Photo";
+"HECameraPhoto.NotSupportVideo" = "The device does not support video";
+
+
