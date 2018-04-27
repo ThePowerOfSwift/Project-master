@@ -141,3 +141,43 @@ extension String {
         }
     }
 }
+
+// MARK: - 字符串的截取
+extension String {
+    public func subString(from index: Int) -> String {
+        if self.count > index {
+            let startIndex = self.index(self.startIndex, offsetBy: index)
+            let subString = self[startIndex..<self.endIndex]
+            return String(subString)
+        } else {
+            return self
+        }
+    }
+    
+    public func subString(to index: Int) -> String {
+        if self.count > index {
+            let endIndex = self.index(self.startIndex, offsetBy: index)
+            let subString = self[self.startIndex..<endIndex]
+            return String(subString)
+        } else {
+            return self
+        }
+    }
+    
+    public func subString(from: Int, to: Int) -> String {
+        if to > from && self.count >= to {
+            let startIndex = self.index(self.startIndex, offsetBy: from)
+            let endIndex = self.index(self.startIndex, offsetBy: to)
+            let subString = self[startIndex..<endIndex]
+            return String(subString)
+        } else {
+            return self
+        }
+    }
+    
+    public func subString(range: NSRange) -> String {
+        let from: Int = range.location;
+        let to: Int = range.length + from
+        return subString(from: from, to: to)
+    }
+}

@@ -41,6 +41,9 @@
 		453643FB2056310400897E6B /* HETimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453643FA2056310400897E6B /* HETimerButton.swift */; };
 		455D8ABC206CB77100BBACBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8ABB206CB77100BBACBD /* Api.swift */; };
 		455D8AC3206CBA2800BBACBD /* HEClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8AC2206CBA2800BBACBD /* HEClient.swift */; };
+		455FA02D2092F1E00061B33A /* HEUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02C2092F1E00061B33A /* HEUtil.swift */; };
+		455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02E20930A900061B33A /* NSRange+Extension.swift */; };
+		455FA031209310120061B33A /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA030209310120061B33A /* Validate.swift */; };
 		45A112AF208077F000FCC661 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 45A112B1208077F000FCC661 /* Localizable.stringsdict */; };
 		45AE661D205B5E8E000C1546 /* UIView+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE661C205B5E8E000C1546 /* UIView+Creation.swift */; };
 		45AE6627205BC61A000C1546 /* HEChooseLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE6626205BC61A000C1546 /* HEChooseLanguageCell.swift */; };
@@ -138,6 +141,9 @@
 		453643FA2056310400897E6B /* HETimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HETimerButton.swift; sourceTree = "<group>"; };
 		455D8ABB206CB77100BBACBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		455D8AC2206CBA2800BBACBD /* HEClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEClient.swift; sourceTree = "<group>"; };
+		455FA02C2092F1E00061B33A /* HEUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEUtil.swift; sourceTree = "<group>"; };
+		455FA02E20930A900061B33A /* NSRange+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Extension.swift"; sourceTree = "<group>"; };
+		455FA030209310120061B33A /* Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		45974F432068E9F3009CD260 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
 		45974F472068EB03009CD260 /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
 		45A112B0208077F000FCC661 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -292,6 +298,8 @@
 				45053B55204E483500B5B34B /* Global.swift */,
 				45B15BE9205A6D80008C4F94 /* HECommon.swift */,
 				45145071204FD99F00E83F97 /* HEConstants.swift */,
+				455FA02C2092F1E00061B33A /* HEUtil.swift */,
+				455FA030209310120061B33A /* Validate.swift */,
 				45053B4C204E47E000B5B34B /* Base */,
 				45053B64204E65B300B5B34B /* Component */,
 				45E813F22069E5CE00E39853 /* Encrypt */,
@@ -316,6 +324,7 @@
 				450194C820734B0B00777328 /* Double+Extension.swift */,
 				450194CA20734D6E00777328 /* Dictionary+Extension.swift */,
 				DE8D89E52081891A0043BFC8 /* Font+Extension.swift */,
+				455FA02E20930A900061B33A /* NSRange+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -927,6 +936,7 @@
 				45053B6B204E65B300B5B34B /* HEPlaceholderTextView.swift in Sources */,
 				45B6B89520592BA200F01F1B /* HELanguageHelper.swift in Sources */,
 				4514506E204FD26200E83F97 /* AppStoreReview.swift.swift in Sources */,
+				455FA031209310120061B33A /* Validate.swift in Sources */,
 				DE8D89FB20836BE60043BFC8 /* HEHomeHeaderView.swift in Sources */,
 				450194CB20734D6E00777328 /* Dictionary+Extension.swift in Sources */,
 				45B15C0A205A7F71008C4F94 /* HESettingViewController.swift in Sources */,
@@ -942,9 +952,11 @@
 				45053B63204E488800B5B34B /* String+Extension.swift in Sources */,
 				45E9FFD5205F599800CF7E38 /* HEChangeLanguageViewController.swift in Sources */,
 				45053B7B204E81AB00B5B34B /* HENavigationController.swift in Sources */,
+				455FA02D2092F1E00061B33A /* HEUtil.swift in Sources */,
 				45053B77204E77DA00B5B34B /* HEBarButtonItem.swift in Sources */,
 				45053B5E204E487D00B5B34B /* UIView+Extension.swift in Sources */,
 				DE8D89F52083208B0043BFC8 /* HECycleScrollModel.swift in Sources */,
+				455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */,
 				45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */,
 				450194C920734B0B00777328 /* Double+Extension.swift in Sources */,
 				45E813F42069E5F900E39853 /* Encrypt.swift in Sources */,
