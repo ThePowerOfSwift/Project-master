@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try reachability.startNotifier()
         } catch { }
         
-        
+        HELog(message: Check.IdCardCareless("130524198902105000"))
         return true
     }
 
