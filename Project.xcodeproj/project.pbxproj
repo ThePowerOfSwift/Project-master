@@ -346,7 +346,6 @@
 			children = (
 				DE8D89EF2082F7FA0043BFC8 /* HECycleScrollView */,
 				45E813F7206A2EA300E39853 /* Keychain */,
-				451C9D232064F35C0075FA08 /* CommonCell */,
 				45E9FFD9205F9C2500CF7E38 /* CameraPhoto */,
 				45E9FFD6205F8C5300CF7E38 /* FileHandle */,
 				45B15BEB205A74D3008C4F94 /* TabbarController */,
@@ -409,13 +408,6 @@
 				92B012400AEB94A7E12C06C2 /* Pods_ProjectUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		451C9D232064F35C0075FA08 /* CommonCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommonCell;
 			sourceTree = "<group>";
 		};
 		455D8ABE206CB9B600BBACBD /* Client */ = {
@@ -804,6 +796,8 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -817,6 +811,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);

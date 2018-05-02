@@ -38,60 +38,117 @@ extension Date {
         return date.formatTimeZone()
     }
     
-    /// date所在的月有几天
-    static func daysInThisMonth(_ date: Date) -> Int {
-        return date.daysInThisMonth()
-    }
+    /// 这个月有多少天
     func daysInThisMonth() -> Int {
         let totaldaysInMonth: Range = Date.currentCalendar.range(of: .day, in: .month, for: self)!
         return totaldaysInMonth.count
     }
     
-    /// date在当月的是周几（0-周日， 1-周一 ...）
-    static func weekInThisMonth(_ date: Date) -> Int {
-        return date.weekInThisMonth()
+    /// 这个月有多少周
+    func weeksInThisMonth() -> Int {
+        
+        let weekday = self.startOfThisMonth().weekInThisMonth() //[[self firstDayOfCurrentMonth] weeklyOrdinality];
+        var days = self.daysInThisMonth()
+        var weeks = 0;
+        
+        if (weekday > 1) {
+            weeks += 1
+            days -= (7 - weekday + 1)
+        }
+        weeks += days / 7;
+        weeks += (days % 7 > 0) ? 1 : 0
+        return weeks
     }
+    
+    
+    /// 某日期是周几（0-周日， 1-周一 ...）
     func weekInThisMonth() -> Int {
         let week: Int = Date.currentCalendar.ordinality(of: .day, in: .weekOfMonth, for: self)!
         return week - 1
     }
     
-    /// date所在的月份的第一天是周几（0-周日， 1-周一 ...）
-    static func firstWeekInThisMonth(_ date: Date) -> Int {
-        return date.firstWeekInThisMonth()
-    }
-    
-    func firstWeekInThisMonth() -> Int {
+    /// 本月的第一天是周几（0-周日， 1-周一 ...）
+    func firstWeeklyInThisMonth() -> Int {
         let firstDayInMonth: Date = "\(self.year)-\(self.month)-01".formatToDate("yyyy-MM-dd")!
         return firstDayInMonth.weekInThisMonth()
     }
+    
+    /// 本月的开始日期
+    func startOfThisMonth() -> Date {
+        let components = Date.currentCalendar.dateComponents(Set<Calendar.Component>([.year, .month]), from: self)
+        let startOfMonth = Date.currentCalendar.date(from: components)!
+        return startOfMonth
+    }
+    
+    /// 本月结束日期
+    func endOfThisMonth(returnEndTime:Bool = false) -> Date {
+        var components = DateComponents()
+        components.month = 1
+        if returnEndTime {
+            components.second = -1
+        } else {
+            components.day = -1
+        }
+        
+        let endOfMonth = Date.currentCalendar.date(byAdding: components, to: startOfThisMonth())!
+        return endOfMonth
+    }
+    
+    /// 本日期在上个月的日期
+    func dayInThePreviousMonth() -> Date {
+        var component = DateComponents()
+        component.month = -1
+        return Date.currentCalendar.date(byAdding: component, to: self)!
+    }
+    
+    /// 本日期在下个月的日期
+    func dayInTheFollowingMonth() -> Date {
+        var component = DateComponents()
+        component.month = 1
+        return Date.currentCalendar.date(byAdding: component, to: self)!
+    }
+    
+    /// 本日期之前的几个月的日期
+    func dayInThePreviousMonth(_ month: Int) -> Date {
+        var component = DateComponents()
+        component.month = -month
+        return Date.currentCalendar.date(byAdding: component, to: self)!
+    }
+    
+    /// 本日期之后几个月的日期
+    func dayInTheFollowingMonth(_ month: Int) -> Date {
+        var component = DateComponents()
+        component.month = month
+        return Date.currentCalendar.date(byAdding: component, to: self)!
+    }
+    
 }
 
 // MARK: - 常用日期
 extension Date {
     /// 返回当前日期 年份
     var year: Int {
-        return formatToString("yyyy").toInt()!
+        return Date.stringFormDate(self, format: "yyyy").toInt()!
     }
     /// 返回当前日期 月份
     var month: Int {
-        return formatToString("MM").toInt()!
+        return Date.stringFormDate(self, format: "MM").toInt()!
     }
     /// 返回当前日期 天
     var day: Int {
-        return formatToString("dd").toInt()!
+        return Date.stringFormDate(self, format: "dd").toInt()!
     }
     /// 返回当前日期 小时
     var hour: Int {
-        return formatToString("HH").toInt()!
+        return Date.stringFormDate(self, format: "HH").toInt()!
     }
     /// 返回当前日期 分钟
     var minute: Int {
-        return formatToString("mm").toInt()!
+        return Date.stringFormDate(self, format: "mm").toInt()!
     }
     /// 返回当前日期 秒数
     var second: Int {
-        return formatToString("ss").toInt()!
+        return Date.stringFormDate(self, format: "ss").toInt()!
     }
     
     /// 日期的不同格式，使用系统的转换方式
@@ -158,11 +215,20 @@ extension Date {
 
 // MARK: - 日期转换
 extension Date {
-    /// 获取yyyy  MM  dd  HH mm ss
-    func formatToString(_ format: String) -> String {
+    
+    /// Date转换成String
+    static func stringFormDate(_ date: Date, format: String = "yyyy-MM-dd") -> String {
         let formatter: DateFormatter = DateFormatter();
         formatter.dateFormat = format;
-        return formatter.string(from: self)
+        return formatter.string(from: date)
+    }
+    
+    /// String转换成Date
+    static func dateFromString(_ string: String, format: String = "yyyy-MM-dd") -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format;
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)        // 0时区
+        return formatter.date(from: string)
     }
     
     /// 使用系统的转换方式
@@ -171,14 +237,6 @@ extension Date {
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle
         return formatter.string(from: self)
-    }
-    
-    /// String转换成Date
-    static func formatFromString(_ string: String, format: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format;
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)        // 0时区
-        return formatter.date(from: string)
     }
     
     /// 时区转换

@@ -74,11 +74,6 @@ class Check {
         return Validate.numberAndAlphabet(text).isValid()
     }
     
-    /// 检查身份证： 模糊的
-    class func IdCardCareless(_ text: String) -> Bool {
-        return Validate.IdCardCareless(text).isValid()
-    }
-    
 }
 
 private enum Validate {
