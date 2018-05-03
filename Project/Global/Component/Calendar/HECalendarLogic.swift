@@ -203,4 +203,109 @@ class HECalendarLogic {
         return result
     }
     
+    // MARK: - 星座 & 属相
+    func constellationName(date: Date) -> String {
+        let constellations = ["白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"]
+        var index = 0;
+        let year = date.month * 100 + date.day;
+        
+        if (((year >= 321) && (year <= 419))) { index = 0 }
+        else if ((year >= 420) && (year <= 520)) { index = 1 }
+        else if ((year >= 521) && (year <= 620)) { index = 2 }
+        else if ((year >= 621) && (year <= 722)) { index = 3 }
+        else if ((year >= 723) && (year <= 822)) { index = 4 }
+        else if ((year >= 823) && (year <= 922)) { index = 5 }
+        else if ((year >= 923) && (year <= 1022)) { index = 6 }
+        else if ((year >= 1023) && (year <= 1121)) { index = 7 }
+        else if ((year >= 1122) && (year <= 1221)) { index = 8 }
+        else if ((year >= 1222) || (year <= 119)) { index = 9 }
+        else if ((year >= 120) && (year <= 218)) { index = 10 }
+        else if ((year >= 219) && (year <= 320)) { index = 11 }
+        else { index = 0 }
+        
+        return constellations[index];
+    }
+    
+    func animal(date: Date) -> String {
+        let animalStartYear = 1900 // 1900年为鼠年
+        let offset = date.year - animalStartYear
+        return "鼠牛虎兔龙蛇马羊猴鸡狗猪".subString(range: NSMakeRange(abs(offset) % 12, 1))
+    }
+    
+    // MARK: - 天干地支
+    /// 取农历天干地支表示年月日（甲子年乙丑月丙庚日）
+    func gan_zhi(date: Date) -> String {
+        return self.gan_zhi_year(date: date) + self.gan_zhi_month(date: date) + self.gan_zhi_day(date: date)
+    }
+    
+    /// 取农历年的干支表示法（乙丑年）
+    func gan_zhi_year(date: Date) -> String {
+        let ganZhiStartYear = 1864 // 干支计算起始年
+        // 换算农历日历
+        let solar = Solar(year: date.year, month: date.month, day: date.day)
+        let lunar = LunarSolarConverter.SolarToLunar(solar: solar)
+        let i: Int = (lunar.year - ganZhiStartYear) % 60 //计算干支
+        let gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"][abs(i) % 10]
+        let zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"][abs(i) % 12]
+        return gan + zhi + "年"
+    }
+    
+    /// 取干支的月表示字符串（乙丑月），注意农历的闰月不记干支
+    func gan_zhi_month(date: Date) -> String {
+        var zhiIndex: Int!
+        // 换算农历日历
+        let solar = Solar(year: date.year, month: date.month, day: date.day)
+        let lunar = LunarSolarConverter.SolarToLunar(solar: solar)
+        if (lunar.month > 10) {  // 每个月的地支总是固定的, 而且总是从寅月开始
+            zhiIndex = lunar.month - 10
+        } else {
+            zhiIndex = lunar.month + 2
+        }
+        let zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"][zhiIndex - 1]
+        
+        // 根据当年的干支年的干来计算月干的第一个
+        var ganIndex = 1;
+        let ganZhiStartYear = 1864 // 干支计算起始年
+        let i = (lunar.year - ganZhiStartYear) % 60; // 计算干支
+        switch (i % 10) {
+        case 0: // 甲
+            ganIndex = 3
+        case 1: // 乙
+            ganIndex = 5
+        case 2: // 丙
+            ganIndex = 7
+        case 3: // 丁
+            ganIndex = 9
+        case 4: // 戊
+            ganIndex = 1
+        case 5: // 己
+            ganIndex = 3
+        case 6: // 庚
+            ganIndex = 5
+        case 7: // 辛
+            ganIndex = 7
+        case 8: // 壬
+            ganIndex = 9
+        case 9: // 癸
+            ganIndex = 1
+        default:
+            ganIndex = 1
+        }
+        let gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"][(ganIndex + lunar.month - 2) % 10]
+        
+        return gan + zhi + "月";
+    }
+    
+    /// 取干支日表示法（丙庚日）
+    func gan_zhi_day(date: Date) -> String {
+        // 换算农历日历
+        let solar = Solar(year: date.year, month: date.month, day: date.day)
+        let lunar = LunarSolarConverter.SolarToLunar(solar: solar)
+        let dateString = String.init(format: "%d-%d-%d %d:%d:%d", lunar.year, lunar.month, lunar.day, date.hour, date.minute, date.second)
+        let lunar1 = Date.dateFromString(dateString, format: "yyyy-MM-dd HH:mm:ss")
+        let i: Int = lunar1!.daysBetweenDate(Date.dateFromString("1899-12-22")!) % 60
+        let gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"][abs(i) % 10]
+        let zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"][abs(i) % 12]
+        return gan + zhi + "日"
+    }
 }
