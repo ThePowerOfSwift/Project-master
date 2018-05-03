@@ -17,6 +17,12 @@ enum DayType {
     case click          // 被选中的日期
 }
 
+enum HolidaySort: String {
+    case solar = "solar"  // 公历
+    case lunar = "lunar"  // 农历
+    case solarTerm = "solarTerm" // 二十四节气
+}
+
 protocol SomeCalendarProtocol {
     var dayType: Array<DayType>! {get set}
     var year: Int! {get set}
@@ -53,7 +59,9 @@ class HECalendarModel : SomeCalendarProtocol {
     var lunar_month: String?
     var lunar_day: String?
     
+    var isDisplayHoliday: Bool!        // 是否展示节日，isChineseCalendar会限制二十四节气的显示
     var holiday: String?  // 节日分阳历节日，农历节日，农历二四节气中的节日
+    var holidaySort: [HolidaySort] = [.solarTerm, .solar, .lunar]
     
     var date: Date? {
         var component = DateComponents()

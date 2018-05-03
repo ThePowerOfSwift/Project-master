@@ -16,27 +16,57 @@ class HECalendarLogic {
     }
     
 //    var model: SomeCalendarProtocol!
-    var isDisplayChineseCalender = false
-    
-    
-    func calculateDaysInThisMonth(_ date: Date) {
+    var isDisplayChineseCalender = true
+    var isDisplayHoliday = true
+
+    /// 计算当月的天数
+    func calculateDaysInThisMonth(_ date: Date) -> [HECalendarModel] {
         let days = date.daysInThisMonth()       // 这个月有多少天
         let component = Date.currentCalendar.dateComponents([.year, .month, .day, .weekday], from: date)
+        var array = [HECalendarModel]()
         
         for i in 1...days {
             let calendar = HECalendarModel(year: component.year!, month: component.month!, day: i)
             calendar.isChineseCalendar = isDisplayChineseCalender   // 默认true
+            calendar.week = date.weekInThisMonth()      // 周几
             if let date = calendar.date {
-                calendar.week = date.weekInThisMonth()
-                if isDisplayChineseCalender {
+                if isDisplayChineseCalender {       // 是否显示农历
                     calendar.lunar = lunar(date: date)
                     calendar.lunar_year = lunar_year(date: date)
                     calendar.lunar_month = lunar_month(date: date)
                     calendar.lunar_day = lunar_day(date: date)
                 }
+                
+                calendar.isDisplayHoliday = isDisplayHoliday   // 默认true
+                if isDisplayHoliday {       // 是否显示节日
+                    if !isDisplayChineseCalender {  // 如果不能展示农历，则过滤掉二十四节气
+                        let index = calendar.holidaySort.index(of: .solarTerm)
+                        if let index = index {
+                            calendar.holidaySort.remove(at: index)
+                        }
+                        calendar.holiday = ""
+                        for value in calendar.holidaySort {
+                            switch value {
+                            case .solar:
+                                if self.solar_holiday(date: date) != "" {
+                                    calendar.holiday = self.solar_holiday(date: date)
+                                }
+                            case .lunar:
+                                if self.lunar_holiday(date: date) != "" {
+                                    calendar.holiday = self.solar_holiday(date: date)
+                                }
+                            case .solarTerm:
+                                if self.twentyFourSolarTerm(date: date) != "" {
+                                    calendar.holiday = self.solar_holiday(date: date)
+                                }
+                            }
+                        }
+                    }
+                }
             }
+            array.append(calendar)      // 将这一天添加到数组总
         }
-        
+        return array
     }
     
     func lunar(year: Int, month: Int, day: Int) -> String {
@@ -190,7 +220,7 @@ class HECalendarLogic {
         var newDate: Date!
         var num = 0.0
         var result = ""
-        let year = date.year
+        let year = date.year        // ??? 确定这里不需要换算成农历后在进行计算比较？？
         for i in 1...24 {
             num = 525948.76 * Double(year - 1900) + Double(solarTermInfo[i - 1])
             newDate = baseDateAndTime.addingTimeInterval(num * 60) // 按分钟计算

@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch { }
 
         let date = Date.dateFromString("2018-01-20")!
-        HELog(message: HECalendarLogic().lunar_year(date: Date()))
+        HELog(message: HECalendarLogic().animal(date: Date()))
         HELog(message: HECalendarLogic().lunar(date: Date()))
         HELog(message: HECalendarLogic().gan_zhi(date: Date()))
 
