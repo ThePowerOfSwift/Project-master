@@ -64,6 +64,7 @@ extension Date {
     /// 某日期是周几（0-周日， 1-周一 ...）
     func weekInThisMonth() -> Int {
         let week: Int = Date.currentCalendar.ordinality(of: .day, in: .weekOfMonth, for: self)!
+        // let week: Int = Date.currentCalendar.dateComponents(flags, from: self).weekday  // 其他的方式
         return week - 1
     }
     
@@ -122,6 +123,47 @@ extension Date {
         return Date.currentCalendar.date(byAdding: component, to: self)!
     }
     
+    /// 两个日期之前相差多少天
+    static func daysBetween(from: Date, to: Date) -> Int {
+        return abs(Date.currentCalendar.dateComponents(flags, from: from, to: to).day!)
+    }
+    
+    /// 通过数字返回周几, 周日是“1”，周一是“2”...
+    func getWeekStringFromInt(_ week: Int) -> String {
+        var str_week = ""
+        switch (week) {
+        case 1:
+            str_week = "周日";
+        case 2:
+            str_week = "周一";
+        case 3:
+            str_week = "周二";
+        case 4:
+            str_week = "周三";
+        case 5:
+            str_week = "周四";
+        case 6:
+            str_week = "周五";
+        case 7:
+            str_week = "周六";
+        default:
+            str_week = ""
+        }
+        return str_week;
+    }
+    
+    /// 判断 今天，明天，昨天
+    func compareIfTodayWithDate() -> String {
+
+        if self.isEqualToDate(Date()) {
+            return "今天"
+        } else if self.isEqualToDate(Date().addingDays(1)) {
+            return "明天"
+        } else if self.isEqualToDate(Date().addingDays(-1)) {
+            return "昨天"
+        }
+        return self.getWeekStringFromInt(self.weekInThisMonth())
+    }
 }
 
 // MARK: - 常用日期

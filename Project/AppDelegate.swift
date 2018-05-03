@@ -55,8 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try reachability.startNotifier()
         } catch { }
-        
-        HELog(message: Date().weeksInThisMonth())
+
+        let date = Date.dateFromString("2018-01-20")!
+        HELog(message: HECalendarLogic().twentyFourSolarTerm(date: date))
+       
+
         return true
     }
 
