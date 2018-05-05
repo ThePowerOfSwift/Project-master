@@ -53,9 +53,7 @@ class HEHomeViewController: HEBaseViewController {
                     self?.tableView.reloadData()
                 }
             }
-
         }
-        
         self.tableView.startRefreshing()
     }
 
@@ -67,9 +65,6 @@ class HEHomeViewController: HEBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    
-    
 }
 
 extension HEHomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -87,6 +82,13 @@ extension HEHomeViewController: UITableViewDelegate, UITableViewDataSource {
         let model = self.viewModel.dataSource[indexPath.row]
         cell.textLabel?.text = model.text! + " \(String(describing: model.number))"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let vc = HENormalCalendarViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

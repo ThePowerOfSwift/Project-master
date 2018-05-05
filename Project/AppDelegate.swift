@@ -56,12 +56,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try reachability.startNotifier()
         } catch { }
 
-        let date = Date.dateFromString("2018-01-20")!
-        HELog(message: HECalendarLogic().animal(date: Date()))
-        HELog(message: HECalendarLogic().lunar(date: Date()))
-        HELog(message: HECalendarLogic().gan_zhi(date: Date()))
+        HELog(message: Date().addingDays(-1).firstWeeklyInThisMonth())
+        HELog(message: Date().startOfThisMonth())
 
-
+        
+        var minimumDate: Date = Date.dateFromString("2018-01-01", format: yyyy_MM_dd)!
+        var maximumDate: Date = Date.dateFromString("2018-12-31", format: yyyy_MM_dd)!
+        HELog(message: Date.monthsBetween(from: minimumDate, to: maximumDate))
+        let months = (maximumDate.year - minimumDate.year) * 12 + (maximumDate.month - minimumDate.month)
+        HELog(message: months)
+        
+        
         return true
     }
 

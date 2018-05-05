@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 enum DayType {
     case empty          // 不显示
     case past           // 过去的日期
-    case future         // 将来的日期
-    case weekend        // 周末
     case workday        // 工作日
-    case click          // 被选中的日期
+    case weekend        // 周末
+    case holiday        // 节假日
 }
 
 enum HolidaySort: String {
@@ -23,57 +23,31 @@ enum HolidaySort: String {
     case solarTerm = "solarTerm" // 二十四节气
 }
 
-protocol SomeCalendarProtocol {
-    var dayType: Array<DayType>! {get set}
-    var year: Int! {get set}
-    var month: Int! {get set}
-    var day: Int! {get set}
-    var week: Int! {get set}
-    var isEnable: Bool? {get set}      // 是否能被点击，过去的日期一定不可以点击，将来的日期可根据 ‘isEnable’ 判定
-    var lunar: String? {get}        // 农历
-    var lunar_year: String? {get}
-    var lunar_month: String? {get}
-    var lunar_day: String? {get}
+class HECalendarModel {
+    var dayType: DayType = .empty
     
-    var holiday: String?  {get set}               // 假日
-    
-    
-}
-
-class HECalendarModel : SomeCalendarProtocol {
-    var dayType: Array<DayType>!
-    
-    var year: Int!
-    
-    var month: Int!
-    
-    var day: Int!
-    
+    var year: Int
+    var month: Int
+    var day: Int
     var week: Int!
+    var date: Date {
+        return Date.dateFromString("\(year)-\(month)-\(day)", format: yyyy_MM_dd)!
+    }
     
-    var isEnable: Bool?
-    
-    var isChineseCalendar: Bool!        // 是否是中国日历，若为true，则返回chineseCalendar， 若为false，则lunar不返回值
+    var isDisplayChineseCalendar: Bool!        // 是否是中国日历，若为true，则返回chineseCalendar， 若为false，则lunar不返回值
     var lunar: String?
     var lunar_year: String?
     var lunar_month: String?
     var lunar_day: String?
     
-    var isDisplayHoliday: Bool!        // 是否展示节日，isChineseCalendar会限制二十四节气的显示
-    var holiday: String?  // 节日分阳历节日，农历节日，农历二四节气中的节日
-    var holidaySort: [HolidaySort] = [.solarTerm, .solar, .lunar]
+    var isDisplayHoliday: Bool!        // 是否展示节日
+    var holiday: [String]?  // 节日顺序：[公历节日，农历节日，二十四节气]
     
-    var date: Date? {
-        var component = DateComponents()
-        component.year = year
-        component.month = month
-        component.day = day
-        return Date.currentCalendar.date(from: component)
-    }
+    var isEnable: Bool = true   // 能否被点击
+    var isSelected = false  // 是否被选中
     
     
-    convenience init(year: Int, month: Int, day: Int) {
-        self.init()
+    init(year: Int, month: Int, day: Int) {
         self.year = year
         self.month = month
         self.day = day

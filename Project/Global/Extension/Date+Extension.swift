@@ -14,6 +14,9 @@ private let D_DAY: Int        = 86400
 private let D_WEEK: Int       = 604800
 private let D_YEAR: Int       = 31556926
 
+public let yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss"
+public let yyyy_MM_dd = "yyyy-MM-dd"
+
 private let flags: Set = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday]
 extension Date {
   
@@ -25,7 +28,7 @@ extension Date {
     }
     
     /// 获取当前日历
-    static let currentCalendar = Calendar.current
+    static let currentCalendar = Calendar(identifier: Calendar.Identifier.gregorian) //Calendar.current
     
     /// 某个日期的起始时间（）
     func dateForStart() -> Date {
@@ -61,14 +64,13 @@ extension Date {
     }
     
     
-    /// 某日期是周几（0-周日， 1-周一 ...）
+    /// 某日期是周几（1-周日， 2-周一 ...）
     func weekInThisMonth() -> Int {
         let week: Int = Date.currentCalendar.ordinality(of: .day, in: .weekOfMonth, for: self)!
-        // let week: Int = Date.currentCalendar.dateComponents(flags, from: self).weekday  // 其他的方式
-        return week - 1
+        return week
     }
     
-    /// 本月的第一天是周几（0-周日， 1-周一 ...）
+    /// 本月的第一天是周几（1-周日， 2-周一 ...）
     func firstWeeklyInThisMonth() -> Int {
         let firstDayInMonth: Date = "\(self.year)-\(self.month)-01".formatToDate("yyyy-MM-dd")!
         return firstDayInMonth.weekInThisMonth()
@@ -123,9 +125,19 @@ extension Date {
         return Date.currentCalendar.date(byAdding: component, to: self)!
     }
     
-    /// 两个日期之前相差多少天
+    /// 两个日期之间有多少个月
+    static func monthsBetween(from: Date, to: Date) -> Int {
+        return abs(Date.currentCalendar.dateComponents([.month], from: from, to: to).month! + 1)
+    }
+    
+    /// 两个日期之间有多少周
+    static func weeksBetween(from: Date, to: Date) -> Int {
+        return abs(Date.currentCalendar.dateComponents([.weekOfYear], from: from, to: to).weekOfYear! + 1)
+    }
+    
+    /// 两个日期之间有多少天
     static func daysBetween(from: Date, to: Date) -> Int {
-        return abs(Date.currentCalendar.dateComponents(flags, from: from, to: to).day!)
+        return abs(Date.currentCalendar.dateComponents(flags, from: from, to: to).day! + 1)
     }
     
     /// 通过数字返回周几, 周日是“1”，周一是“2”...
@@ -259,14 +271,14 @@ extension Date {
 extension Date {
     
     /// Date转换成String
-    static func stringFormDate(_ date: Date, format: String = "yyyy-MM-dd") -> String {
+    static func stringFormDate(_ date: Date, format: String = yyyy_MM_dd) -> String {
         let formatter: DateFormatter = DateFormatter();
         formatter.dateFormat = format;
         return formatter.string(from: date)
     }
     
     /// String转换成Date
-    static func dateFromString(_ string: String, format: String = "yyyy-MM-dd") -> Date? {
+    static func dateFromString(_ string: String, format: String = yyyy_MM_dd) -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = format;
         formatter.timeZone = TimeZone(secondsFromGMT: 0)        // 0时区

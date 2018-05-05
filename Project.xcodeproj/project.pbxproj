@@ -62,6 +62,10 @@
 		45B6B889205924B200F01F1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45B6B88B205924B200F01F1B /* InfoPlist.strings */; };
 		45B6B88F20592A3300F01F1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45B6B89120592A3300F01F1B /* Localizable.strings */; };
 		45B6B89520592BA200F01F1B /* HELanguageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B6B89420592BA200F01F1B /* HELanguageHelper.swift */; };
+		45DB84D4209C44BE00149215 /* HECalendarMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84D3209C44BE00149215 /* HECalendarMonthModel.swift */; };
+		45DB84D6209C49EC00149215 /* HENormalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84D5209C49EC00149215 /* HENormalCalendarViewController.swift */; };
+		45DB84D8209C4A7600149215 /* HENormalCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84D7209C4A7600149215 /* HENormalCalendarCell.swift */; };
+		45DB84DA209C5E6100149215 /* HENomalCalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84D9209C5E6100149215 /* HENomalCalendarFlowLayout.swift */; };
 		45E813F42069E5F900E39853 /* Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E813F32069E5F900E39853 /* Encrypt.swift */; };
 		45E813F62069E65F00E39853 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E813F52069E65F00E39853 /* Base64.swift */; };
 		45E813F9206A2EBD00E39853 /* HEKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E813F8206A2EBD00E39853 /* HEKeychain.swift */; };
@@ -171,6 +175,10 @@
 		45B6B89020592A3300F01F1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45B6B89220592A3400F01F1B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		45B6B89420592BA200F01F1B /* HELanguageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HELanguageHelper.swift; sourceTree = "<group>"; };
+		45DB84D3209C44BE00149215 /* HECalendarMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HECalendarMonthModel.swift; sourceTree = "<group>"; };
+		45DB84D5209C49EC00149215 /* HENormalCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HENormalCalendarViewController.swift; sourceTree = "<group>"; };
+		45DB84D7209C4A7600149215 /* HENormalCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HENormalCalendarCell.swift; sourceTree = "<group>"; };
+		45DB84D9209C5E6100149215 /* HENomalCalendarFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HENomalCalendarFlowLayout.swift; sourceTree = "<group>"; };
 		45E813F32069E5F900E39853 /* Encrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encrypt.swift; sourceTree = "<group>"; };
 		45E813F52069E65F00E39853 /* Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		45E813F8206A2EBD00E39853 /* HEKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEKeychain.swift; sourceTree = "<group>"; };
@@ -538,6 +546,16 @@
 			path = LanguageHelper;
 			sourceTree = "<group>";
 		};
+		45DB84DB209C62F200149215 /* Nomal */ = {
+			isa = PBXGroup;
+			children = (
+				45DB84D5209C49EC00149215 /* HENormalCalendarViewController.swift */,
+				45DB84D7209C4A7600149215 /* HENormalCalendarCell.swift */,
+				45DB84D9209C5E6100149215 /* HENomalCalendarFlowLayout.swift */,
+			);
+			path = Nomal;
+			sourceTree = "<group>";
+		};
 		45E813F22069E5CE00E39853 /* Encrypt */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,7 +594,9 @@
 			children = (
 				45EE800D2099ABBB0005DB6C /* HECalendarLogic.swift */,
 				45EE800F2099AC790005DB6C /* HECalendarModel.swift */,
+				45DB84D3209C44BE00149215 /* HECalendarMonthModel.swift */,
 				45FBDBCC209AD7E800976AF1 /* LunarSolarConverter.swift */,
+				45DB84DB209C62F200149215 /* Nomal */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -923,6 +943,7 @@
 				45053B72204E65E300B5B34B /* HEBaseTableViewController.swift in Sources */,
 				45053B70204E65CF00B5B34B /* HEBaseViewController.swift in Sources */,
 				45EE80102099AC790005DB6C /* HECalendarModel.swift in Sources */,
+				45DB84D4209C44BE00149215 /* HECalendarMonthModel.swift in Sources */,
 				45053B6D204E65B300B5B34B /* HEKeyboardTextView.swift in Sources */,
 				45FBDBCD209AD7E800976AF1 /* LunarSolarConverter.swift in Sources */,
 				45B15C0E205A7FAA008C4F94 /* HEHomeViewController.swift in Sources */,
@@ -942,10 +963,12 @@
 				45E9792C206E1C850089A782 /* HEUploadParam.swift in Sources */,
 				45053B6C204E65B300B5B34B /* HEExpandTextView.swift in Sources */,
 				455D8AC3206CBA2800BBACBD /* HEClient.swift in Sources */,
+				45DB84D8209C4A7600149215 /* HENormalCalendarCell.swift in Sources */,
 				DE8D89F12082F80D0043BFC8 /* HECycleScrollView.swift in Sources */,
 				45B15C11205A7FE3008C4F94 /* HELanguageViewController.swift in Sources */,
 				451C9D272064F7F10075FA08 /* HESettingModel.swift in Sources */,
 				DE8D89E82082070E0043BFC8 /* HETabBar.swift in Sources */,
+				45DB84DA209C5E6100149215 /* HENomalCalendarFlowLayout.swift in Sources */,
 				45B15BED205A74FB008C4F94 /* HETabbarController.swift in Sources */,
 				45B15C0C205A7F90008C4F94 /* HEMineViewController.swift in Sources */,
 				45053B6B204E65B300B5B34B /* HEPlaceholderTextView.swift in Sources */,
@@ -976,6 +999,7 @@
 				45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */,
 				450194C920734B0B00777328 /* Double+Extension.swift in Sources */,
 				45E813F42069E5F900E39853 /* Encrypt.swift in Sources */,
+				45DB84D6209C49EC00149215 /* HENormalCalendarViewController.swift in Sources */,
 				45145072204FD99F00E83F97 /* HEConstants.swift in Sources */,
 				45E9FFDB205F9C4400CF7E38 /* HECameraPhoto.swift in Sources */,
 				45AE6627205BC61A000C1546 /* HEChooseLanguageCell.swift in Sources */,

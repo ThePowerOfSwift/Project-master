@@ -96,8 +96,13 @@ func ctableView(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView
     return tableView
 }
 
+// MARK: - UICollectionView Create
 func ccollectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
-    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    return ccollectionViwe(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
+}
+
+func ccollectionViwe(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.delegate = delegate as? UICollectionViewDelegate
     collectionView.dataSource = dataSource as? UICollectionViewDataSource
     if `super` != nil { `super`!.addSubview(collectionView) }
