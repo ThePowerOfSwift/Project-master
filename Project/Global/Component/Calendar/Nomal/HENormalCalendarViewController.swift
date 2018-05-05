@@ -9,10 +9,12 @@
 import UIKit
 
 private let cellIdentify = "HENormalCalendarCell"
-
+private let headerIdentify = "HENormalCalendarHeaderView"
 class HENormalCalendarViewController: HEBaseViewController {
 
-    var logic = HECalendarLogic()
+    var calendar: Calendar = Calendar(identifier: .gregorian)   // 公历
+    
+    var logic: HECalendarLogic = HECalendarLogic()
     var collectionView: UICollectionView!
     var monthModels: [HECalendarMonthModel]!     // 所有的月份
     
@@ -21,6 +23,7 @@ class HENormalCalendarViewController: HEBaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
+        self.logic.calendar = self.calendar
         self.logic.minimumDate = Date.distantPast
         self.logic.maximumDate = Date.distantFuture
         
@@ -28,6 +31,7 @@ class HENormalCalendarViewController: HEBaseViewController {
         self.collectionView = ccollectionViwe(delegate: self, dataSource: self, layout: HENomalCalendarFlowLayout(), super: self.view)
         self.collectionView.backgroundColor = UIColor.white
         self.collectionView.register(HENormalCalendarCell.self, forCellWithReuseIdentifier: cellIdentify)
+        self.collectionView.register(HENormalCalendarHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify)
         self.collectionView.frame = CGRect(x: 0, y: navigation_height(), width: SCREEN_WIDTH, height: self.thisViewHeight)
     }
 
@@ -52,6 +56,17 @@ extension HENormalCalendarViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 返回 行数*7
         return self.logic.numberOfRowsInSection(section: section) * 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionElementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify, for: indexPath) as! HENormalCalendarHeaderView
+            let thisMonth = self.logic.months[indexPath.section]!    // 本月的date
+            headerView.calendar = self.calendar
+            headerView.titleLabel.text = Date.stringFormDate(thisMonth)
+            return headerView
+        }
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

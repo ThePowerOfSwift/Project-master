@@ -16,7 +16,7 @@ class HECalendarLogic {
         case multiple       // 显示多月
     }
     
-    var calendar: Calendar = Calendar.current       // 暂时先用系统的
+    var calendar: Calendar! = Calendar(identifier: .gregorian)
     
     
 //    var model: SomeCalendarProtocol!
@@ -42,6 +42,7 @@ class HECalendarLogic {
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMemoryWarning(notify:)), name: .UIApplicationDidReceiveMemoryWarning, object: nil)
     }
+    
     
     // MARK: - Notifycation
     /// 通知 - 内存报警
@@ -125,28 +126,7 @@ class HECalendarLogic {
         let headPlaceholders = (firstWeekdayOfMonth - Date.currentCalendar.firstWeekday + 7) % 7
         return headPlaceholders
     }
-    /*
-    func reloadData(selectedDate: Date) -> [HECalendarMonthModel] {
-        
-        // 处理日期的界限
-        var selectedDate = selectedDate < minimumDate ? selectedDate : minimumDate
-        selectedDate = selectedDate > maximumDate ? selectedDate : maximumDate
-        
-        // 计算这段时间内的总月数
-        let months = numberOfMonths
-        var monthsResult = [HECalendarMonthModel]()
-        for i in 0..<months {
-            var days = [HECalendarModel]() // array数组中盛放的是一个月的数据
-            let date = minimumDate.dayInThePreviousMonth(i)
-            days += self.calculateDaysInPreviousMonth(date)
-            days += self.calculateDaysInThisMonth(date, selectedDate: selectedDate)
-            days += self.calculateDaysInFollowMonth(date)
-            let month = HECalendarMonthModel.init(year: date.month, month: date.month, days: days)
-            monthsResult.append(month)
-        }
-        return monthsResult
-    }
-    */
+    
     /// 绑定数据
     func requestBoundingDatesIfNecessary() {
         if self.needsRequestingBoundingDates {
@@ -160,65 +140,7 @@ class HECalendarLogic {
             self.reloadSections()
         }
     }
-    /*
-    // MARK: - 计算上个月、下个月、当月的天数
-    /// 计算上个月的天数
-    func calculateDaysInPreviousMonth(_ date: Date) -> [HECalendarModel] {
-        let firstWeekly = date.startOfThisMonth().weekInThisMonth() //  当月第一天是周几
-        let previousMonth = date.dayInThePreviousMonth()    // 上个月
-        let days = previousMonth.daysInThisMonth()   // 上个月有多少天
-        let partialDaysCount = firstWeekly - 1      // 计算上个月需要在本月中显示的天数
-        let component = Date.currentCalendar.dateComponents([.year, .month, .day, .weekday], from: previousMonth)
-        
-        var array = [HECalendarModel]()
-        for i in (days - partialDaysCount + 1)..<(days + 1) {  // 这里计算在本月中需要显示上个月的日期
-            let model = self.generalCalendarModel(year: component.year!, month: component.month!, day: i)
-            model.dayType = .past
-            array.append(model)      // 将这一天添加到数组中
-        }
-        return array
-    }
-    
-    /// 计算下个月的天数
-    func calculateDaysInFollowMonth(_ date: Date) -> [HECalendarModel] {
-        let lastWeekly = date.endOfThisMonth().weekInThisMonth() //  当月最后一天是周几
-        if lastWeekly == 7 { return [HECalendarModel]() }
-        let partialDaysCount = 7 - lastWeekly      // 计算下个月需要在本月中显示的天数
-        let component = Date.currentCalendar.dateComponents([.year, .month, .day, .weekday], from: date.dayInTheFollowingMonth())
-        var array = [HECalendarModel]()
-        for i in 1..<(partialDaysCount + 1) { // 这里计算在本月中需要显示下个月的日期
-            let model = self.generalCalendarModel(year: component.year!, month: component.month!, day: i)
-            model.dayType = .past
-            array.append(model)      // 将这一天添加到数组中
-        }
-        return array
-    }
 
-    /// 计算当月的天数
-    func calculateDaysInThisMonth(_ date: Date, selectedDate: Date) -> [HECalendarModel] {
-        let days = date.daysInThisMonth()       // 这个月有多少天
-        let component = Date.currentCalendar.dateComponents([.year, .month, .day, .weekday], from: date)
-        var array = [HECalendarModel]()
-        
-        for i in 1...days {
-            let model = self.generalCalendarModel(year: component.year!, month: component.month!, day: i)
-            var type = [DayType]()
-            if model.week == 6 || model.week == 7 {     // 周六或者周日
-                type.append(.weekend)
-            } else {
-                type.append(.workday)       // 工作日
-            }
-            
-            if model.holiday != nil { type.append(.holiday) }
-            if selectedDate == model.date { type.append(.click) }
-            
-            model.dayType = type
-            array.append(model)      // 将这一天添加到数组中
-        }
-        return array
-    }
-*/
-    
     func generalCalendarModel(year: Int, month: Int, day: Int) -> HECalendarModel {
 
         let calendar = HECalendarModel(year: year, month: month, day: day)

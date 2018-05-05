@@ -52,12 +52,12 @@ class HENormalCalendarCell: UICollectionViewCell {
     
     func setup() {
         // 公历
-        self.solar = clabel(font: UIFont.systemFont(ofSize: 14), text: nil, super: self.contentView)
+        self.solar = clabel(font: UIFont.font_14, text: nil, super: self.contentView)
         self.solar.textAlignment = .center
         self.solar.textColor = UIColor.black
         
         // 农历
-        self.lunar = clabel(font: UIFont.systemFont(ofSize: 9), text: nil, super: self.contentView)
+        self.lunar = clabel(font: UIFont.font_9, text: nil, super: self.contentView)
         self.lunar.textAlignment = .center
         self.lunar.textColor = UIColor.black
         
@@ -78,8 +78,8 @@ class HENormalCalendarCell: UICollectionViewCell {
                 self.solar.textColor = UIColor.black
                 self.lunar.textColor = UIColor.black
             } else if model.dayType == .weekend || model.dayType == .holiday {    // 周末或节假日
-                self.solar.textColor = UIColor.red
-                self.lunar.textColor = UIColor.red
+                self.solar.textColor = HENormalCalendarWeekendColor
+                self.lunar.textColor = HENormalCalendarWeekendColor
             }
             
             if model.isSelected {     // 选中
