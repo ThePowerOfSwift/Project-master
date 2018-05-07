@@ -30,17 +30,6 @@ extension Date {
     /// 获取当前日历
     static let currentCalendar = Calendar(identifier: Calendar.Identifier.gregorian) //Calendar.current
     
-    /// 某个日期的起始时间（）
-    func dateForStart() -> Date {
-        let date: Date = "\(self.year)-\(self.month)-\(self.day) 00:00:00".formatToDate("yyyy-MM-dd HH:mm:ss")!
-        return date.formatTimeZone()
-    }
-    /// 某个日期的结束时间（）
-    func dateForEnd() -> Date {
-        let date: Date = "\(self.year)-\(self.month)-\(self.day) 23:59:59".formatToDate("yyyy-MM-dd HH:mm:ss")!
-        return date.formatTimeZone()
-    }
-    
     /// 这个月有多少天
     func daysInThisMonth() -> Int {
         let totaldaysInMonth: Range = Date.currentCalendar.range(of: .day, in: .month, for: self)!
@@ -80,7 +69,7 @@ extension Date {
     func startOfThisMonth() -> Date {
         let components = Date.currentCalendar.dateComponents(Set<Calendar.Component>([.year, .month]), from: self)
         let startOfMonth = Date.currentCalendar.date(from: components)!
-        return startOfMonth
+        return startOfMonth.formatTimeZone()
     }
     
     /// 本月结束日期
@@ -94,7 +83,18 @@ extension Date {
         }
         
         let endOfMonth = Date.currentCalendar.date(byAdding: components, to: startOfThisMonth())!
-        return endOfMonth
+        return endOfMonth.formatTimeZone()
+    }
+    
+    /// 某个日期的起始时间（）
+    func startOfThisDay() -> Date {
+        let date: Date = "\(self.year)-\(self.month)-\(self.day) 00:00:00".formatToDate("yyyy-MM-dd HH:mm:ss")!
+        return date.formatTimeZone()
+    }
+    /// 某个日期的结束时间（）
+    func endOfThisDay() -> Date {
+        let date: Date = "\(self.year)-\(self.month)-\(self.day) 23:59:59".formatToDate("yyyy-MM-dd HH:mm:ss")!
+        return date.formatTimeZone()
     }
     
     /// 本日期在上个月的日期

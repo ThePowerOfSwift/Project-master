@@ -9,9 +9,9 @@
 import UIKit
 let HENormalCalendarWeekendColor = UIColor.red
 class HENormalCalendarHeaderView: UICollectionReusableView {
-    var calendar: Calendar! {
+    var gregorian: Calendar! {
         didSet {
-            self.weekdayView.calendar = calendar
+            self.weekdayView.gregorian = gregorian
         }
     }
     var titleLabel: UILabel!

@@ -10,6 +10,9 @@ import UIKit
 
 class HENomalCalendarFlowLayout: UICollectionViewFlowLayout {
 
+    var calendar: HENormalCalendarViewController!     // 日历所在的控制器，或者view
+    
+    
     override init() {
         super.init()
         
@@ -29,5 +32,10 @@ class HENomalCalendarFlowLayout: UICollectionViewFlowLayout {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepare() {
+        super.prepare()
+       // self.calendar.adjustMonthPosition()
     }
 }

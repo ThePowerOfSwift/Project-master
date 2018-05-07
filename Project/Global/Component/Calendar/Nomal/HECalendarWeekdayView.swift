@@ -10,7 +10,7 @@ import UIKit
 
 class HECalendarWeekdayView: UIView {
 
-    var calendar: Calendar! {
+    var gregorian: Calendar! {
         didSet {
             self.configureAppearance()
         }

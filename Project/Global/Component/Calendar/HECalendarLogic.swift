@@ -16,7 +16,7 @@ class HECalendarLogic {
         case multiple       // 显示多月
     }
     
-    var calendar: Calendar! = Calendar(identifier: .gregorian)
+    var gregorian: Calendar! = Calendar(identifier: .gregorian)
     
     
 //    var model: SomeCalendarProtocol!
@@ -64,6 +64,30 @@ class HECalendarLogic {
         self.rowCounts.removeAll()
     }
     
+    /// 绑定数据
+    func requestBoundingDatesIfNecessary() {
+        if self.needsRequestingBoundingDates {
+            self.needsRequestingBoundingDates = false
+            // 判断最大和最小日期界限
+            let min: Date = Date.dateFromString("1901-01-01", format: yyyy_MM_dd)!
+            let max: Date = Date.dateFromString("2099-12-31", format: yyyy_MM_dd)!
+            if self.minimumDate > min { self.minimumDate = min }
+            if self.maximumDate < min { self.maximumDate = max }
+            
+            self.reloadSections()
+        }
+    }
+    
+    /// 判断某个日期是否是安全的，即：在minimumDate 和 maximumDate之间, 如果不在，则适当取最大或最小值
+    func safeDateFor(date: Date) -> Date {
+        var date = date
+        if date.isEarlierToDate(self.minimumDate) {
+            date = self.minimumDate
+        } else if date.isLaterToDate(self.maximumDate) {
+            date = self.maximumDate
+        }
+        return date
+    }
     /// 计算每个section中有多少行，即：分别有4、5、6三种行数
     func numberOfRowsInSection(section: Int) -> Int {
         let month = self.monthForSection(section)
@@ -75,6 +99,15 @@ class HECalendarLogic {
         let monthHead = self.monthHeadForSection(indexPath.section)
         let date = monthHead.addingDays(indexPath.item)
         return date
+    }
+    
+    /// 计算date对应的indexPath
+    func indexPathForDate(_ date: Date) -> IndexPath {
+        let date = self.safeDateFor(date: date) // 取安全的date
+        let section = Date.monthsBetween(from: self.minimumDate, to: date) - 1  // 通过两个日期之间的总月份，判定是哪个section
+        let row = Date.daysBetween(from: self.monthHeadForSection(section), to: date)
+        
+        return IndexPath(item: row, section: section)
     }
     
     /// 根据section，查找是哪个月份
@@ -125,20 +158,6 @@ class HECalendarLogic {
         let firstWeekdayOfMonth = month.firstWeeklyInThisMonth() // 这个月的第一天是周几
         let headPlaceholders = (firstWeekdayOfMonth - Date.currentCalendar.firstWeekday + 7) % 7
         return headPlaceholders
-    }
-    
-    /// 绑定数据
-    func requestBoundingDatesIfNecessary() {
-        if self.needsRequestingBoundingDates {
-            self.needsRequestingBoundingDates = false
-            // 判断最大和最小日期界限
-            let min: Date = Date.dateFromString("1901-01-01", format: yyyy_MM_dd)!
-            let max: Date = Date.dateFromString("2099-12-31", format: yyyy_MM_dd)!
-            if self.minimumDate > min { self.minimumDate = min }
-            if self.maximumDate < min { self.maximumDate = max }
-            
-            self.reloadSections()
-        }
     }
 
     func generalCalendarModel(year: Int, month: Int, day: Int) -> HECalendarModel {
