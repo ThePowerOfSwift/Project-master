@@ -39,6 +39,7 @@
 		451C9D252064F3C40075FA08 /* HESettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C9D242064F3C40075FA08 /* HESettingCell.swift */; };
 		451C9D272064F7F10075FA08 /* HESettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C9D262064F7F10075FA08 /* HESettingModel.swift */; };
 		453643FB2056310400897E6B /* HETimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453643FA2056310400897E6B /* HETimerButton.swift */; };
+		453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F7B5920A044AD00933E55 /* Array+Extension.swift */; };
 		455D8ABC206CB77100BBACBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8ABB206CB77100BBACBD /* Api.swift */; };
 		455D8AC3206CBA2800BBACBD /* HEClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8AC2206CBA2800BBACBD /* HEClient.swift */; };
 		455FA02D2092F1E00061B33A /* HEUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02C2092F1E00061B33A /* HEUtil.swift */; };
@@ -148,6 +149,7 @@
 		451C9D242064F3C40075FA08 /* HESettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HESettingCell.swift; sourceTree = "<group>"; };
 		451C9D262064F7F10075FA08 /* HESettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HESettingModel.swift; sourceTree = "<group>"; };
 		453643FA2056310400897E6B /* HETimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HETimerButton.swift; sourceTree = "<group>"; };
+		453F7B5920A044AD00933E55 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		455D8ABB206CB77100BBACBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		455D8AC2206CBA2800BBACBD /* HEClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEClient.swift; sourceTree = "<group>"; };
 		455FA02C2092F1E00061B33A /* HEUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEUtil.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				450194CA20734D6E00777328 /* Dictionary+Extension.swift */,
 				DE8D89E52081891A0043BFC8 /* Font+Extension.swift */,
 				455FA02E20930A900061B33A /* NSRange+Extension.swift */,
+				453F7B5920A044AD00933E55 /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				45DB84DD209DE43800149215 /* HENormalCalendarHeaderView.swift in Sources */,
 				45B15C0C205A7F90008C4F94 /* HEMineViewController.swift in Sources */,
 				45053B6B204E65B300B5B34B /* HEPlaceholderTextView.swift in Sources */,
+				453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */,
 				45B6B89520592BA200F01F1B /* HELanguageHelper.swift in Sources */,
 				4514506E204FD26200E83F97 /* AppStoreReview.swift.swift in Sources */,
 				45DB84DF209DEA0000149215 /* HECalendarWeekdayView.swift in Sources */,

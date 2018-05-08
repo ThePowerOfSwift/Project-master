@@ -16,6 +16,7 @@ private let D_YEAR: Int       = 31556926
 
 public let yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss"
 public let yyyy_MM_dd = "yyyy-MM-dd"
+public let yyyy_MM = "yyyy-MM"
 
 private let flags: Set = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday]
 extension Date {

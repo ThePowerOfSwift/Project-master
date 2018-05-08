@@ -29,12 +29,11 @@ class HECalendarLogic {
     
     var numberOfMonths: Int = 0
     var numberOfWeeks: Int = 0
-    var months: Dictionary<Int, Date> = [:]     // 保存给个section对应的月份
-    var monthHeads: Dictionary<Int, Date> = [:] // 保存每个月需要展示的第一天的date（可能是这个月的1号，也可能会是上个月的某一天）
-    var rowCounts: Dictionary<Date, Int> = [:]  // 保存每个月分了多少行
-    var days = [Int:[Int:HECalendarModel]]()          // 保存section对用的月份中item对应的所有天
-    
-    
+    private var months: Dictionary<Int, Date> = [:]     // 保存给个section对应的月份
+    private var monthHeads: Dictionary<Int, Date> = [:] // 保存每个月需要展示的第一天的date（可能是这个月的1号，也可能会是上个月的某一天）
+    private var rowCounts: Dictionary<Date, Int> = [:]  // 保存每个月分了多少行
+    private var days: Dictionary<Int, Int> = [:] // 保存section对用的月份中item对应的所有天
+    private var daysForMonth: NSMutableDictionary = NSMutableDictionary()
     deinit {
         NotificationCenter.default.removeObserver(self, name: .UIApplicationDidReceiveMemoryWarning, object: nil)
     }
@@ -62,6 +61,7 @@ class HECalendarLogic {
         self.months.removeAll()
         self.monthHeads.removeAll()
         self.rowCounts.removeAll()
+        self.days.removeAll()
     }
     
     /// 绑定数据
@@ -86,7 +86,7 @@ class HECalendarLogic {
         } else if date.isLaterToDate(self.maximumDate) {
             date = self.maximumDate
         }
-        return date
+        return date.formatDate
     }
     /// 计算每个section中有多少行，即：分别有4、5、6三种行数
     func numberOfRowsInSection(section: Int) -> Int {
@@ -98,7 +98,7 @@ class HECalendarLogic {
     func dateForIndexPath(_ indexPath: IndexPath) -> Date {
         let monthHead = self.monthHeadForSection(indexPath.section)
         let date = monthHead.addingDays(indexPath.item)
-        return date
+        return date.formatDate
     }
     
     /// 计算date对应的indexPath
@@ -111,18 +111,18 @@ class HECalendarLogic {
     }
     
     /// 根据section，查找是哪个月份
-    private func monthForSection(_ section: Int) -> Date {
+    func monthForSection(_ section: Int) -> Date {
         var month = self.months[section]
         if month == nil { // 如果month不存在，则从计算一下当前section的month，并保存起来
             month = self.minimumDate.startOfThisMonth().dayInTheFollowingMonth(section)
-            self.months[section] = month
+            self.months[section] = month!.formatDate
             
             // 计算headMonth
             let numberOfPlaceholders = self.headPlaceholderForMonth(month!)
             let monthHead = month!.addingDays(-numberOfPlaceholders)
-            self.monthHeads[section] = monthHead
+            self.monthHeads[section] = monthHead.formatDate
         }
-        return month!
+        return month!.formatDate
     }
     
     /// 根据section，计算对应月份的monthHead
@@ -130,18 +130,19 @@ class HECalendarLogic {
         var monthHead = self.monthHeads[section]
         if monthHead == nil {
             let month = self.minimumDate.startOfThisMonth().dayInTheFollowingMonth(section)
-            self.months[section] = month
+            self.months[section] = month.formatDate
             
             // 计算headMonth
             let numberOfPlaceholders = self.headPlaceholderForMonth(month)
             monthHead = month.addingDays(-numberOfPlaceholders)
-            self.monthHeads[section] = monthHead
+            self.monthHeads[section] = monthHead?.formatDate
         }
         return monthHead!
     }
     
     /// 根据month，查找这个月需要多少行才能显示
-    private func rowCountForMonth(_ month: Date) -> Int {
+    func rowCountForMonth(_ month: Date) -> Int {
+        let month = self.safeDateFor(date: month)
         var rowCount = self.rowCounts[month]
         if rowCount == nil {    // 如果rowCount不存在，则计算当前section对应的月份的rowCount，并保存起来
             let numOfPlaceholdersForPre = self.headPlaceholderForMonth(month)
@@ -155,40 +156,52 @@ class HECalendarLogic {
     
     /// 获取每个月1号之前需要显示上个的日期的天数
     private func headPlaceholderForMonth(_ month: Date) -> Int {
+        let month = self.safeDateFor(date: month)
         let firstWeekdayOfMonth = month.firstWeeklyInThisMonth() // 这个月的第一天是周几
         let headPlaceholders = (firstWeekdayOfMonth - Date.currentCalendar.firstWeekday + 7) % 7
         return headPlaceholders
     }
 
-    func generalCalendarModel(year: Int, month: Int, day: Int) -> HECalendarModel {
+    /// 包装日期，变成model, 通过section来确定是那个月份中的日期
+    func generalCalendarModel(date: Date, key: String) -> HECalendarModel {
+        let date = self.safeDateFor(date: date)
 
-        let calendar = HECalendarModel(year: year, month: month, day: day)
-        calendar.isDisplayChineseCalendar = isDisplayChineseCalender   // 默认true
-        let date = calendar.date
-        calendar.week = date.weekInThisMonth()      // 周几
-        calendar.dayType = (calendar.week == 1 || calendar.week == 7) ? .weekend : .workday  // 周末or工作日
+        var calendar = (self.daysForMonth.object(forKey: key as NSString) as? NSDictionary)?.object(forKey: Date.stringFormDate(date)) as? HECalendarModel
+        if calendar == nil {
+            calendar = HECalendarModel(year: date.year, month: date.month, day: date.day)
+            calendar!.isDisplayChineseCalendar = isDisplayChineseCalender   // 默认true
+            calendar!.week = date.weekInThisMonth()      // 周几
             
-        if isDisplayChineseCalender {       // 是否显示农历
-            calendar.lunar = lunar(date: date)
-            let lunar_month_str = lunar_month(date: date)
-            let lunar_day_str = lunar_day(date: date)
-            calendar.lunar_year = lunar_year(date: date)
-            calendar.lunar_month = lunar_month_str
-            calendar.lunar_day = lunar_day_str == "初一" ? lunar_month_str : lunar_day_str
-        }
-        
-        calendar.isDisplayHoliday = isDisplayHoliday   // 默认true
-        if isDisplayHoliday {       // 是否显示节日
-            calendar.holiday = [self.solar_holiday(date: date), self.lunar_holiday(date: date), self.twentyFourSolarTerm(date: date)]
-            for str in calendar.holiday! {  // 判断一下，如果是节假日，设置dayType的类型为.holiday
-                if str.count > 0 {
-                    calendar.dayType = .holiday
-                    break
+            if isDisplayChineseCalender {       // 是否显示农历
+                calendar!.lunar = lunar(date: date)
+                let lunar_month_str = lunar_month(date: date)
+                let lunar_day_str = lunar_day(date: date)
+                calendar!.lunar_year = lunar_year(date: date)
+                calendar!.lunar_month = lunar_month_str
+                calendar!.lunar_day = lunar_day_str == "初一" ? lunar_month_str : lunar_day_str
+            }
+            
+            calendar!.isDisplayHoliday = isDisplayHoliday   // 默认true
+            if isDisplayHoliday {       // 是否显示节日
+                calendar!.holiday = [self.solar_holiday(date: date), self.lunar_holiday(date: date), self.twentyFourSolarTerm(date: date)]
+                for str in calendar!.holiday! {  // 判断一下，如果是节假日，设置dayType的类型为.holiday
+                    if str.count > 0 {
+                        calendar!.dayType = .holiday
+                        break
+                    }
                 }
             }
+            let value = NSDictionary(object: calendar!, forKey: Date.stringFormDate(date) as NSString)
+            self.daysForMonth.setObject(value, forKey: key as NSString)
         }
-        return calendar
+        if !Date.stringFormDate(date).contains(find: key) {
+            calendar!.isEnable = false
+        }
+        calendar!.dayType = (calendar!.week == 1 || calendar!.week == 7) ? .weekend : .workday  // 周末or工作日
+
+        return calendar!
     }
+    
     // MARK: - 获取农历
     func lunar(year: Int, month: Int, day: Int) -> String {
         
@@ -458,5 +471,12 @@ class HECalendarLogic {
         let gan = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"][abs(i) % 10]
         let zhi = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"][abs(i) % 12]
         return gan + zhi + "日"
+    }
+}
+
+fileprivate extension Date {
+    /// 格式化date，使其不受time和地域的影响
+    var formatDate: Date {
+        return Date.dateFromString(Date.stringFormDate(self))!
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum DayType {
-    case empty          // 不显示
+    case empty          // 显示空白
     case past           // 过去的日期
     case workday        // 工作日
     case weekend        // 周末

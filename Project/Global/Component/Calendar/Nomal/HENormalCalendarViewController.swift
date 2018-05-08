@@ -10,6 +10,13 @@ import UIKit
 
 private let cellIdentify = "HENormalCalendarCell"
 private let headerIdentify = "HENormalCalendarHeaderView"
+
+/// 日历控件选择类型：单选、多选
+enum CanlendarSelectedType {
+    case single     // 单选
+    case multiple   // 多选
+}
+
 class HENormalCalendarViewController: HEBaseViewController {
 
     var gregorian: Calendar = Calendar(identifier: .gregorian)   // 公历
@@ -17,16 +24,21 @@ class HENormalCalendarViewController: HEBaseViewController {
     var logic: HECalendarLogic = HECalendarLogic()
     var collectionView: UICollectionView!
     var monthModels: [HECalendarMonthModel]!     // 所有的月份
-    var today: Date = Date()    // 今天，日历默认显示today所在的月份
+    var today: Date = Date.locatonDate    // 今天，日历默认显示today所在的月份
     var currentPage: Date!  // 日历当前页显示的月份
-    var selectedDate: Date?
+    var selectedDate: [String] = [String]()
+    var selectedType: CanlendarSelectedType = .multiple
     var isPagingEnabled: Bool = false
     
+    deinit {
+        HELog(message: "release normal calendar")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.currentPage = today.startOfThisMonth()
+        self.currentPage = self.today.startOfThisMonth()
+        self.selectedDate = [Date.stringFormDate(self.today)]
         
         self.logic.gregorian = self.gregorian
         self.logic.minimumDate = Date.distantPast
@@ -69,8 +81,8 @@ class HENormalCalendarViewController: HEBaseViewController {
     func adjustMonthPosition() {
         self.requestBoundingDatesIfNecessary()
         var targetDate = self.today
-        if self.selectedDate != nil {
-            self.currentPage = self.selectedDate?.startOfThisMonth()
+        if self.selectedDate.count > 0 {
+            self.currentPage = Date.dateFromString(self.selectedDate[0])!.startOfThisMonth()  // 如果selectedDate存在，则默认滑动到选中的第一个日期所在的月份
         }
         targetDate = self.currentPage
         self.scrollToSelectedMonthForDate(targetDate, animation: false)
@@ -92,9 +104,9 @@ extension HENormalCalendarViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify, for: indexPath) as! HENormalCalendarHeaderView
-            let thisMonth = self.logic.months[indexPath.section]!    // 本月的date
+            let thisMonth = self.logic.monthForSection(indexPath.section)    // 本月的date
             headerView.gregorian = self.gregorian
-            headerView.titleLabel.text = Date.stringFormDate(thisMonth)
+            headerView.titleLabel.text = Date.stringFormDate(thisMonth, format: yyyy_MM)
             return headerView
         }
         return UICollectionReusableView()
@@ -103,13 +115,46 @@ extension HENormalCalendarViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentify, for: indexPath) as! HENormalCalendarCell
         
+        let thisMonth = self.logic.monthForSection(indexPath.section)    // 本月的date
         let date = self.logic.dateForIndexPath(indexPath)
-        let model: HECalendarModel = self.logic.generalCalendarModel(year: date.year, month: date.month, day: date.day)
-        let thisMonth = self.logic.months[indexPath.section]!    // 本月的date
-        if !(date.year == thisMonth.year && date.month == thisMonth.month) {
-            model.dayType = .past
+        let model: HECalendarModel = self.logic.generalCalendarModel(date: date, key: Date.stringFormDate(thisMonth, format: yyyy_MM))
+        // 处理选中的日期
+        model.isSelected = false
+        if self.selectedDate.count > 0 {
+            for sele in self.selectedDate {
+                if Date.stringFormDate(model.date) == sele {
+                    model.isSelected = true
+                    break
+                }
+            }
         }
         cell.model = model
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let date = self.logic.dateForIndexPath(indexPath)
+        let thisCell = collectionView.cellForItem(at: indexPath) as! HENormalCalendarCell
+        if thisCell.model.isEnable == false {
+            return
+        }
+        if self.selectedType == .single {
+            self.selectedDate[0] = Date.stringFormDate(date)
+        } else if self.selectedType == .multiple {
+            if self.selectedDate.contains(Date.stringFormDate(date)) {
+                self.selectedDate.remove(Date.stringFormDate(date))
+            } else {
+                self.selectedDate.append(Date.stringFormDate(date))
+            }
+        }
+        
+        for cell in collectionView.visibleCells {
+            let cell =  cell as! HENormalCalendarCell
+            cell.model.isSelected = false
+            if self.selectedDate.contains(Date.stringFormDate(cell.model.date)) {
+                cell.model.isSelected = true
+            }
+            cell.configureAppearance()
+        }
     }
 }
