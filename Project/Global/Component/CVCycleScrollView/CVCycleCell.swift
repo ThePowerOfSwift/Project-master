@@ -52,7 +52,7 @@ class CVCycleCell: UICollectionViewCell {
         didSet {
             self.titleLabel.updateConstraints { (make) in
                 make.left.equalTo(titleLabelLeading)
-                make.right.equalTo(titleLabelLeading)
+                make.right.equalTo(-titleLabelLeading)
             }
         }
     }
@@ -82,12 +82,14 @@ class CVCycleCell: UICollectionViewCell {
         }
         
         self.titleLabel.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(0)
+            make.bottom.equalTo(0)
+            make.left.equalTo(-30)
+            make.right.equalTo(50)
         }
         
         self.titleBackView.makeConstraints { (make) in
             make.left.right.bottom.equalTo(0)
-            make.top.equalTo(self.titleBackView)
+            make.top.equalTo(self.titleLabel).offset(-10)
         }
     }
     
