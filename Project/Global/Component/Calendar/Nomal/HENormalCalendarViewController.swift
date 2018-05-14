@@ -41,8 +41,9 @@ class HENormalCalendarViewController: HEBaseViewController {
         self.selectedDate = [Date.stringFormDate(self.today)]
         
         self.logic.gregorian = self.gregorian
-        self.logic.minimumDate = Date.distantPast
-        self.logic.maximumDate = Date.distantFuture
+        self.logic.minimumDate = Date().addingMonths(-1000)
+        self.logic.maximumDate = Date()
+//        self.logic.isDisplayChineseCalender = false
         
         // layout
         let layout = HENomalCalendarFlowLayout()
@@ -87,7 +88,7 @@ class HENormalCalendarViewController: HEBaseViewController {
         targetDate = self.currentPage
         self.scrollToSelectedMonthForDate(targetDate, animation: false)
     }
-    
+     var n: Int = 0
 }
 
 extension HENormalCalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -111,10 +112,11 @@ extension HENormalCalendarViewController: UICollectionViewDelegate, UICollection
         }
         return UICollectionReusableView()
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentify, for: indexPath) as! HENormalCalendarCell
-        
+        n = n + 1
+        print(n)
         let thisMonth = self.logic.monthForSection(indexPath.section)    // 本月的date
         let date = self.logic.dateForIndexPath(indexPath)
         let model: HECalendarModel = self.logic.generalCalendarModel(date: date, key: Date.stringFormDate(thisMonth, format: yyyy_MM))

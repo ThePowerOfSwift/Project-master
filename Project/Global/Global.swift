@@ -58,6 +58,7 @@ let SysName = UIDevice.current.systemName
 /// 设备名称
 let DeviceName = PhoneDeviceModel.get()
 
+let safeAreaInsets = safeAreaInsetsIn(view: appDelegate.window)
 /// 安全区域
 func safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
     

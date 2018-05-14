@@ -72,7 +72,7 @@ class HECalendarLogic {
             let min: Date = Date.dateFromString("1901-01-01", format: yyyy_MM_dd)!
             let max: Date = Date.dateFromString("2099-12-31", format: yyyy_MM_dd)!
             if self.minimumDate > min { self.minimumDate = min }
-            if self.maximumDate < min { self.maximumDate = max }
+            if self.maximumDate < max { self.maximumDate = max }
             
             self.reloadSections()
         }
@@ -142,7 +142,6 @@ class HECalendarLogic {
     
     /// 根据month，查找这个月需要多少行才能显示
     func rowCountForMonth(_ month: Date) -> Int {
-        let month = self.safeDateFor(date: month)
         var rowCount = self.rowCounts[month]
         if rowCount == nil {    // 如果rowCount不存在，则计算当前section对应的月份的rowCount，并保存起来
             let numOfPlaceholdersForPre = self.headPlaceholderForMonth(month)
@@ -156,7 +155,6 @@ class HECalendarLogic {
     
     /// 获取每个月1号之前需要显示上个的日期的天数
     private func headPlaceholderForMonth(_ month: Date) -> Int {
-        let month = self.safeDateFor(date: month)
         let firstWeekdayOfMonth = month.firstWeeklyInThisMonth() // 这个月的第一天是周几
         let headPlaceholders = (firstWeekdayOfMonth - Date.currentCalendar.firstWeekday + 7) % 7
         return headPlaceholders
@@ -164,7 +162,6 @@ class HECalendarLogic {
 
     /// 包装日期，变成model, 通过section来确定是那个月份中的日期
     func generalCalendarModel(date: Date, key: String) -> HECalendarModel {
-        let date = self.safeDateFor(date: date)
 
         var calendar = (self.daysForMonth.object(forKey: key as NSString) as? NSDictionary)?.object(forKey: Date.stringFormDate(date)) as? HECalendarModel
         if calendar == nil {
