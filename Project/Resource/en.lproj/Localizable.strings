@@ -13,47 +13,47 @@
 /******************************************
  ******************************************/
 // Tabbar
-"HEBaseTabbarController.Home" = "Home";
-"HEBaseTabbarController.Mine" = "Mine";
+"CVBaseTabbarController.Home" = "Home";
+"CVBaseTabbarController.Mine" = "Mine";
 
 // 首页 - 标题
-"HEHomeViewController.Title" = "Home";
+"CVHomeViewController.Title" = "Home";
 // 首页 - 下一个
-"HEHomeViewController.Next" = "Next";
+"CVHomeViewController.Next" = "Next";
 // 首页 - 隐藏
-"HEHomeViewController.Hiden" = "Hiden";
+"CVHomeViewController.Hiden" = "Hiden";
 
 // 我的
-"HEMineViewController.Title" = "Mine";
+"CVMineViewController.Title" = "Mine";
 // 我的 - 设置
-"HEMineViewController.Setting" = "Setting";
+"CVMineViewController.Setting" = "Setting";
 
 // 设置
-"HESettingViewController.Title" = "Setting";
+"CVSettingViewController.Title" = "Setting";
 
 // 设置 - 语言设置
-"HESettingViewController.LanguageSetting" = "Multiple languages";
+"CVSettingViewController.LanguageSetting" = "Multiple languages";
 // 设置 - 清空缓存
-"HESettingViewController.CleanCache" = "CleanCache";
+"CVSettingViewController.CleanCache" = "CleanCacCV";
 // 设置 - 版本号
-"HESettingViewController.AppVersion" = "AppVersion";
+"CVSettingViewController.AppVersion" = "AppVersion";
 
 // 语言设置
-"HELanguageViewController.Title" = "Multiple languages";
+"CVLanguageViewController.Title" = "Multiple languages";
 // 语言设置 - 跟随系统
-"HELanguageViewController.FollowSystem" = "Auto";
+"CVLanguageViewController.FollowSystem" = "Auto";
 // 语言设置 - 简体中文
-"HELanguageViewController.SimpliedChinese" = "简体中文";
+"CVLanguageViewController.SimpliedChinese" = "简体中文";
 // 语言设置 - 英文
-"HELanguageViewController.English" = "English";
+"CVLanguageViewController.English" = "English";
 
 // 设置 - 语言设置 - 正在设置语言
-"HEChangeLanguageViewController.LanguageIsChanging" = "Language is Changing...";
+"CVChangeLanguageViewController.LanguageIsChanging" = "Language is Changing...";
 
 // 选择图片
-"HECameraPhoto.Title" = "chooseImage";
-"HECameraPhoto.Camera" = "From Camera";
-"HECameraPhoto.Photo" = "From Photo";
-"HECameraPhoto.NotSupportVideo" = "The device does not support video";
+"CVCameraPhoto.Title" = "chooseImage";
+"CVCameraPhoto.Camera" = "From Camera";
+"CVCameraPhoto.Photo" = "From Photo";
+"CVCameraPhoto.NotSupportVideo" = "TCV device does not support video";
 
 

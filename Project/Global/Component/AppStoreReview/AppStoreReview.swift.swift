@@ -2,8 +2,8 @@
 //  AppStoreReview.swift
 //  Project
 //
-//  Created by weixhe on 2018/3/7.
-//  Copyright © 2018年 com.weixhe. All rights reserved.
+//  Created by caven on 2018/3/7.
+//  Copyright © 2018年 com.caven. All rights reserved.
 //
 
 import Foundation
@@ -18,10 +18,10 @@ func showAppStoreReview() -> Void {
     let runs = getRunCounts()
     if (runs % minimumRunCount == 0) {
         if #available(iOS 10.3, *) {
-            HELog(message: "已请求评分")
+            CVLog(message: "已请求评分")
             SKStoreReviewController.requestReview()
         } else {
-            let open_review = "itms-apps://itunes.apple.com/app/id\(HEConstans.app_id)?action=write-review";
+            let open_review = "itms-apps://itunes.apple.com/app/id\(CVConstans.app_id)?action=write-review";
             if let url = URL(string: open_review) {
                 UIApplication.shared.openURL(url)
             }

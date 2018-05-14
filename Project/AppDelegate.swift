@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Project
 //
-//  Created by weixhe on 2018/3/6.
-//  Copyright © 2018年 com.weixhe. All rights reserved.
+//  Created by caven on 2018/3/6.
+//  Copyright © 2018年 com.caven. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        HELanguageHelper.setSupportLanguage(languages: COM.supportLanguage())
+        CVLanguageHelper.setSupportLanguage(languages: COM.supportLanguage())
         
         self.window = UIWindow(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         self.window!.backgroundColor = UIColor.white
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 计算app的启动次数，app每启动一次，计数+1
         incrementAppRuns()
         
-        self.window!.rootViewController = HEBaseTabbarController()
+        self.window!.rootViewController = CVBaseTabbarController()
         self.window!.makeKeyAndVisible()
         
         /// 键盘toolBar
@@ -43,28 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reachability = Reachability()!
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi {
-                HELog(message: "网络： WiFi")
+                CVLog(message: "网络： WiFi")
             } else {
-                HELog(message: "网络： Cellular")
+                CVLog(message: "网络： Cellular")
             }
         }
         reachability.whenUnreachable = { _ in
-            HELog(message: "没有网")
+            CVLog(message: "没有网")
         }
         
         do {
             try reachability.startNotifier()
         } catch { }
 
-        HELog(message: Date().addingDays(-1).firstWeeklyInThisMonth())
-        HELog(message: Date().startOfThisMonth())
+        CVLog(message: Date().addingDays(-1).firstWeeklyInThisMonth())
+        CVLog(message: Date().startOfThisMonth())
 
         
         var minimumDate: Date = Date.dateFromString("2018-01-01", format: yyyy_MM_dd)!
         var maximumDate: Date = Date.dateFromString("2018-12-31", format: yyyy_MM_dd)!
-        HELog(message: Date.monthsBetween(from: minimumDate, to: maximumDate))
+        CVLog(message: Date.monthsBetween(from: minimumDate, to: maximumDate))
         let months = (maximumDate.year - minimumDate.year) * 12 + (maximumDate.month - minimumDate.month)
-        HELog(message: months)
+        CVLog(message: months)
         
         
         return true

@@ -2,8 +2,8 @@
 //  UIViewCreation.swift
 //  Project
 //
-//  Created by weixhe on 2018/3/16.
-//  Copyright © 2018年 com.weixhe. All rights reserved.
+//  Created by caven on 2018/3/16.
+//  Copyright © 2018年 com.caven. All rights reserved.
 //
 
 import Foundation
@@ -46,8 +46,8 @@ func ctextField(font: UIFont, placeholder: String?, delegate: Any? = nil, super:
 }
 
 // MARK: - UITextView Create
-func ctextView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> HEPlaceholderTextView {
-    let textView = HEPlaceholderTextView(frame: CGRect.zero)
+func ctextView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> CVPlaceholderTextView {
+    let textView = CVPlaceholderTextView(frame: CGRect.zero)
     textView.textView.font = font
     textView.placeholder = placeholder ?? ""
     textView.textView.delegate = delegate as? UITextViewDelegate
