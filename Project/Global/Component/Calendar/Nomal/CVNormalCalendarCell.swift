@@ -55,7 +55,7 @@ class CVNormalCalendarCell: UICollectionViewCell {
         self.selectView = cview(super: self.contentView)
         self.selectView.frame = CGRect(x: 0, y: 0, width: self.width - 10, height: self.width - 10)
         self.selectView.corner(radius: self.selectView.width / 2, maskToBoudse: true)
-        self.selectView.backgroundColor = UIColor(hex: 0xff9562)
+        self.selectView.backgroundColor = UIColor.colorWithHex(0xff9562)
 
         // 公历
         self.solar = clabel(font: UIFont.font_14, text: nil, super: self.contentView)

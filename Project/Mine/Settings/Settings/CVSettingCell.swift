@@ -23,7 +23,7 @@ class CVSettingCell: UITableViewCell {
         detailLabel = clabel(font: UIFont.systemFont(ofSize: 15), text: nil, super: self.contentView)
         detailLabel!.frame = CGRect(x: SCREEN_WIDTH - 10 - 100, y: 0, width: 100, height: self.frame.height)
         detailLabel!.textAlignment = .right
-        detailLabel!.textColor = UIColor(hex: 0x999999)
+        detailLabel!.textColor = UIColor.colorWithHex(0x999999)
     }
     
     required init?(coder aDecoder: NSCoder) {

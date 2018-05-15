@@ -230,7 +230,7 @@ open class CVNavigationBar: UIView {
     }()
     lazy private var bottomLine: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: self.frame.height - 1, width: self.frame.width, height: 1))
-        view.backgroundColor = UIColor(r: 218, g: 218, b: 218)
+        view.backgroundColor = UIColor.colorWithRGB(218, green: 218, blue: 218)
         view.autoresizingMask = [.flexibleWidth]
         self.addSubview(view)
         return view

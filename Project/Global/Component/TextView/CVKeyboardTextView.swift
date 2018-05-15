@@ -93,7 +93,7 @@ open class CVKeyboardTextView: UIView {
     
     // MARK: Method
     func setupUI() -> Void {
-        self.backgroundColor = UIColor(r: 238, g: 238, b: 238)
+        self.backgroundColor = UIColor.colorWithRGB(238, green: 238, blue: 238)
         self.shadow(radius: 1, offset: CGSize(width: -0.5, height: -0.5))
         self.textView.corner(radius: 6, maskToBoudse: true)
         self.textView.textView.delegate = self
