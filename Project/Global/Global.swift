@@ -33,7 +33,7 @@ func CVLog<N>(message: N, file: String = #file, method: String = #function, line
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let SCREEN_HEIGHT_S = screen_height_safe()
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let cvAppDelegate = UIApplication.shared.delegate as! AppDelegate
 
 /// 系统版本
 let IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
@@ -58,7 +58,7 @@ let SysName = UIDevice.current.systemName
 /// 设备名称
 let DeviceName = PhoneDeviceModel.get()
 
-let safeAreaInsets = safeAreaInsetsIn(view: appDelegate.window)
+let safeAreaInsets = safeAreaInsetsIn(view: cvAppDelegate.window)
 /// 安全区域
 func safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
     
@@ -74,7 +74,7 @@ func safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
 }
 
 func screen_height_safe() -> CGFloat {
-    let insets = safeAreaInsetsIn(view: appDelegate.window)
+    let insets = safeAreaInsetsIn(view: cvAppDelegate.window)
     return SCREEN_HEIGHT - insets.top - insets.bottom
 }
 

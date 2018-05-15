@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.white
         
         // 计算app的启动次数，app每启动一次，计数+1
-        incrementAppRuns()
+        statisticsAppRuns(showReview: true)
         
         self.window!.rootViewController = CVBaseTabbarController()
         self.window!.makeKeyAndVisible()
@@ -56,16 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try reachability.startNotifier()
         } catch { }
 
-        CVLog(message: Date().addingDays(-1).firstWeeklyInThisMonth())
-        CVLog(message: Date().startOfThisMonth())
-
-        
-        var minimumDate: Date = Date.dateFromString("2018-01-01", format: yyyy_MM_dd)!
-        var maximumDate: Date = Date.dateFromString("2018-12-31", format: yyyy_MM_dd)!
-        CVLog(message: Date.monthsBetween(from: minimumDate, to: maximumDate))
-        let months = (maximumDate.year - minimumDate.year) * 12 + (maximumDate.month - minimumDate.month)
-        CVLog(message: months)
-        
+       
+        // 3DTouch
+        self.cv_3dTouch_application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }

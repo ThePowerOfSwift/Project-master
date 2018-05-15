@@ -48,7 +48,8 @@ final class CVCommon {
     
 
     // MARK: Alert 弹框
-    static func alert(vc: UIViewController, title: String?, msg: String?, cancel: String?, ok: String?, cancelCallBack:(()->(Void))?, okCallBack:(()->(Void))?) {
+    @discardableResult
+    func alert(vc: UIViewController, title: String?, msg: String?, cancel: String?, ok: String?, cancelCallBack:(()->(Void))?, okCallBack:(()->(Void))?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         if cancel != nil, cancelCallBack != nil {
             let alertAction = UIAlertAction(title: cancel!, style: .cancel, handler: {(_) in cancelCallBack!() })
@@ -60,10 +61,12 @@ final class CVCommon {
             alertController.addAction(alertAction)
         }
         vc.present(alertController, animated: true, completion: nil)
+        return alertController
     }
     
     // MARK: ActionSheet 弹框
-    static func actionSheet(vc: UIViewController, title: String?, sheets: [String], callBack:(@escaping (_ index: Int)->(Void))) {
+    @discardableResult
+    func actionSheet(vc: UIViewController, title: String?, sheets: [String], callBack:(@escaping (_ index: Int)->(Void))) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         for (i, value) in sheets.enumerated() {
             let alertAction = UIAlertAction(title: value, style: .default, handler: { (_) in
@@ -74,9 +77,12 @@ final class CVCommon {
 
         let alertAction = UIAlertAction(title: LS(key: "Cancel", comment: "取消"), style: .cancel, handler: nil)
         alertController.addAction(alertAction)
-        
+
         vc.present(alertController, animated: true, completion: nil)
+        return alertController
     }
+    
+    
     
     /// 取随机数
     func arc4random(min: UInt32 = 0, max: UInt32) -> UInt32 {
@@ -89,3 +95,5 @@ final class CVCommon {
 //    }
     
 }
+
+

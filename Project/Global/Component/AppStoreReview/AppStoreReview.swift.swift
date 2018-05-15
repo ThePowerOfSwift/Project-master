@@ -30,18 +30,24 @@ func showAppStoreReview() -> Void {
 }
 
 /// app 运行次数计数器。可以在 App Delegate 中调用此方法
-func incrementAppRuns() {
+func statisticsAppRuns(showReview: Bool) {
     let runs = getRunCounts() + 1
-    UserDefaults.standard.setValue(runs, forKey: runIncrementerSetting)
-    UserDefaults.standard.synchronize()
+    COM.setValue(runs, forKey: runIncrementerSetting)
+    
+    if showReview {
+        showAppStoreReview()
+    }
 }
 
 /// 从 UserDefaults 里读取运行次数并返回。
 private func getRunCounts() -> Int {
-    let savedRuns = UserDefaults.standard.value(forKey: runIncrementerSetting)
+    let savedRuns = COM.value(forKey: runIncrementerSetting)
     var runs = 0
     if savedRuns != nil {
         runs = savedRuns as! Int
+    }
+    if runs > minimumRunCount * 9999 {
+        runs = 0
     }
     return runs
 }

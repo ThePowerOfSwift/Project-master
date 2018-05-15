@@ -81,6 +81,12 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         let model = self.viewModel.dataSource[indexPath.row]
         cell.textLabel?.text = model.text! + " \(String(describing: model.number))"
+        
+        let vc1 = UIViewController()
+        vc1.view.backgroundColor = UIColor.orange
+        
+        cvAppDelegate.register3D_TouchInController(self, for: cell, locationVC: vc1, commitVC: CVNormalCalendarViewController())
+       
         return cell
     }
     
@@ -90,7 +96,5 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
-
 

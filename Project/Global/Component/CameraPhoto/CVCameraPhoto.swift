@@ -19,7 +19,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
         
         self.callBack = call
         
-        CVCommon.actionSheet(vc: vc, title: LS(self, key: "Title", comment: "选择图片"), sheets: [LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")]) { (index) -> (Void) in
+        COM.actionSheet(vc: vc, title: LS(self, key: "Title", comment: "选择图片"), sheets: [LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")]) { (index) -> (Void) in
             switch index {
             case 0:     // 相机
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -29,7 +29,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                     picker.allowsEditing = true // 允许编辑
                     vc.present(picker, animated: true, completion: nil)   // 打开相机
                 } else {
-                    CVCommon.alert(vc: vc, title: LS(key: "Tip", comment: "提示"), msg: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancel: nil, ok: LS(key: "Cancel", comment: "取消"), cancelCallBack: nil, okCallBack: { () -> (Void) in
+                    COM.alert(vc: vc, title: LS(key: "Tip", comment: "提示"), msg: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancel: nil, ok: LS(key: "Cancel", comment: "取消"), cancelCallBack: nil, okCallBack: { () -> (Void) in
                     })
                 }
             case 1:     // 相册
@@ -40,7 +40,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                     picker.allowsEditing = true // 允许编辑
                     vc.present(picker, animated: true, completion: nil)   // 打开相机
                 } else {
-                    CVCommon.alert(vc: vc, title: LS(key: "Tip", comment: "提示"), msg: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancel: nil, ok: LS(key: "Cancel", comment: "取消"), cancelCallBack: nil, okCallBack: { () -> (Void) in
+                    COM.alert(vc: vc, title: LS(key: "Tip", comment: "提示"), msg: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancel: nil, ok: LS(key: "Cancel", comment: "取消"), cancelCallBack: nil, okCallBack: { () -> (Void) in
                     })
                 }
             default:
