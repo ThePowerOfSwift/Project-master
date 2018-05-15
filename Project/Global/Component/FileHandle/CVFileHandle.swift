@@ -103,7 +103,7 @@ class CVFileHandle {
     class func cleanCache() {
         // 1. 清空 cache 包
         self.removeFile(atPath: CachesPath)
-        // 2. 清空tem包
+        // 2. 清空 tmp 包
         self.removeFile(atPath: TmpPath)
     }
 }

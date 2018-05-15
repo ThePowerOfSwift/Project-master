@@ -49,7 +49,7 @@ class CVNormalCalendarViewController: CVBaseViewController {
         let layout = CVNomalCalendarFlowLayout()
         layout.calendar = self
         
-        self.collectionView = ccollectionViwe(delegate: self, dataSource: self, layout: layout, super: self.view)
+        self.collectionView = ccollectionView(delegate: self, dataSource: self, layout: layout, super: self.view)
         self.collectionView.backgroundColor = UIColor.white
         self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.showsHorizontalScrollIndicator = false

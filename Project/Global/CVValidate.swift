@@ -30,8 +30,8 @@ class CVCheck {
     }
     
     /// 检查邮箱
-    class func ChinaEmail(_ text: String) -> Bool {
-        return CVValidate.ChinaEmail(text).isValid()
+    class func Email(_ text: String) -> Bool {
+        return CVValidate.Email(text).isValid()
     }
     
     /// 检查QQ
@@ -81,7 +81,7 @@ private enum CVValidate {
     case ChinaMobile(_: String)
     case ChinaUnicom(_: String)
     case ChinaTelecom(_: String)
-    case ChinaEmail(_: String)
+    case Email(_: String)
     case QQ(_: String)
     case password(_: String)
     case IdCardStrict(_: String)        // 严格的检查身份证
@@ -123,7 +123,7 @@ private enum CVValidate {
              */
             regex = "(^1(33|53|8[019]|17[37]|99)\\d{8}$)|(^1(349|70[0-2])\\d{7}$)"
             text = str
-        case let .ChinaEmail(str):
+        case let .Email(str):
             regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
             text = str
         case let .QQ(str):

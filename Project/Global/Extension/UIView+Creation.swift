@@ -1,5 +1,5 @@
 //
-//  UIViewCreation.swift
+//  UIView+Creation.swift
 //  Project
 //
 //  Created by caven on 2018/3/16.
@@ -96,12 +96,20 @@ func ctableView(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView
     return tableView
 }
 
-// MARK: - UICollectionView Create
-func ccollectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
-    return ccollectionViwe(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
+func ctableView_group(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView {
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    tableView.delegate = delegate as? UITableViewDelegate
+    tableView.dataSource = dataSource as? UITableViewDataSource
+    if `super` != nil { `super`!.addSubview(tableView) }
+    return tableView
 }
 
-func ccollectionViwe(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
+// MARK: - UICollectionView Create
+func ccollectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
+    return ccollectionView(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
+}
+
+func ccollectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.delegate = delegate as? UICollectionViewDelegate
     collectionView.dataSource = dataSource as? UICollectionViewDataSource

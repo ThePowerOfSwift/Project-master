@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  String+Extension.swift
 //  CVKeyboardTextField
 //
 //  Created by caven on 2018/3/2.
