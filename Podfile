@@ -15,10 +15,10 @@ target 'Project' do
   pod 'HandyJSON', '~> 4.1.1'      # 字典和模型互相转换  https://github.com/alibaba/HandyJSON
   pod 'SnapKit', '~> 4.0.0' # auto适配   https://github.com/SnapKit/SnapKit
   pod 'IQKeyboardManagerSwift', '5.0.0'     # 键盘toolbar https://github.com/hackiftekhar/IQKeyboardManager
-#  pod 'ESPullToRefresh'     # 上拉下拉  https://github.com/eggswift/pull-to-refresh
-  pod 'GTMRefresh' # 上拉下拉  https://github.com/GTMYang/GTMRefresh
+  pod 'GTMRefresh'          # 上拉下拉  https://github.com/GTMYang/GTMRefresh
   pod 'Kingfisher'          # 网络image加载  https://github.com/onevcat/Kingfisher
-  
+
+#  pod 'ChameleonSwift'      # 主题切换  https://github.com/zhangbozhb/ChameleonSwift
 #  pod 'ImageHelper'         # image渲染  https://github.com/melvitax/ImageHelper
 
   # 此加密卡内容太多，没必要
