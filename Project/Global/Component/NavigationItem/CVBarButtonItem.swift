@@ -145,7 +145,7 @@ open class CVBarButtonItem: NSObject {
             self.updateFrame()
             return
         }
-        self.button!.updateImagePosition(position: position, space: space)
+        self.button!.cv_updateImagePosition(position: position, space: space)
         self.space = space
         self.position = position
         self.updateFrame()

@@ -31,7 +31,7 @@ class CVCalendarModel {
     var day: Int
     var week: Int!
     var date: Date {
-        return Date.dateFromString("\(year)-\(month)-\(day)", format: yyyy_MM_dd)!
+        return Date.dateFromString("\(year)-\(month)-\(day)", format: TimeFormat.format_yMd.rawValue)!
     }
     
     var isDisplayChineseCalendar: Bool!        // 是否是中国日历，若为true，则返回chineseCalendar， 若为false，则lunar不返回值

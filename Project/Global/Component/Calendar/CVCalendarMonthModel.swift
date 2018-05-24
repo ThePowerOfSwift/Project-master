@@ -11,7 +11,7 @@ import Foundation
 class CVCalendarMonthModel {
     
     var date: Date {             // 年-月
-        return Date.dateFromString(dateString, format: yyyy_MM_dd)!
+        return Date.dateFromString(dateString, format: TimeFormat.format_yMd.rawValue)!
     }
     var dateString: String {     // 年-月
         return "\(year)-\(month)"

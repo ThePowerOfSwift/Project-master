@@ -24,8 +24,8 @@ class CVCalendarLogic {
     var isDisplayHoliday = true
     var needsRequestingBoundingDates = true     // 是否需要绑定数据，如果为true，则会重新计算两个日期范围，所包含的月数
     // 日期界限
-    var minimumDate: Date = Date.dateFromString("1901-01-01", format: yyyy_MM_dd)!
-    var maximumDate: Date = Date.dateFromString("2099-12-31", format: yyyy_MM_dd)!
+    var minimumDate: Date = Date.dateFromString("1901-01-01", format: TimeFormat.format_yMd.rawValue)!
+    var maximumDate: Date = Date.dateFromString("2099-12-31", format: TimeFormat.format_yMd.rawValue)!
     
     var numberOfMonths: Int = 0
     var numberOfWeeks: Int = 0
@@ -69,8 +69,8 @@ class CVCalendarLogic {
         if self.needsRequestingBoundingDates {
             self.needsRequestingBoundingDates = false
             // 判断最大和最小日期界限
-            let min: Date = Date.dateFromString("1901-01-01", format: yyyy_MM_dd)!
-            let max: Date = Date.dateFromString("2099-12-31", format: yyyy_MM_dd)!
+            let min: Date = Date.dateFromString("1901-01-01", format: TimeFormat.format_yMd.rawValue)!
+            let max: Date = Date.dateFromString("2099-12-31", format: TimeFormat.format_yMd.rawValue)!
             if self.minimumDate > min { self.minimumDate = min }
             if self.maximumDate < max { self.maximumDate = max }
             

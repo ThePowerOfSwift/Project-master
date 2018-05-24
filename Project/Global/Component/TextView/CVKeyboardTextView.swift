@@ -139,7 +139,7 @@ extension CVKeyboardTextView {
             if self.isEditing {
                 self.frame.origin.y = self.lastKeyboardFrame.origin.y - self.bounds.height
             } else {
-                let safeArea = safeAreaInsetsIn(view: self.window!)
+                let safeArea = cv_safeAreaInsetsIn(view: self.window!)
                 self.frame.origin.y = SCREEN_HEIGHT - safeArea.bottom - self.bounds.size.height
             }
         }) { (_) in

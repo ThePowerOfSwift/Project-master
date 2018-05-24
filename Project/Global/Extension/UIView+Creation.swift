@@ -67,7 +67,7 @@ func cimageView(image: UIImage?, super: UIView?) -> UIImageView {
 // MARK: - UIButton Create
 func cbutton(bg: UIColor?, title: String?, color: UIColor? = UIColor.blue, super: UIView?) -> UIButton {
     let button = UIButton(type: UIButtonType.custom)
-    button.setTitle(title, color: color, state: .normal)
+    button.cv_setTitle(title, color: color, state: .normal)
     if `super` != nil { `super`!.addSubview(button) }
     return button
 }
@@ -123,4 +123,13 @@ func cwebView(delegate: Any?, super: UIView?) -> UIWebView {
     webView.delegate = delegate as? UIWebViewDelegate
     if `super` != nil { `super`!.addSubview(webView) }
     return webView
+}
+
+// MARK: - CVPickerView Create
+func cpickerView(delegate: CVPickerViewDelegate, dataSource: CVPickerViewDataSource, super: UIView?) -> CVPickerView {
+    let pickerView = CVPickerView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))
+    pickerView.delegate = delegate
+    pickerView.dataSource = dataSource
+    if `super` != nil { `super`!.addSubview(pickerView) }
+    return pickerView
 }

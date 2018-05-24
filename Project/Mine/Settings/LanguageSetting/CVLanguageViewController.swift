@@ -21,7 +21,7 @@ class CVLanguageViewController: CVBaseViewController {
     
     lazy var tableView: UITableView = {
         let tableView = ctableView(delegate: self, dataSource: self, super: self.view)
-        tableView.frame = CGRect.init(x: 0, y: navigation_height(), width: SCREEN_WIDTH, height: thisViewHeight)
+        tableView.frame = CGRect.init(x: 0, y: cv_navigation_height(), width: SCREEN_WIDTH, height: thisViewHeight)
         return tableView
     }()
     

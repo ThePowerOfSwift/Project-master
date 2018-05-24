@@ -14,14 +14,14 @@ class CVBaseViewController: UIViewController {
         get {
             var top: CGFloat = 0.0, bottom: CGFloat = 0.0
             if self.navigationBar != nil && self.navigationBar!.isHidden == false {
-                top = navigation_height()
+                top = cv_navigation_height()
             } else {
-                top = safeAreaInsetsIn(view: self.view).top
+                top = cv_safeAreaInsetsIn(view: self.view).top
             }
             if self.tabBarController != nil && self.tabBarController!.tabBar.isHidden == false {
                 bottom = self.tabBarController!.tabBar.frame.height
             }
-            bottom += safeAreaInsetsIn(view: self.view).bottom
+            bottom += cv_safeAreaInsetsIn(view: self.view).bottom
             
             return SCREEN_HEIGHT - top - bottom
         }
@@ -68,7 +68,7 @@ class CVBaseViewController: UIViewController {
     // MARK: 导航栏 Nav
     private func setNavigationBar() {
         if self.navigationController != nil {
-            self.navigationBar = CVNavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: navigation_height()))
+            self.navigationBar = CVNavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: cv_navigation_height()))
             self.view.addSubview(self.navigationBar!)
             // self.navigationBar!.isShadowHidden = false
             self.navigationBar!.isBottomLineHidden = false

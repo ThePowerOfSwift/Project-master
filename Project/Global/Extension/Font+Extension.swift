@@ -36,7 +36,14 @@ extension UIFont {
     static var font_16: UIFont { return UIFont.systemFont(ofSize: 16) }
     static var font_17: UIFont { return UIFont.systemFont(ofSize: 17) }
     static var font_18: UIFont { return UIFont.systemFont(ofSize: 18) }
-    
+    static var font_19: UIFont { return UIFont.systemFont(ofSize: 19) }
+    static var font_20: UIFont { return UIFont.systemFont(ofSize: 20) }
+    static var font_21: UIFont { return UIFont.systemFont(ofSize: 21) }
+    static var font_22: UIFont { return UIFont.systemFont(ofSize: 22) }
+    static var font_23: UIFont { return UIFont.systemFont(ofSize: 23) }
+    static var font_24: UIFont { return UIFont.systemFont(ofSize: 24) }
+    static var font_25: UIFont { return UIFont.systemFont(ofSize: 25) }
+
     /// 以下是根据屏幕宽度适配的
     static var font_7_375: UIFont { return UIFont.systemFont_375(ofSize: 7) }
     static var font_8_375: UIFont { return UIFont.systemFont_375(ofSize: 8) }
@@ -50,4 +57,11 @@ extension UIFont {
     static var font_16_375: UIFont { return UIFont.systemFont_375(ofSize: 16) }
     static var font_17_375: UIFont { return UIFont.systemFont_375(ofSize: 17) }
     static var font_18_375: UIFont { return UIFont.systemFont_375(ofSize: 18) }
+    static var font_19_375: UIFont { return UIFont.systemFont_375(ofSize: 19) }
+    static var font_20_375: UIFont { return UIFont.systemFont_375(ofSize: 20) }
+    static var font_21_375: UIFont { return UIFont.systemFont_375(ofSize: 21) }
+    static var font_22_375: UIFont { return UIFont.systemFont_375(ofSize: 22) }
+    static var font_23_375: UIFont { return UIFont.systemFont_375(ofSize: 23) }
+    static var font_24_375: UIFont { return UIFont.systemFont_375(ofSize: 24) }
+    static var font_25_375: UIFont { return UIFont.systemFont_375(ofSize: 25) }
 }

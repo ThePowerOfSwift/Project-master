@@ -56,7 +56,7 @@ class CVNormalCalendarViewController: CVBaseViewController {
         self.collectionView.isPagingEnabled = self.isPagingEnabled
         self.collectionView.register(CVNormalCalendarCell.self, forCellWithReuseIdentifier: cellIdentify)
         self.collectionView.register(CVNormalCalendarHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify)
-        self.collectionView.frame = CGRect(x: 0, y: navigation_height(), width: SCREEN_WIDTH, height: self.thisViewHeight)
+        self.collectionView.frame = CGRect(x: 0, y: cv_navigation_height(), width: SCREEN_WIDTH, height: self.thisViewHeight)
         
         self.adjustMonthPosition()
     }
@@ -107,7 +107,7 @@ extension CVNormalCalendarViewController: UICollectionViewDelegate, UICollection
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify, for: indexPath) as! CVNormalCalendarHeaderView
             let thisMonth = self.logic.monthForSection(indexPath.section)    // 本月的date
             headerView.gregorian = self.gregorian
-            headerView.titleLabel.text = Date.stringFormDate(thisMonth, format: yyyy_MM)
+            headerView.titleLabel.text = Date.stringFormDate(thisMonth, format: TimeFormat.format_yM.rawValue)
             return headerView
         }
         return UICollectionReusableView()
@@ -119,7 +119,7 @@ extension CVNormalCalendarViewController: UICollectionViewDelegate, UICollection
         print(n)
         let thisMonth = self.logic.monthForSection(indexPath.section)    // 本月的date
         let date = self.logic.dateForIndexPath(indexPath)
-        let model: CVCalendarModel = self.logic.generalCalendarModel(date: date, key: Date.stringFormDate(thisMonth, format: yyyy_MM))
+        let model: CVCalendarModel = self.logic.generalCalendarModel(date: date, key: Date.stringFormDate(thisMonth, format: TimeFormat.format_yM.rawValue))
         // 处理选中的日期
         model.isSelected = false
         if self.selectedDate.count > 0 {

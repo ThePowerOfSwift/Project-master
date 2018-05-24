@@ -14,9 +14,6 @@ private let D_DAY: Int        = 86400
 private let D_WEEK: Int       = 604800
 private let D_YEAR: Int       = 31556926
 
-public let yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss"
-public let yyyy_MM_dd = "yyyy-MM-dd"
-public let yyyy_MM = "yyyy-MM"
 
 private let flags: Set = [Calendar.Component.year, Calendar.Component.month, Calendar.Component.day, Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second, Calendar.Component.weekday]
 extension Date {
@@ -272,14 +269,14 @@ extension Date {
 extension Date {
     
     /// Date转换成String
-    static func stringFormDate(_ date: Date, format: String = yyyy_MM_dd) -> String {
+    static func stringFormDate(_ date: Date, format: String = TimeFormat.format_yMd.rawValue) -> String {
         let formatter: DateFormatter = DateFormatter();
         formatter.dateFormat = format;
         return formatter.string(from: date)
     }
     
     /// String转换成Date
-    static func dateFromString(_ string: String, format: String = yyyy_MM_dd) -> Date? {
+    static func dateFromString(_ string: String, format: String = TimeFormat.format_yMd.rawValue) -> Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = format;
         formatter.timeZone = TimeZone(secondsFromGMT: 0)        // 0时区

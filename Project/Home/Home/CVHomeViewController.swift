@@ -1,3 +1,4 @@
+
 //
 //  CVHomeViewController.swift
 //  Project
@@ -15,6 +16,8 @@ class CVHomeViewController: CVBaseViewController {
     var tableView: UITableView!
     var viewModel: CVHomeViewModel = CVHomeViewModel()
     lazy var imageView = cimageView(image: nil, super: self.view)
+    var pickView: CVPickerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +28,16 @@ class CVHomeViewController: CVBaseViewController {
         self.tableView.tableFooterView = cview(super: nil)
         self.tableView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
-            make.top.equalTo(navigation_height())
+            make.top.equalTo(cv_navigation_height())
             make.height.equalTo(thisViewHeight)
         }
-        
+
         let headerView = CVHomeHeaderView()
         self.tableView.tableHeaderView = headerView
         self.viewModel.loadBanner { (data: [CVCycleScrollModel], finish) in
             headerView.banner.dataSource = data
         }
-        
+
         self.tableView.refreshing {
             [weak self] in
             self?.viewModel.loadData { (data) in
@@ -55,6 +58,9 @@ class CVHomeViewController: CVBaseViewController {
             }
         }
         self.tableView.startRefreshing()
+        
+        
+       
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,7 +91,7 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
         let vc1 = UIViewController()
         vc1.view.backgroundColor = UIColor.orange
         
-        cvAppDelegate.register3D_TouchInController(self, for: cell, locationVC: vc1, commitVC: CVNormalCalendarViewController())
+        cv_AppDelegate.register3D_TouchInController(self, for: cell, locationVC: vc1, commitVC: CVNormalCalendarViewController())
        
         return cell
     }
@@ -94,7 +100,58 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let vc = CVNormalCalendarViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 1 {
+            // pickView
+            let pickView = cpickerView(delegate: self, dataSource: self, super: cv_AppDelegate.window!)
+            pickView.placeholder = "阿斯蒂芬夫"
+            pickView.placeholderColor = UIColor.red
+            pickView.selectRow(2, inComponent: 0, animated: true)
+            pickView.selectRow(5, inComponent: 1, animated: true)
+            pickView.selectRow(1, inComponent: 2, animated: true)
+            
+        } else if indexPath.row == 2 {
+            let datePickerView = CVDatePickerView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))
+            datePickerView.currentDate = Date().addingDays(4)
+            cv_AppDelegate.window!.addSubview(datePickerView)
+            datePickerView.ClosureOnCheckSelectedDate = {(date: Date) in
+                CVLog(message: date)
+            }
         }
     }
 }
 
+extension CVHomeViewController : CVPickerViewDelegate, CVPickerViewDataSource {
+    func cv_numberOfComponents(in pickerView: CVPickerView) -> Int {
+        return 3
+    }
+    
+    func cv_pickerView(_ pickerView: CVPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 50
+    }
+    
+    
+    func cv_pickerView(_ pickerView: CVPickerView, viewForRow row: Int, forComponent component: Int, reusing view: CVPickerViewReusingView?) -> CVPickerViewReusingView {
+        var cell = view
+        if cell == nil {
+            cell = CVPickerViewReusingView()
+        }
+        cell!.textLabel.text = "\(component)-\(row)"
+        if (component == 0 && row == 0) {
+            cell!.textLabel.text = "asdfasfsdfdsafafsfasdfsfdassdasfadadafsdafsdfadfadfasdfasdfasfdsa"
+            cell!.textLabel.numberOfLines = 0
+        }
+        return cell!
+    }
+    
+    func cv_cancel(_ pickerView: CVPickerView) {
+        CVLog(message: "Cancel PickerView")
+    }
+    
+    func cv_done(_ pickerView: CVPickerView) {
+        CVLog(message: "Done PickerView")
+    }
+    
+    func cv_pickerView(_ pickerView: CVPickerView, didSelectRow row: Int, inComponent component: Int) {
+        CVLog(message: "clickItem: \(component)-\(row)")
+    }
+}

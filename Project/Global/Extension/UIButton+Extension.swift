@@ -20,7 +20,7 @@ public enum UIButtonImagePosition {
 public extension UIButton {
     
     /// 设置按钮的 image 和 title 的相对位置，以及间距
-    func updateImagePosition(position: UIButtonImagePosition, space: CGFloat) {
+    func cv_updateImagePosition(position: UIButtonImagePosition, space: CGFloat) {
         /**
          *  知识点：titleEdgeInsets 是 title 相对于其上下左右的inset，跟 tableView 的 contentInset 是类似的，
          *  如果只有 title，那它上下左右都是相对于 button 的，image 也是一样；
@@ -77,8 +77,55 @@ public extension UIButton {
 }
 
 public extension UIButton {
-    func setTitle(_ title: String?, color: UIColor?, state: UIControlState) {
-        self.setTitle(title, for: .normal)
-        self.setTitleColor(color, for: .normal)
+    
+    var cv_titleFont: UIFont? {
+        set {
+            self.titleLabel?.font = newValue
+        }
+        get {
+            return self.titleLabel?.font
+        }
+    }
+    
+    var cv_normalTitle: String? {
+        set {
+            self.setTitle(newValue, for: .normal)
+        }
+        get {
+            return self.titleLabel?.text
+        }
+    }
+    
+    var cv_normalTitleColor: UIColor? {
+        set {
+            self.setTitleColor(newValue, for: .normal)
+        }
+        get {
+            return self.titleLabel?.textColor
+        }
+    }
+    
+    var cv_selectedTitle: String? {
+        set {
+            self.setTitle(newValue, for: .selected)
+        }
+        get {
+            return self.titleLabel?.text
+        }
+    }
+    
+    var cv_selectedTitleColor: UIColor? {
+        set {
+            self.setTitleColor(newValue, for: .selected)
+        }
+        get {
+            return self.titleLabel?.textColor
+        }
+    }
+ 
+    
+    func cv_setTitle(_ title: String?, color: UIColor?, state: UIControlState) {
+        self.setTitle(title, for: state)
+        self.setTitleColor(color, for: state)
     }
 }
