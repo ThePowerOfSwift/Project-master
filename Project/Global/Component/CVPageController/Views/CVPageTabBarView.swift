@@ -35,7 +35,7 @@ class CVPageTabBarView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.scrollView = cscrollView(delegate: self, super: self)
+        self.scrollView = cv_scrollView(delegate: self, super: self)
         self.scrollView.frame = self.bounds
         
         self.scrollView.isDirectionalLockEnabled = true

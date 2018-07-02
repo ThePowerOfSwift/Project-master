@@ -20,11 +20,11 @@ class CVSubViewController: CVBaseViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
 
         if showTableView {
-            self.tableView = ctableView(delegate: self, dataSource: self, super: self.view)
+            self.tableView = cv_tableView(delegate: self, dataSource: self, super: self.view)
             self.tableView?.frame = self.view.bounds
             self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         } else {
-            let label = clabel(font: UIFont.systemFont(ofSize: 14), text: cate, super: self.view)
+            let label = cv_label(font: UIFont.systemFont(ofSize: 14), text: cate, super: self.view)
             label.frame = CGRectMake(50, 100, 100, 90)
             label.backgroundColor = UIColor.brown
             label.textColor = UIColor.white

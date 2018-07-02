@@ -21,7 +21,7 @@ class CVPageTabMaskView: UIView {
     
     convenience init(lineRatio: CGFloat = 1) {
         self.init(frame: CGRect.zero)
-        self.line = cview(frame: CGRect.zero, color: UIColor.red, super: self)
+        self.line = cv_view(frame: CGRect.zero, color: UIColor.red, super: self)
         self.ratio = lineRatio
     }
     

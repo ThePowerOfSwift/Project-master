@@ -76,7 +76,7 @@ class CVCycleScrollView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.collectionView = ccollectionViwe(delegate: self, dataSource: self, super: self)
+        self.collectionView = cv_collectionViwe(delegate: self, dataSource: self, super: self)
         self.collectionView.collectionViewLayout = self.flowLayout!
         self.collectionView.register(CVCycleCell.self, forCellWithReuseIdentifier: "Cell")
         self.collectionView.isPagingEnabled = true

@@ -39,7 +39,7 @@ class CVPickerView: UIView {
     private var cancelBtn: UIButton!
     private var doneBtn: UIButton!
     lazy private var placeholderLabel: UILabel = {
-        let label = clabel(font: self.placeholderFont ?? UIFont.font_13, text: self.placeholder ?? "", super: self.toolBar)
+        let label = cv_label(font: self.placeholderFont ?? UIFont.font_13, text: self.placeholder ?? "", super: self.toolBar)
         label.textColor = self.placeholderColor ?? UIColor.black
         label.textAlignment = .center
         return label
@@ -48,7 +48,7 @@ class CVPickerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
-        self.contentView = cview(frame: CGRectMake(0, 0, SCREEN_WIDTH, height_picker + height_tool + cv_safeAreaInsets.bottom), color: UIColor.white, super: self)
+        self.contentView = cv_view(frame: CGRectMake(0, 0, SCREEN_WIDTH, height_picker + height_tool + cv_safeAreaInsets.bottom), color: UIColor.white, super: self)
         self.pickerView = CVPick.init(frame: CGRectMake(0, height_tool, SCREEN_WIDTH, height_picker))
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
@@ -68,13 +68,13 @@ class CVPickerView: UIView {
     }
     
     func setupToolBar() {
-        self.toolBar = cview(frame: CGRectMake(0, 0, self.width, height_tool), color: UIColor.white, super: self.contentView)
-        self.cancelBtn = cbutton(bg: UIColor.white, title: self.cancelTitle, super: self.toolBar)
+        self.toolBar = cv_view(frame: CGRectMake(0, 0, self.width, height_tool), color: UIColor.white, super: self.contentView)
+        self.cancelBtn = cv_button(bg: UIColor.white, title: self.cancelTitle, super: self.toolBar)
         self.cancelBtn.cv_titleFont = self.cancelTitleFont
         self.cancelBtn.cv_normalTitleColor = self.cancelTitleColor
         self.cancelBtn.addTarget(self, action: #selector(onCancelAction), for: .touchUpInside)
         
-        self.doneBtn = cbutton(bg: UIColor.white, title: self.doneTitle, super: self.toolBar)
+        self.doneBtn = cv_button(bg: UIColor.white, title: self.doneTitle, super: self.toolBar)
         self.doneBtn.cv_titleFont = self.doneTitleFont
         self.doneBtn.cv_normalTitleColor = self.doneTitleColor
         self.doneBtn.addTarget(self, action: #selector(onDoneAction), for: .touchUpInside)

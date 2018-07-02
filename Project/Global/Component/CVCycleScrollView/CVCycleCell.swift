@@ -70,9 +70,9 @@ class CVCycleCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.imageView = cimageView(image: nil, super: self.contentView)
-        self.titleBackView = cview(color: self.titleBackViewBackgroundColor, super: self.contentView)
-        self.titleLabel = clabel(font: self.titleFont, text: nil, super: self.contentView)
+        self.imageView = cv_imageView(image: nil, super: self.contentView)
+        self.titleBackView = cv_view(color: self.titleBackViewBackgroundColor, super: self.contentView)
+        self.titleLabel = cv_label(font: self.titleFont, text: nil, super: self.contentView)
         self.titleLabel.textColor = self.titleColor
         self.titleLabel.text = ""
 

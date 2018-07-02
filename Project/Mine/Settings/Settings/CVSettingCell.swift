@@ -17,10 +17,10 @@ class CVSettingCell: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        titleLabel = clabel(font: UIFont.systemFont(ofSize: 15), text: nil, super: self.contentView)
+        titleLabel = cv_label(font: UIFont.systemFont(ofSize: 15), text: nil, super: self.contentView)
         titleLabel!.frame = CGRect(x: 10, y: 0, width: SCREEN_WIDTH - 20, height: self.frame.height)
         
-        detailLabel = clabel(font: UIFont.systemFont(ofSize: 15), text: nil, super: self.contentView)
+        detailLabel = cv_label(font: UIFont.systemFont(ofSize: 15), text: nil, super: self.contentView)
         detailLabel!.frame = CGRect(x: SCREEN_WIDTH - 10 - 100, y: 0, width: 100, height: self.frame.height)
         detailLabel!.textAlignment = .right
         detailLabel!.textColor = UIColor.colorWithHex(0x999999)

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - UIView Create
-func cview(frame: CGRect = CGRect.zero, color: UIColor = UIColor.white, super: UIView?) -> UIView {
+func cv_view(frame: CGRect = CGRect.zero, color: UIColor = UIColor.white, super: UIView?) -> UIView {
     let view = UIView(frame: frame)
     view.backgroundColor = color
     if `super` != nil { `super`!.addSubview(view) }
@@ -18,7 +18,7 @@ func cview(frame: CGRect = CGRect.zero, color: UIColor = UIColor.white, super: U
 }
 
 // MARK: - UILabel Create
-func clabel(font: UIFont, text: String?, textColor: UIColor = UIColor.black, super: UIView?) -> UILabel {
+func cv_label(font: UIFont, text: String?, textColor: UIColor = UIColor.black, super: UIView?) -> UILabel {
     let label = UILabel(frame: CGRect.zero)
     label.font = font
     label.text = text
@@ -27,14 +27,14 @@ func clabel(font: UIFont, text: String?, textColor: UIColor = UIColor.black, sup
     return label
 }
 
-func clabel_mul(font: UIFont, text: String?, textColor: UIColor = UIColor.black, super: UIView?) -> UILabel {
-    let label = clabel(font: font, text: text, textColor: textColor, super: `super`)
+func cv_label_mul(font: UIFont, text: String?, textColor: UIColor = UIColor.black, super: UIView?) -> UILabel {
+    let label = cv_label(font: font, text: text, textColor: textColor, super: `super`)
     label.numberOfLines = 0
     return label
 }
 
 // MARK: - UITextField Create
-func ctextField(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> UITextField {
+func cv_textField(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> UITextField {
     let textField = UITextField(frame: CGRect.zero)
     textField.font = font
     textField.placeholder = placeholder
@@ -46,7 +46,7 @@ func ctextField(font: UIFont, placeholder: String?, delegate: Any? = nil, super:
 }
 
 // MARK: - UITextView Create
-func ctextView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> CVPlaceholderTextView {
+func cv_textView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: UIView?) -> CVPlaceholderTextView {
     let textView = CVPlaceholderTextView(frame: CGRect.zero)
     textView.textView.font = font
     textView.placeholder = placeholder ?? ""
@@ -56,7 +56,7 @@ func ctextView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: 
 }
 
 // MARK: - UIImageView Create
-func cimageView(image: UIImage?, highlightImage: UIImage? = nil, super: UIView?) -> UIImageView {
+func cv_imageView(image: UIImage?, highlightImage: UIImage? = nil, super: UIView?) -> UIImageView {
     let imageView = UIImageView(frame: CGRect.zero)
     imageView.image = image
     imageView.highlightedImage = highlightImage ?? image
@@ -67,7 +67,7 @@ func cimageView(image: UIImage?, highlightImage: UIImage? = nil, super: UIView?)
 
 
 // MARK: - UIButton Create
-func cbutton(bg: UIColor?, title: String?, color: UIColor? = UIColor.blue, super: UIView?) -> UIButton {
+func cv_button(bg: UIColor?, title: String?, color: UIColor? = UIColor.blue, super: UIView?) -> UIButton {
     let button = UIButton(type: UIButtonType.custom)
     button.backgroundColor = bg
     button.cv_setTitle(title, color: color, state: .normal)
@@ -75,14 +75,14 @@ func cbutton(bg: UIColor?, title: String?, color: UIColor? = UIColor.blue, super
     return button
 }
 
-func cbutton(bg: UIColor?, image: UIImage?, super: UIView?) -> UIButton {
-    let button = cbutton(bg: bg, title: nil, color: nil, super: `super`)
+func cv_button(bg: UIColor?, image: UIImage?, super: UIView?) -> UIButton {
+    let button = cv_button(bg: bg, title: nil, color: nil, super: `super`)
     button.setImage(image, for: .normal)
     return button
 }
 
 // MARK: - UIScrollView Create
-func cscrollView(delegate: Any?, pagingEnabled: Bool = false, super: UIView?) -> UIScrollView {
+func cv_scrollView(delegate: Any?, pagingEnabled: Bool = false, super: UIView?) -> UIScrollView {
     let scrollView = UIScrollView(frame: CGRect.zero)
     scrollView.delegate = delegate as? UIScrollViewDelegate
     scrollView.isPagingEnabled = pagingEnabled
@@ -91,7 +91,7 @@ func cscrollView(delegate: Any?, pagingEnabled: Bool = false, super: UIView?) ->
 }
 
 // MARK: - UITableView Create
-func ctableView(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView {
+func cv_tableView(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView {
     let tableView = UITableView(frame: CGRect.zero, style: .plain)
     tableView.delegate = delegate as? UITableViewDelegate
     tableView.dataSource = dataSource as? UITableViewDataSource
@@ -99,7 +99,7 @@ func ctableView(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView
     return tableView
 }
 
-func ctableView_group(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView {
+func cv_tableView_group(delegate: Any?, dataSource: Any?, super: UIView?) -> UITableView {
     let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     tableView.delegate = delegate as? UITableViewDelegate
     tableView.dataSource = dataSource as? UITableViewDataSource
@@ -108,11 +108,11 @@ func ctableView_group(delegate: Any?, dataSource: Any?, super: UIView?) -> UITab
 }
 
 // MARK: - UICollectionView Create
-func ccollectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
-    return ccollectionView(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
+func cv_collectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
+    return cv_collectionView(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
 }
 
-func ccollectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
+func cv_collectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.delegate = delegate as? UICollectionViewDelegate
     collectionView.dataSource = dataSource as? UICollectionViewDataSource
@@ -121,7 +121,7 @@ func ccollectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewL
 }
 
 // MARK: - UIWebView Create
-func cwebView(delegate: Any?, super: UIView?) -> UIWebView {
+func cv_webView(delegate: Any?, super: UIView?) -> UIWebView {
     let webView = UIWebView(frame: CGRect.zero)
     webView.delegate = delegate as? UIWebViewDelegate
     if `super` != nil { `super`!.addSubview(webView) }
@@ -129,7 +129,7 @@ func cwebView(delegate: Any?, super: UIView?) -> UIWebView {
 }
 
 // MARK: - CVPickerView Create
-func cpickerView(delegate: CVPickerViewDelegate, dataSource: CVPickerViewDataSource, super: UIView?) -> CVPickerView {
+func cv_cpickerView(delegate: CVPickerViewDelegate, dataSource: CVPickerViewDataSource, super: UIView?) -> CVPickerView {
     let pickerView = CVPickerView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))
     pickerView.delegate = delegate
     pickerView.dataSource = dataSource

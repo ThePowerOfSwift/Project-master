@@ -52,7 +52,7 @@ class CVDatePickerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.pickerView = cpickerView(delegate: self, dataSource: self, super: self)
+        self.pickerView = cv_cpickerView(delegate: self, dataSource: self, super: self)
         // Swift中,在初始化时didSet不被调用或无效的解决方法, 可以采用KVC方式给对象初始化,通过KVC方法赋值后,必须添加setValueforUndefinedKey方法做特殊处理,否则运行到KVC方法时程序会报错
         self.setValue(Date.locatonDate, forKey: "currentDate")
         

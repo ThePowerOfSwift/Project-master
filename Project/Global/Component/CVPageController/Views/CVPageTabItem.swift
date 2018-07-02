@@ -69,7 +69,7 @@ class CVPageTabItem: UIControl, CVPageTabProtocol {
     private func setDefault() {
         self.backgroundColor = UIColor.clear
         if self.style == .default {
-            self.titleLabel = clabel(font: UIFont.font_13, text: "", super: self)
+            self.titleLabel = cv_label(font: UIFont.font_13, text: "", super: self)
             self.titleLabel!.backgroundColor = UIColor.clear
             self.titleLabel!.textAlignment = NSTextAlignment.center
             self.titleLabel!.textColor = self.textColor

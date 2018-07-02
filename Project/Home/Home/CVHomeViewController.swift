@@ -15,7 +15,7 @@ class CVHomeViewController: CVBaseViewController {
     var hidenNav = false
     var tableView: UITableView!
     var viewModel: CVHomeViewModel = CVHomeViewModel()
-    lazy var imageView = cimageView(image: nil, super: self.view)
+    lazy var imageView = cv_imageView(image: nil, super: self.view)
     var pickView: CVPickerView!
     
     
@@ -24,8 +24,8 @@ class CVHomeViewController: CVBaseViewController {
         self.view.backgroundColor = UIColor.white
         self.title = LS(self, key: "Title", comment: "首页")
         
-        self.tableView = ctableView(delegate: self, dataSource: self, super: self.view)
-        self.tableView.tableFooterView = cview(super: nil)
+        self.tableView = cv_tableView(delegate: self, dataSource: self, super: self.view)
+        self.tableView.tableFooterView = cv_view(super: nil)
         self.tableView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(cv_navigation_height())

@@ -15,7 +15,7 @@ class CVSortTabView: CVPageTabItem {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.seperateLine = cview(frame: CGRect.zero, color: UIColor.yellow, super: self)
+        self.seperateLine = cv_view(frame: CGRect.zero, color: UIColor.yellow, super: self)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,11 +43,11 @@ class CVCateTabItem: CVPageTabItem {
     required init(style: CVPageTabItemStyle) {
         
         super.init(style: style)
-        self.titleLabel = clabel(font: UIFont.font_12, text: "", super: self)
+        self.titleLabel = cv_label(font: UIFont.font_12, text: "", super: self)
         self.titleLabel.textColor = UIColor.black
         self.titleLabel.textAlignment = .center
         
-        self.imageView = cimageView(image: UIImageNamed("back_black"), super: self)
+        self.imageView = cv_imageView(image: UIImageNamed("back_black"), super: self)
         self.imageView.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi / 2))
         
         

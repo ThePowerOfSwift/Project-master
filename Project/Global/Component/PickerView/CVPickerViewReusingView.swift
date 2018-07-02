@@ -15,7 +15,7 @@ class CVPickerViewReusingView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.textLabel = clabel(font: UIFont.font_18, text: "", super: self)
+        self.textLabel = cv_label(font: UIFont.font_18, text: "", super: self)
         self.textLabel.textAlignment = .center
         self.textLabel.textColor = UIColor.black
     }

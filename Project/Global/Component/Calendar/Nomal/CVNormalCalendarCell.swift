@@ -52,18 +52,18 @@ class CVNormalCalendarCell: UICollectionViewCell {
     
     private func setup() {
         // 选中时出现的view
-        self.selectView = cview(super: self.contentView)
+        self.selectView = cv_view(super: self.contentView)
         self.selectView.frame = CGRect(x: 0, y: 0, width: self.width - 10, height: self.width - 10)
         self.selectView.corner(radius: self.selectView.width / 2, maskToBoudse: true)
         self.selectView.backgroundColor = UIColor.colorWithHex(0xff9562)
 
         // 公历
-        self.solar = clabel(font: UIFont.font_14, text: nil, super: self.contentView)
+        self.solar = cv_label(font: UIFont.font_14, text: nil, super: self.contentView)
         self.solar.textAlignment = .center
         self.solar.textColor = UIColor.black
         
         // 农历
-        self.lunar = clabel(font: UIFont.font_9, text: nil, super: self.contentView)
+        self.lunar = cv_label(font: UIFont.font_9, text: nil, super: self.contentView)
         self.lunar.textAlignment = .center
         self.lunar.textColor = UIColor.black
     }

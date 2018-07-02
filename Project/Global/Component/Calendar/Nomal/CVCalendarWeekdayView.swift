@@ -31,10 +31,10 @@ class CVCalendarWeekdayView: UIView {
     }
     
     func setup() {
-        self.contentView = cview(super: self)
+        self.contentView = cv_view(super: self)
         
         for _ in 0..<7 {
-            let label = clabel(font: UIFont.font_12, text: nil, super: self.contentView)
+            let label = cv_label(font: UIFont.font_12, text: nil, super: self.contentView)
             label.textAlignment = .center
             self.weekdayLabels.append(label)
         }

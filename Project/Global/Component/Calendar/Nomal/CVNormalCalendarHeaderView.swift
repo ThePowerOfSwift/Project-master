@@ -20,7 +20,7 @@ class CVNormalCalendarHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.titleLabel = clabel(font: UIFont.font_16, text: nil, super: self)
+        self.titleLabel = cv_label(font: UIFont.font_16, text: nil, super: self)
         self.titleLabel.frame = CGRect(x: 0, y: 10, width: self.width, height: 40)
         self.titleLabel.textAlignment = .center
         
