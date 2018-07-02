@@ -17,7 +17,6 @@ extension UIView {
             frame.origin.x = newValue
             self.frame = frame
         }
-        
         get {
             return self.frame.origin.x
         }
@@ -29,7 +28,6 @@ extension UIView {
             frame.origin.y = newValue
             self.frame = frame
         }
-        
         get {
             return self.frame.origin.y
         }
@@ -41,7 +39,6 @@ extension UIView {
             center.x = newValue
             self.center = center
         }
-        
         get {
             return self.center.x
         }
@@ -53,7 +50,6 @@ extension UIView {
             center.y = newValue
             self.center = center
         }
-        
         get {
             return self.center.y
         }
@@ -65,7 +61,6 @@ extension UIView {
             frame.size.width = newValue
             self.frame = frame
         }
-        
         get {
             return self.frame.size.width
         }
@@ -77,7 +72,6 @@ extension UIView {
             frame.size.height = newValue
             self.frame = frame
         }
-        
         get {
             return self.frame.size.height
         }
@@ -89,7 +83,6 @@ extension UIView {
             frame.size = newValue
             self.frame = frame
         }
-        
         get {
             return self.frame.size
         }
@@ -119,12 +112,12 @@ extension UIView {
         self.frame = frame
         return self
     }
-    
+
     /// 返回top
     var top: CGFloat {
-        return superview != nil ? self.frame.origin.y : 0
+        return self.frame.origin.y
     }
-    
+
     /// 设置left， 固定width
     @discardableResult
     func left(_ left: CGFloat, fixWidth: Bool = false) -> UIView {
@@ -137,17 +130,17 @@ extension UIView {
         self.frame = frame
         return self
     }
-    
+
     /// 返回left
     var left: CGFloat {
-        return superview != nil ? self.frame.origin.x : 0
+        return self.frame.origin.x
     }
-    
+
     /// 设置bottom, 固定Height
     @discardableResult
     func bottom(_ bottom: CGFloat, fixHeight: Bool = false) -> UIView {
         assert(superview != nil, "view must be added to a superview first.")
-        
+
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
         let newT = fixHeight ? self.superview!.height - bottom - self.height : self.top
         let newH = fixHeight ? self.height : self.superview!.height - bottom - newT
@@ -157,12 +150,12 @@ extension UIView {
         self.frame = frame
         return self
     }
-    
+
     /// 设置bottom
     var bottom: CGFloat {
-        return superview != nil ? superview!.frame.height - (self.frame.origin.y + self.frame.size.height) : 0
+        return self.frame.origin.y + self.frame.size.height
     }
-    
+
     /// 设置right, 固定宽度
     @discardableResult
     func right(_ right: CGFloat, fixWidth: Bool = false) -> UIView {
@@ -176,10 +169,10 @@ extension UIView {
         self.frame = frame
         return self
     }
-    
+
     /// 返回right
     var right: CGFloat {
-        return superview != nil ? superview!.frame.width - (self.frame.origin.x + self.frame.size.width) : 0
+        return self.frame.origin.x + self.frame.size.width
     }
 }
 

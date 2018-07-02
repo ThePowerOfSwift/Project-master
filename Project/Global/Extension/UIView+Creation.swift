@@ -56,17 +56,20 @@ func ctextView(font: UIFont, placeholder: String?, delegate: Any? = nil, super: 
 }
 
 // MARK: - UIImageView Create
-func cimageView(image: UIImage?, super: UIView?) -> UIImageView {
+func cimageView(image: UIImage?, highlightImage: UIImage? = nil, super: UIView?) -> UIImageView {
     let imageView = UIImageView(frame: CGRect.zero)
     imageView.image = image
-    imageView.isUserInteractionEnabled = true
+    imageView.highlightedImage = highlightImage ?? image
+    imageView.contentMode = .scaleAspectFit
     if `super` != nil { `super`!.addSubview(imageView) }
     return imageView
 }
 
+
 // MARK: - UIButton Create
 func cbutton(bg: UIColor?, title: String?, color: UIColor? = UIColor.blue, super: UIView?) -> UIButton {
     let button = UIButton(type: UIButtonType.custom)
+    button.backgroundColor = bg
     button.cv_setTitle(title, color: color, state: .normal)
     if `super` != nil { `super`!.addSubview(button) }
     return button

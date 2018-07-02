@@ -101,21 +101,18 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = CVNormalCalendarViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {
-            // pickView
-            let pickView = cpickerView(delegate: self, dataSource: self, super: cv_AppDelegate.window!)
-            pickView.placeholder = "阿斯蒂芬夫"
-            pickView.placeholderColor = UIColor.red
-            pickView.selectRow(2, inComponent: 0, animated: true)
-            pickView.selectRow(5, inComponent: 1, animated: true)
-            pickView.selectRow(1, inComponent: 2, animated: true)
-            
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
+
         } else if indexPath.row == 2 {
-            let datePickerView = CVDatePickerView(frame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT))
-            datePickerView.currentDate = Date().addingDays(4)
-            cv_AppDelegate.window!.addSubview(datePickerView)
-            datePickerView.ClosureOnCheckSelectedDate = {(date: Date) in
-                CVLog(message: date)
-            }
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 3 {
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
