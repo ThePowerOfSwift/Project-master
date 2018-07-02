@@ -68,7 +68,7 @@ class CVPickerView: UIView {
     }
     
     func setupToolBar() {
-        self.toolBar = cv_view(frame: CGRectMake(0, 0, self.width, height_tool), color: UIColor.white, super: self.contentView)
+        self.toolBar = cv_view(frame: CGRectMake(0, 0, self.cv_width, height_tool), color: UIColor.white, super: self.contentView)
         self.cancelBtn = cv_button(bg: UIColor.white, title: self.cancelTitle, super: self.toolBar)
         self.cancelBtn.cv_titleFont = self.cancelTitleFont
         self.cancelBtn.cv_normalTitleColor = self.cancelTitleColor
@@ -83,20 +83,20 @@ class CVPickerView: UIView {
     override func layoutSubviews() {
 //        super.layoutSubviews()
         self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height_picker + height_tool + cv_safeAreaInsets.bottom)
-        self.contentView.bottom(0, fixHeight: true);
+        self.contentView.cv_bottom(0, fixHeight: true);
         self.pickerView.frame = CGRectMake(0, height_tool, SCREEN_WIDTH, height_picker)
 //        self.maskingView.frame = self.pickerView.bounds
 //        self.maskingView.frame = CGRectMake(0, (self.pickerView.height - height_cell) / 2, self.pickerView.width, height_cell)
 
-        self.toolBar.frame = CGRectMake(0, 0, self.width, height_tool)
+        self.toolBar.frame = CGRectMake(0, 0, self.cv_width, height_tool)
         
-        var width = self.cancelTitle.autoWidth(font: self.cancelTitleFont, fixedHeight: self.toolBar.height)
-        self.cancelBtn.frame = CGRectMake(5, 0, width, self.toolBar.height)
-        width = self.doneTitle.autoWidth(font: self.doneTitleFont, fixedHeight: self.toolBar.height)
-        self.doneBtn.frame = CGRectMake(self.width - width - 5, 0, width, self.toolBar.height)
+        var width = self.cancelTitle.autoWidth(font: self.cancelTitleFont, fixedHeight: self.toolBar.cv_height)
+        self.cancelBtn.frame = CGRectMake(5, 0, width, self.toolBar.cv_height)
+        width = self.doneTitle.autoWidth(font: self.doneTitleFont, fixedHeight: self.toolBar.cv_height)
+        self.doneBtn.frame = CGRectMake(self.cv_width - width - 5, 0, width, self.toolBar.cv_height)
         
         if self.placeholder != nil || self.placeholderColor != nil || self.placeholderFont != nil {
-            self.placeholderLabel.frame = CGRectMake(self.cancelBtn.right , 0, self.toolBar.width - self.cancelBtn.right - self.doneBtn.left, self.toolBar.height)
+            self.placeholderLabel.frame = CGRectMake(self.cancelBtn.cv_right , 0, self.toolBar.cv_width - self.cancelBtn.cv_right - self.doneBtn.cv_left, self.toolBar.cv_height)
         }
     }
     

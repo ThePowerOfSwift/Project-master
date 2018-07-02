@@ -53,8 +53,8 @@ class CVNormalCalendarCell: UICollectionViewCell {
     private func setup() {
         // 选中时出现的view
         self.selectView = cv_view(super: self.contentView)
-        self.selectView.frame = CGRect(x: 0, y: 0, width: self.width - 10, height: self.width - 10)
-        self.selectView.corner(radius: self.selectView.width / 2, maskToBoudse: true)
+        self.selectView.frame = CGRect(x: 0, y: 0, width: self.cv_width - 10, height: self.cv_width - 10)
+        self.selectView.corner(radius: self.selectView.cv_width / 2, maskToBoudse: true)
         self.selectView.backgroundColor = UIColor.colorWithHex(0xff9562)
 
         // 公历
@@ -95,9 +95,9 @@ class CVNormalCalendarCell: UICollectionViewCell {
         super.layoutSubviews()
         self.selectView.center = self.contentView.center;
         let y = CGFloat(10)
-        let height = (self.height - CGFloat(y * 2)) / 2
-        self.solar.frame = CGRect(x: CGFloat(0), y: y, width: self.width, height: height)
-        self.lunar.frame = CGRect(x: CGFloat(0), y: self.solar.bottom, width: self.width, height: height)
+        let height = (self.cv_height - CGFloat(y * 2)) / 2
+        self.solar.frame = CGRect(x: CGFloat(0), y: y, width: self.cv_width, height: height)
+        self.lunar.frame = CGRect(x: CGFloat(0), y: self.solar.cv_bottom, width: self.cv_width, height: height)
     }
     
     func configureAppearance() {

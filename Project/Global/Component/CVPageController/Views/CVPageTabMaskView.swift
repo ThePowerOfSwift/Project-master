@@ -31,8 +31,8 @@ class CVPageTabMaskView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.line?.frame = CGRectMake(0, self.height - 2, self.width * self.ratio, 2)
-        self.line?.centerX = self.width / 2
+        self.line?.frame = CGRectMake(0, self.cv_height - 2, self.cv_width * self.ratio, 2)
+        self.line?.cv_centerX = self.cv_width / 2
     }
 
 }

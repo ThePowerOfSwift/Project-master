@@ -141,10 +141,10 @@ class CVPageTabBarView: UIView {
         for i in 0..<self.numOfTabs {
             width = self.itemWidths[i]
             let oneTab = self.items[i]
-            oneTab.frame = CGRectMake(x, 0, width, self.height)
+            oneTab.frame = CGRectMake(x, 0, width, self.cv_height)
             x += width
         }
-        self.scrollView.contentSize = CGSizeMake(x + self.offSet, self.height)
+        self.scrollView.contentSize = CGSizeMake(x + self.offSet, self.cv_height)
     }
     
     // MARK: - Actions

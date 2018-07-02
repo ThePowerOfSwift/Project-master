@@ -181,7 +181,7 @@ extension CVCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
 extension CVCycleScrollView: UIScrollViewDelegate {
     /// 在这个方法中算出当前页数
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = Int((scrollView.contentOffset.x + scrollView.width * 0.5) / scrollView.width)
+        let page = Int((scrollView.contentOffset.x + scrollView.cv_width * 0.5) / scrollView.cv_width)
         let currentPage = page % self.dataSource.count
         self.pageControl.currentPage = currentPage
     }
@@ -203,7 +203,7 @@ extension CVCycleScrollView: UIScrollViewDelegate {
     
     /// 手动滑动
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let page = Int((scrollView.contentOffset.x) / scrollView.width)
+        let page = Int((scrollView.contentOffset.x) / scrollView.cv_width)
         let currentPage = page % self.dataSource.count
         self.pageControl.currentPage = currentPage
         if autoScroll || infiniteLoop {

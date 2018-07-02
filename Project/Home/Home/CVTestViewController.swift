@@ -28,7 +28,7 @@ class CVTestViewController: CVBaseViewController {
             self.tabbar.backgroundColor = UIColor.brown
             self.tabbar.reloadData()
             
-            self.tabbar1 = CVPageTabBarView(frame: CGRectMake(0, tabbar.bottom + 10, SCREEN_WIDTH, 40), delegate: self, dataSource: self)
+            self.tabbar1 = CVPageTabBarView(frame: CGRectMake(0, tabbar.cv_bottom + 10, SCREEN_WIDTH, 40), delegate: self, dataSource: self)
             self.view.addSubview(self.tabbar1)
             self.tabbar1.backgroundColor = UIColor.grayColor_cc
             self.tabbar1.reloadData()
@@ -38,7 +38,7 @@ class CVTestViewController: CVBaseViewController {
                 self.tabbar.reloadData()
             }
             
-            self.tabbar3 = CVPageTabBarView(frame: CGRectMake(0, tabbar1.bottom + 10, SCREEN_WIDTH, 40), delegate: self, dataSource: self)
+            self.tabbar3 = CVPageTabBarView(frame: CGRectMake(0, tabbar1.cv_bottom + 10, SCREEN_WIDTH, 40), delegate: self, dataSource: self)
             self.view.addSubview(self.tabbar3)
             self.tabbar3.backgroundColor = UIColor.grayColor_cc
             self.tabbar3.resumeWhenDuplicate = true
@@ -131,9 +131,9 @@ extension CVTestViewController: CVPageTabBarDelegate, CVPageTabBarDataSource {
             let text = title_1[index]
             return text.autoWidth(font: UIFont.font_13, fixedHeight: 14) + 20
         } else if tabBar == self.tabbar1 {
-            return CGFloat(self.tabbar.width / CGFloat(title_2.count))
+            return CGFloat(self.tabbar.cv_width / CGFloat(title_2.count))
         }  else if tabBar == self.tabbar3 {
-            return CGFloat(self.tabbar.width / CGFloat(title_3.count))
+            return CGFloat(self.tabbar.cv_width / CGFloat(title_3.count))
         }
         return 0
     }

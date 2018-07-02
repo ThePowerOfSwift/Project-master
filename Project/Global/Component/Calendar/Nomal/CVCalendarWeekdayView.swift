@@ -43,11 +43,11 @@ class CVCalendarWeekdayView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.frame = self.bounds
-        let width: CGFloat = self.width / 7.0
+        let width: CGFloat = self.cv_width / 7.0
         var x: CGFloat = 0.0
         
         for label in self.weekdayLabels {
-            label.frame = CGRect(x: x, y: CGFloat(0), width: width, height: self.contentView.height)
+            label.frame = CGRect(x: x, y: CGFloat(0), width: width, height: self.contentView.cv_height)
             x = x + width
         }
     }

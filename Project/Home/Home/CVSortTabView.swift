@@ -27,7 +27,7 @@ class CVSortTabView: CVPageTabItem {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.seperateLine.frame = CGRectMake(self.width - 1, (self.height - self.height * 0.6) / 2, 1, self.height * 0.6)
+        self.seperateLine.frame = CGRectMake(self.cv_width - 1, (self.cv_height - self.cv_height * 0.6) / 2, 1, self.cv_height * 0.6)
     }
     
 }
@@ -60,8 +60,8 @@ class CVCateTabItem: CVPageTabItem {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.titleLabel.frame = CGRectMake(0, 0, self.width - 20, self.height)
-        self.imageView.frame = CGRectMake(self.width - 20, 0, 10, self.height)
+        self.titleLabel.frame = CGRectMake(0, 0, self.cv_width - 20, self.cv_height)
+        self.imageView.frame = CGRectMake(self.cv_width - 20, 0, 10, self.cv_height)
     }
     
     override func cv_setNormalState(animation: Bool) {

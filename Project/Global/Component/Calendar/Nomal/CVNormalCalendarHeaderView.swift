@@ -21,10 +21,10 @@ class CVNormalCalendarHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.titleLabel = cv_label(font: UIFont.font_16, text: nil, super: self)
-        self.titleLabel.frame = CGRect(x: 0, y: 10, width: self.width, height: 40)
+        self.titleLabel.frame = CGRect(x: 0, y: 10, width: self.cv_width, height: 40)
         self.titleLabel.textAlignment = .center
         
-        self.weekdayView = CVCalendarWeekdayView(frame: CGRect(x: 0, y: self.height - 20, width: self.width, height: 20))
+        self.weekdayView = CVCalendarWeekdayView(frame: CGRect(x: 0, y: self.cv_height - 20, width: self.cv_width, height: 20))
         self.addSubview(self.weekdayView)
     }
     

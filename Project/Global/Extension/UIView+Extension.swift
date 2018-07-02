@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 
 extension UIView {
-    var x: CGFloat {
+    var cv_x: CGFloat {
         set {
             var frame = self.frame
             frame.origin.x = newValue
@@ -22,7 +22,7 @@ extension UIView {
         }
     }
     
-    var y: CGFloat {
+    var cv_y: CGFloat {
         set {
             var frame = self.frame
             frame.origin.y = newValue
@@ -33,7 +33,7 @@ extension UIView {
         }
     }
     
-    var centerX: CGFloat {
+    var cv_centerX: CGFloat {
         set {
             var center = self.center
             center.x = newValue
@@ -44,7 +44,7 @@ extension UIView {
         }
     }
     
-    var centerY: CGFloat {
+    var cv_centerY: CGFloat {
         set {
             var center = self.center
             center.y = newValue
@@ -55,7 +55,7 @@ extension UIView {
         }
     }
     
-    var width: CGFloat {
+    var cv_width: CGFloat {
         set {
             var frame = self.frame
             frame.size.width = newValue
@@ -66,7 +66,7 @@ extension UIView {
         }
     }
     
-    var height: CGFloat {
+    var cv_height: CGFloat {
         set {
             var frame = self.frame
             frame.size.height = newValue
@@ -77,7 +77,7 @@ extension UIView {
         }
     }
     
-    var size: CGSize {
+    var cv_size: CGSize {
         set {
             var frame = self.frame
             frame.size = newValue
@@ -88,7 +88,7 @@ extension UIView {
         }
     }
     
-    var origin: CGPoint {
+    var cv_origin: CGPoint {
         set {
             var frame = self.frame
             frame.origin = newValue
@@ -105,7 +105,7 @@ extension UIView {
     func top(_ top: CGFloat, fixHeight: Bool = false) -> UIView {
         assert(superview != nil, "view must be added to a superview first.")
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
-        let newH = fixHeight ? self.height : self.superview!.height - top - self.bottom
+        let newH = fixHeight ? self.cv_height : self.superview!.cv_height - top - self.cv_bottom
         var frame = self.frame
         frame.origin.y = top
         frame.size.height = newH
@@ -114,16 +114,16 @@ extension UIView {
     }
 
     /// 返回top
-    var top: CGFloat {
+    var cv_top: CGFloat {
         return self.frame.origin.y
     }
 
     /// 设置left， 固定width
     @discardableResult
-    func left(_ left: CGFloat, fixWidth: Bool = false) -> UIView {
+    func cv_left(_ left: CGFloat, fixWidth: Bool = false) -> UIView {
         assert(superview != nil, "view must be added to a superview first.")
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
-        let newW = fixWidth ? self.width : self.superview!.width - left - self.right
+        let newW = fixWidth ? self.cv_width : self.superview!.cv_width - left - self.cv_right
         var frame = self.frame
         frame.origin.x = left
         frame.size.width = newW
@@ -132,18 +132,18 @@ extension UIView {
     }
 
     /// 返回left
-    var left: CGFloat {
+    var cv_left: CGFloat {
         return self.frame.origin.x
     }
 
     /// 设置bottom, 固定Height
     @discardableResult
-    func bottom(_ bottom: CGFloat, fixHeight: Bool = false) -> UIView {
+    func cv_bottom(_ bottom: CGFloat, fixHeight: Bool = false) -> UIView {
         assert(superview != nil, "view must be added to a superview first.")
 
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
-        let newT = fixHeight ? self.superview!.height - bottom - self.height : self.top
-        let newH = fixHeight ? self.height : self.superview!.height - bottom - newT
+        let newT = fixHeight ? self.superview!.cv_height - bottom - self.cv_height : self.cv_top
+        let newH = fixHeight ? self.cv_height : self.superview!.cv_height - bottom - newT
         var frame = self.frame
         frame.origin.y = newT
         frame.size.height = newH
@@ -152,17 +152,17 @@ extension UIView {
     }
 
     /// 设置bottom
-    var bottom: CGFloat {
+    var cv_bottom: CGFloat {
         return self.frame.origin.y + self.frame.size.height
     }
 
     /// 设置right, 固定宽度
     @discardableResult
-    func right(_ right: CGFloat, fixWidth: Bool = false) -> UIView {
+    func cv_right(_ right: CGFloat, fixWidth: Bool = false) -> UIView {
         assert(superview != nil, "view must be added to a superview first.")
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
-        let newL = fixWidth ? self.superview!.width - right - self.width : self.left
-        let newW = fixWidth ? self.width : self.superview!.width - newL - right
+        let newL = fixWidth ? self.superview!.cv_width - right - self.cv_width : self.cv_left
+        let newW = fixWidth ? self.cv_width : self.superview!.cv_width - newL - right
         var frame = self.frame
         frame.origin.x = newL
         frame.size.width = newW
@@ -171,7 +171,7 @@ extension UIView {
     }
 
     /// 返回right
-    var right: CGFloat {
+    var cv_right: CGFloat {
         return self.frame.origin.x + self.frame.size.width
     }
 }
