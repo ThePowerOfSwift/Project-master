@@ -83,11 +83,11 @@ extension AppDelegate {
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         CVLog(message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)")
-        COM.alert(vc: (application.keyWindow?.rootViewController)!, title: "提示", msg: "\(shortcutItem.localizedTitle), \(shortcutItem.type)", cancel: "取消", ok: "确定", cancelCallBack: { () -> (Void) in
-            
-        }) { () -> (Void) in
+        
+        CVAlertView.show(title: "提示", message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)", cancelButtonTitle: "取消", otherButtonTitle: "确定") { (alertView, index) in
             
         }
+        
         completionHandler(true)
     }
     

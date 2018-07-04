@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSRange {
     /// 将 NSRange 转换成 Range
@@ -15,4 +16,6 @@ extension NSRange {
         let endIndex = string.index(startIndex, offsetBy: self.length)
         return startIndex..<endIndex
     }
+    
 }
+

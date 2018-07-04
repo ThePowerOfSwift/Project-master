@@ -66,6 +66,7 @@
 		45B15C0C205A7F90008C4F94 /* CVMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C0B205A7F90008C4F94 /* CVMineViewController.swift */; };
 		45B15C0E205A7FAA008C4F94 /* CVHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */; };
 		45B15C11205A7FE3008C4F94 /* CVLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */; };
+		45B3248220EA258D00D30DBD /* CVAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B3248120EA258D00D30DBD /* CVAlertView.swift */; };
 		45B44D722052202400A67F6D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D712052202400A67F6D /* UIImage+Extension.swift */; };
 		45B44D7620525F1C00A67F6D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */; };
 		45B44D7920528E1D00A67F6D /* CVTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7820528E1D00A67F6D /* CVTimer.swift */; };
@@ -193,6 +194,7 @@
 		45B15C0B205A7F90008C4F94 /* CVMineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVMineViewController.swift; sourceTree = "<group>"; };
 		45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVHomeViewController.swift; sourceTree = "<group>"; };
 		45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVLanguageViewController.swift; sourceTree = "<group>"; };
+		45B3248120EA258D00D30DBD /* CVAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVAlertView.swift; sourceTree = "<group>"; };
 		45B44D712052202400A67F6D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		45B44D7820528E1D00A67F6D /* CVTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimer.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 		45053B64204E65B300B5B34B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				45B3248020EA257300D30DBD /* CVAlertView */,
 				45DF437820B690D600919ED1 /* CVPageController */,
 				45090E4120B2784900F71746 /* PickerView */,
 				45EE800C2099AB950005DB6C /* Calendar */,
@@ -570,6 +573,14 @@
 				45E9FFD4205F599800CF7E38 /* CVChangeLanguageViewController.swift */,
 			);
 			path = LanguageSetting;
+			sourceTree = "<group>";
+		};
+		45B3248020EA257300D30DBD /* CVAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				45B3248120EA258D00D30DBD /* CVAlertView.swift */,
+			);
+			path = CVAlertView;
 			sourceTree = "<group>";
 		};
 		45B44D7720528DD800A67F6D /* Button */ = {
@@ -1070,6 +1081,7 @@
 				45B15C0A205A7F71008C4F94 /* CVSettingViewController.swift in Sources */,
 				45AE661D205B5E8E000C1546 /* UIView+Creation.swift in Sources */,
 				4572E24E20A9736100E8CD08 /* AppDelegate + 3DTouch.swift in Sources */,
+				45B3248220EA258D00D30DBD /* CVAlertView.swift in Sources */,
 				451C9D252064F3C40075FA08 /* CVSettingCell.swift in Sources */,
 				45053B61204E487D00B5B34B /* Time+Extension.swift in Sources */,
 				4514506B204F969000E83F97 /* CVCustomTitleView.swift in Sources */,

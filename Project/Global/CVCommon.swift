@@ -47,22 +47,7 @@ final class CVCommon {
     }
     
 
-    // MARK: Alert 弹框
-    @discardableResult
-    func alert(vc: UIViewController, title: String?, msg: String?, cancel: String?, ok: String?, cancelCallBack:(()->(Void))?, okCallBack:(()->(Void))?) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        if cancel != nil, cancelCallBack != nil {
-            let alertAction = UIAlertAction(title: cancel!, style: .cancel, handler: {(_) in cancelCallBack!() })
-            alertController.addAction(alertAction)
-        }
-        
-        if ok != nil, okCallBack != nil {
-            let alertAction = UIAlertAction(title: ok!, style: .default, handler: {(_) in okCallBack!() })
-            alertController.addAction(alertAction)
-        }
-        vc.present(alertController, animated: true, completion: nil)
-        return alertController
-    }
+    
     
     // MARK: ActionSheet 弹框
     @discardableResult

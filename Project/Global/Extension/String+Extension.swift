@@ -54,6 +54,9 @@ public extension String {
     
     // MARK: 字符串转换
     func toInt() -> Int? {
+        guard self.isInt() else {
+            return nil
+        }
         return Int(self)
     }
     
@@ -62,83 +65,24 @@ public extension String {
         dateFormatter.dateFormat = format;
         return dateFormatter.date(from: self)
     }
-}
-
-extension String {
     
-    /// 字符串时间转换（返回 x分钟前/x小时前/昨天/x天前/x个月前/x年前
-    /// 注意，格式必须正确 只接受 yyyy-MM-dd HH:mm:ss 类型字符 否则转换出错
-    func convertToShaft() -> String {
-        // 把字符串转为NSdate
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date: Date = dateFormatter.date(from: self)!
+    // MARK: - 字符串 range <-> nsRange
+    /// Range转换为NSRange
+    func nsRange(from range: Range<String.Index>) -> NSRange {
         
-        let currentDate = Date()
-        let time: TimeInterval = -(date.timeIntervalSince(currentDate))
-        
-        let year: Int = (Int)(currentDate.year - date.year);
-        let month: Int = (Int)(currentDate.month - date.month);
-        let day: Int = (Int)(currentDate.day - date.day);
-        
-        var retTime: TimeInterval = 1.0;
-        
-        // 小于一小时
-        if (time < 3600) {
-            retTime = time / 60
-            retTime = retTime <= 0.0 ? 1.0 : retTime
-            if (retTime.format(".0") == "0") { return "刚刚" } else { return retTime.format(".0") + "分钟前" }
-        } else if (time < 3600 * 24) {    // 小于一天，也就是今天
-            retTime = time / 3600
-            retTime = retTime <= 0.0 ? 1.0 : retTime
-            return retTime.format(".0") + "小时前"
-        } else if (time < 3600 * 24 * 2) {    // 昨天
-            return "昨天"
+        guard let from = range.lowerBound.samePosition(in: utf16), let to = range.upperBound.samePosition(in: utf16) else {
+            return NSMakeRange(0, 0)
         }
-        // 第一个条件是同年，且相隔时间在一个月内
-        // 第二个条件是隔年，对于隔年，只能是去年12月与今年1月这种情况
-        else if ((abs(year) == 0 && abs(month) <= 1) || (abs(year) == 1 &&  currentDate.month == 1 && date.month == 12)) {
-            var   retDay:Int = 0;
-            // 同年
-            if (year == 0) {
-                // 同月
-                if (month == 0) {
-                    retDay = day;
-                }
-            }
-            
-            if (retDay <= 0) {
-                // 这里按月最大值来计算
-                // 获取发布日期中，该月总共有多少天
-                let totalDays: Int = date.daysInThisMonth()
-                
-                // 当前天数 + （发布日期月中的总天数-发布日期月中发布日，即等于距离今天的天数）
-                retDay = currentDate.day + (totalDays - date.day)
-                
-                if (retDay >= totalDays) {
-                    let value = abs(max(retDay / date.daysInThisMonth(), 1))
-                    return  value.description + "个月前"
-                }
-            }
-            return abs(retDay).description + "天前"
-        } else  {
-            if (abs(year) <= 1) {
-                if (year == 0) { // 同年
-                    return abs(month).description + "个月前"
-                }
-                // 相差一年
-                let month: Int = currentDate.month
-                let preMonth: Int = date.month
-                
-                // 隔年，但同月，就作为满一年来计算
-                if (month == 12 && preMonth == 12) {
-                    return "1年前"
-                }
-                // 也不看，但非同月
-                return abs(12 - preMonth + month).description + "个月前"
-            }
-            return abs(year).description + "年前"
-        }
+        return NSMakeRange(utf16.distance(from: utf16.startIndex, to: from), utf16.distance(from: from, to: to))
+    }
+    
+    /// Range转换为NSRange
+    func range(from nsRange: NSRange) -> Range<String.Index>? {
+        guard let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex) else { return nil }
+        guard let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex) else { return nil }
+        guard let from = String.Index(from16, within: self) else { return nil }
+        guard let to = String.Index(to16, within: self) else { return nil }
+        return from ..< to
     }
 }
 
@@ -179,5 +123,173 @@ extension String {
         let from: Int = range.location;
         let to: Int = range.length + from
         return subString(from: from, to: to)
+    }
+    
+    /// 过滤掉首尾空格, 根据参数判断是否过滤换行符
+    /// trimNewline 是否过滤略行符，默认为false
+    public func trim(trimNewline: Bool = false) -> String {
+        if trimNewline {  //  忽略掉换行符
+            return self.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return self.trimmingCharacters(in: .whitespaces)
+    }
+    
+    /// 过滤掉换行符
+    public func trimNewlines() -> String {
+        return self.trimmingCharacters(in: .newlines)
+    }
+}
+
+// MARK: - 字符串的判断
+extension String {
+    
+    /// 判断字符串是 数字
+    func isInt() -> Bool {
+        let scan: Scanner = Scanner(string: self)
+        var val: Int = 0
+        return scan.scanInt(&val) && scan.isAtEnd
+    }
+    
+    /// 判断字符串是 空， trimWhiteSpace: 是否过滤首尾空格，默认为true
+    func isBlank(trimWhiteSpace: Bool = true) -> Bool {
+        var newString = self
+        
+        if trimWhiteSpace { // 过滤空格
+            newString = self.trim()
+        }
+        if newString.isEmpty {
+            return true
+        }
+        return false
+    }
+}
+
+// MARK: - 字符串富文本
+extension String {
+
+    /// 通用的设置富文本方法，返回attribute，可以再次设置富文本
+    public func setAttribute(_ name: NSAttributedStringKey, value: Any, range: NSRange) -> NSMutableAttributedString? {
+        guard self.count > 0 else { return nil }
+        let attributeStr = NSMutableAttributedString(string: self)
+        attributeStr.addAttribute(name, value: value, range: range)
+        return attributeStr
+    }
+    
+    /// 通用的设置富文本方法，返回attribute，可以再次设置富文本
+    public func setAttribute(_ name: NSAttributedStringKey, value: Any, string: String) -> NSMutableAttributedString? {
+        guard self.count > 0 else { return nil }
+        let attributeStr = NSMutableAttributedString(string: self)
+        attributeStr.addAttribute(name, value: value, range: self.nsRange(from: self.range(of: string)!))
+        return attributeStr
+    }
+    
+    /// 将数字转换成某一颜色, 字体
+    public func setNumberColor(_ color: UIColor) -> NSMutableAttributedString? {
+        return self.setNumberColor(color, font: nil)
+    }
+    
+    public func setNumberFont(_ font: UIFont) -> NSMutableAttributedString? {
+        return self.setNumberColor(nil, font: font)
+    }
+    public func setNumberColor(_ color: UIColor?, font: UIFont?) -> NSMutableAttributedString? {
+        if self.isBlank() {
+            return nil
+        }
+        let attributeStr = NSMutableAttributedString(string: self)
+        let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        for (index, c) in self.enumerated() {
+            if numbers.contains(String(c)) {
+                if let color = color {
+                    attributeStr.addAttribute(.foregroundColor, value: color, range: NSMakeRange(index, 1))
+                }
+                if let font = font {
+                    attributeStr.addAttribute(.font, value: font, range: NSMakeRange(index, 1))
+                }
+            }
+        }
+        return attributeStr
+    }
+    
+    /// 设置文字的行距
+    public func setLineSpace(_ lineSpace: CGFloat) -> NSMutableAttributedString? {
+        if self.isBlank() {
+            return nil
+        }
+        let attributeStr = NSMutableAttributedString(string: self)
+        return attributeStr.addLineSpace(lineSpace)
+    }
+    
+    /// 设置文字的段间距
+    public func setParagraphSpace(_ paragraphSpacing: CGFloat) -> NSMutableAttributedString? {
+        if self.isBlank() {
+            return nil
+        }
+        let attributeStr = NSMutableAttributedString(string: self)
+        return attributeStr.addParagraphSpace(paragraphSpacing)
+    }
+    
+    /// 设置文字的段间距、行间距
+    public func addLineSpace(_ lineSpace: CGFloat?, paragraphSpacing: CGFloat?) -> NSMutableAttributedString? {
+        if self.isBlank() {
+            return nil
+        }
+        let attributeStr = NSMutableAttributedString(string: self)
+        return attributeStr.addLineSpace(lineSpace, paragraphSpacing: paragraphSpacing)
+    }
+    
+    /// 设置文字的间距
+    public func addKern(_ kern: CGFloat) -> NSMutableAttributedString? {
+        if self.isBlank() {
+            return nil
+        }
+        let attributeStr = NSMutableAttributedString(string: self)
+        return attributeStr.addKern(kern)
+    }
+}
+
+// MARK: - 富文本
+extension NSMutableAttributedString {
+    /// 通用的设置富文本方法，返回attribute，可以再次设置富文本
+    public func addAttribute(_ name: NSAttributedStringKey, value: Any, string: String) -> NSMutableAttributedString? {
+        guard self.string.count > 0 else { return nil }
+        self.addAttribute(name, value: value, range: self.string.nsRange(from: self.string.range(of: string)!))
+        return self
+    }
+    
+    /// 设置文字的行间距
+    public func addLineSpace(_ lineSpace: CGFloat) -> NSMutableAttributedString? {
+        if self.string.isBlank() {
+            return nil
+        }
+        return self.addLineSpace(lineSpace, paragraphSpacing: nil)
+    }
+    
+    /// 设置文字的段间距
+    public func addParagraphSpace(_ paragraphSpacing: CGFloat) -> NSMutableAttributedString? {
+        if self.string.isBlank() {
+            return nil
+        }
+        
+        return self.addLineSpace(nil, paragraphSpacing: paragraphSpacing)
+    }
+    
+    /// 设置文字的段间距、行间距
+    public func addLineSpace(_ lineSpace: CGFloat?, paragraphSpacing: CGFloat?) -> NSMutableAttributedString? {
+        if self.string.isBlank() {
+            return nil
+        }
+        let paragraph = NSMutableParagraphStyle()
+        if let space = lineSpace { paragraph.lineSpacing = space }
+        if let space = paragraphSpacing { paragraph.paragraphSpacing = space }
+        self.addAttribute(.paragraphStyle, value: paragraph, range: NSMakeRange(0, self.string.count))
+        return self
+    }
+    
+    /// 设置文字的间距
+    public func addKern(_ kern: CGFloat) -> NSMutableAttributedString? {
+        if self.string.isBlank() {
+            return nil
+        }
+        return self.addAttribute(NSAttributedStringKey.kern, value: kern, string: self.string)
     }
 }
