@@ -20,7 +20,7 @@ class CVChangeLanguageViewController: CVBaseViewController {
         label.center = self.view.center
         label.textAlignment = .center
         
-        let _ = DispatchQueue.main.delay(3) {
+        cv_delay(1) { [unowned self] in
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -51,12 +51,11 @@ open class CVBarButtonItem: NSObject {
     var isHighlighted: Bool = false {
         didSet {
             self.button!.isHighlighted = self.isHighlighted
-            self.updateContentSpace(position: self.position, space: space)
+//            self.updateContentSpace(position: self.position, space: space)
         }
     }
     
     private var space: CGFloat = 0 // title 和 image 之间 的距离
-    private var position: UIButtonImagePosition = .imageLeft
     private var imageN: UIImage? { didSet { self.button!.setImage(self.imageN, for: .normal) } }
     private var imageH: UIImage? { didSet { self.button!.setImage(self.imageH, for: .highlighted) } }
 
@@ -140,16 +139,10 @@ open class CVBarButtonItem: NSObject {
         }
     }
     
-    public func updateContentSpace(position: UIButtonImagePosition, space: CGFloat) {
-        if position == .imageLeft, space == 0  {
-            self.updateFrame()
-            return
-        }
-        self.button!.cv_updateImagePosition(position: position, space: space)
-        self.space = space
-        self.position = position
-        self.updateFrame()
-    }
+//    public func updateContentSpace(position: UIButtonImagePosition, space: CGFloat) {
+//        
+//        self.updateFrame()
+//    }
 }
 
 

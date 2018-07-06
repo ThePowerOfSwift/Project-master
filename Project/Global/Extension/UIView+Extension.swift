@@ -102,8 +102,8 @@ extension UIView {
     
     /// 设置top，固定height
     @discardableResult
-    func top(_ top: CGFloat, fixHeight: Bool = false) -> UIView {
-        assert(superview != nil, "view must be added to a superview first.")
+    func cv_top(_ top: CGFloat, fixHeight: Bool = true) -> UIView {
+        guard superview != nil else { return self }
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
         let newH = fixHeight ? self.cv_height : self.superview!.cv_height - top - self.cv_bottom
         var frame = self.frame
@@ -120,8 +120,8 @@ extension UIView {
 
     /// 设置left， 固定width
     @discardableResult
-    func cv_left(_ left: CGFloat, fixWidth: Bool = false) -> UIView {
-        assert(superview != nil, "view must be added to a superview first.")
+    func cv_left(_ left: CGFloat, fixWidth: Bool = true) -> UIView {
+        guard superview != nil else { return self }
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
         let newW = fixWidth ? self.cv_width : self.superview!.cv_width - left - self.cv_right
         var frame = self.frame
@@ -138,9 +138,8 @@ extension UIView {
 
     /// 设置bottom, 固定Height
     @discardableResult
-    func cv_bottom(_ bottom: CGFloat, fixHeight: Bool = false) -> UIView {
-        assert(superview != nil, "view must be added to a superview first.")
-
+    func cv_bottom(_ bottom: CGFloat, fixHeight: Bool = true) -> UIView {
+        guard superview != nil else { return self }
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
         let newT = fixHeight ? self.superview!.cv_height - bottom - self.cv_height : self.cv_top
         let newH = fixHeight ? self.cv_height : self.superview!.cv_height - bottom - newT
@@ -158,8 +157,8 @@ extension UIView {
 
     /// 设置right, 固定宽度
     @discardableResult
-    func cv_right(_ right: CGFloat, fixWidth: Bool = false) -> UIView {
-        assert(superview != nil, "view must be added to a superview first.")
+    func cv_right(_ right: CGFloat, fixWidth: Bool = true) -> UIView {
+        guard superview != nil else { return self }
         if self.frame == CGRect.zero { self.frame = superview!.bounds }
         let newL = fixWidth ? self.superview!.cv_width - right - self.cv_width : self.cv_left
         let newW = fixWidth ? self.cv_width : self.superview!.cv_width - newL - right

@@ -27,16 +27,17 @@ class CVHomeViewModel {
         
         let json = array.toJSONString()
         
-        DispatchQueue.main.delay(1) {
+        cv_delay(1) { [unowned self] in
             self.dataSource = JSONDeserializer<CVHomeModel>.deserializeModelArrayFrom(json: json)! as! [CVHomeModel]
             finish(self.dataSource)
+            
         }
     }
     
     func loadMoreData(finish:@escaping ([CVHomeModel], Bool)->()) {
         
         
-        DispatchQueue.main.delay(1) {
+        cv_delay(1) { [unowned self] in
             
             if self.dataSource.count > 15 {
                 finish(self.dataSource, true)
@@ -57,7 +58,7 @@ class CVHomeViewModel {
     }
     
     func loadBanner(finish: @escaping ([CVCycleScrollModel], Bool) -> ()) {
-        DispatchQueue.main.delay(1) {
+        cv_delay(1) { [unowned self] in
             let imagesURLStrings = [
                 "http://www.g-photography.net/file_picture/3/3587/4.jpg",
                 "http://img2.zjolcdn.com/pic/0/13/66/56/13665652_914292.jpg",

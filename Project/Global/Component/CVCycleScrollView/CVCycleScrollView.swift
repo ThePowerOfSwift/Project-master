@@ -104,9 +104,13 @@ class CVCycleScrollView: UIView {
     }
     
     func defaultTimer() -> CVTimer {
-        let t = CVTimer.timer(timeInterval: 1, delegete: self)
-        t.start()
-        counting = 0;
+        let t = CVTimer.timer(timeInterval: 1) { [unowned self] () -> Bool in
+            if self.autoScroll {
+                self.nextImage()
+            }
+            return true
+        }
+        t.run()
         return t
     }
     
@@ -196,8 +200,7 @@ extension CVCycleScrollView: UIScrollViewDelegate {
     /// 结束拖拽的时候重新添加定时器
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if self.autoScroll {
-            self.timer.start()
-            counting = 0;
+            self.timer.run()
         }
     }
     
@@ -213,12 +216,8 @@ extension CVCycleScrollView: UIScrollViewDelegate {
     }
 }
 
-extension CVCycleScrollView: CVTimerDelegate {
-    func timer(timer: CVTimer, counting: Int, finish: Int) {
-        if autoScroll {
-            self.nextImage()
-        }
-    }
+// 计时器
+extension CVCycleScrollView {
     
     /// timer 开始
     private func nextImage() {

@@ -34,13 +34,18 @@ class CVBaseTabbarController: CVTabbarController {
         // 首页
         let homeVC =  CVHomeViewController()
         let homeNav = CVBaseNavigationController(rootViewController: homeVC)
-        homeNav.tabBarItem.title = LS(self, key: "Home", comment: "首页")
+        homeVC.cv_tabbarItem.setImage(UIImageNamed("Tabbar_Home_N"), title: nil/*LS(self, key: "Home", comment: "首页")*/, titleColor: UIColor.grayColor_99)
+        homeVC.cv_tabbarItem.setImageH(UIImageNamed("Tabbar_Home_H"), titleH: nil/*LS(self, key: "Home", comment: "首页")*/, titleColorH: UIColor.colorWithHex(0xFF6600))
         
         // 我的
         let mineVC =  CVMineViewController()
         let mineNav = CVBaseNavigationController(rootViewController: mineVC)
-        mineNav.tabBarItem.title = LS(self, key: "Mine", comment: "我的")
-        IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = LS(key: "Done", comment: "完成q")
+        mineVC.cv_tabbarItem.setImage(UIImageNamed("Tabbar_Mine_N"), title: LS(self, key: "Mine", comment: "我的"), titleColor: UIColor.grayColor_99)
+        mineVC.cv_tabbarItem.setImageH(UIImageNamed("Tabbar_Mine_H"), titleH: LS(self, key: "Mine", comment: "我的"), titleColorH: UIColor.colorWithHex(0xFF6600))
+        cv_delay(2) {
+            mineVC.cv_tabbarItem.badge = 1            
+        }
+        
 
         self.viewControllers = [homeNav, mineNav]
         
@@ -60,7 +65,7 @@ class CVBaseTabbarController: CVTabbarController {
         if self.isViewLoaded && self.view.window == nil {
             self.view = nil
             self.isChangedLanguage = true
-            IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = LS(key: "Done", comment: "完成q")
+            IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = LS(key: "Done", comment: "完成")
         }
     }
 }

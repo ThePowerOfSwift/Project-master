@@ -79,7 +79,6 @@ class CVBaseViewController: UIViewController {
             self.leftBarButtonItem = nil
         } else {
             self.leftBarButtonItem = CVBarButtonItem.item(image: UIImageNamed("back_black"), target: self, action: #selector(backToPrevious))
-            self.leftBarButtonItem!.updateContentSpace(position: .imageLeft, space: 0)
         }
     }
     

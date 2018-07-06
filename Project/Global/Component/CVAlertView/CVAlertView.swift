@@ -20,7 +20,7 @@ private let color_button_title_other = UIColor.init(red: 70.0/255, green: 130.0/
 private let color_button_bg_image = UIColor.init(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
 private let color_line = UIColor.init(red: 219.0/255, green: 219.0/255, blue: 219.0/255, alpha: 1.0)
 
-typealias CVAlertViewClickButtonBlock = ((_ alertView: CVAlertView, _ buttonIndex:Int) -> Void)?
+typealias CVAlertViewClickButtonClosure = ((_ alertView: CVAlertView, _ buttonIndex: Int) -> Void)?
 
 /// alertView出现时的动画
 enum CVAlertViewAnimationOptions {
@@ -115,7 +115,7 @@ class CVAlertView: UIView {
     
     private var cancelButtonTitle: String?
     private var otherButtonTitles: [String]? = []
-    private var clickButtonBlock: CVAlertViewClickButtonBlock
+    private var clickButtonBlock: CVAlertViewClickButtonClosure
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -192,7 +192,7 @@ class CVAlertView: UIView {
     
     // MARK: - Public Method
     @discardableResult
-    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonBlock: CVAlertViewClickButtonBlock) -> CVAlertView {
+    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonBlock: CVAlertViewClickButtonClosure) -> CVAlertView {
         var others: [String] = []
         for c in otherButtonTitles {
             if let string = c {
@@ -208,7 +208,7 @@ class CVAlertView: UIView {
     }
     
     @discardableResult
-    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitle: String?, clickButtonBlock: CVAlertViewClickButtonBlock) -> CVAlertView {
+    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitle: String?, clickButtonBlock: CVAlertViewClickButtonClosure) -> CVAlertView {
         let others: [String] = otherButtonTitle != nil ? [otherButtonTitle!] : []
         let alertView = CVAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: cancelButtonTitle, otherButtonTitles: others)
         alertView.clickButtonBlock = clickButtonBlock

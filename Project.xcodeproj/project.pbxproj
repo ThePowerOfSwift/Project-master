@@ -25,7 +25,7 @@
 		45053B6B204E65B300B5B34B /* CVPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B66204E65B300B5B34B /* CVPlaceholderTextView.swift */; };
 		45053B6C204E65B300B5B34B /* CVExpandTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B67204E65B300B5B34B /* CVExpandTextView.swift */; };
 		45053B6D204E65B300B5B34B /* CVKeyboardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */; };
-		45053B6E204E65B300B5B34B /* DispatchQueue+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B6A204E65B300B5B34B /* DispatchQueue+Delay.swift */; };
+		45053B6E204E65B300B5B34B /* CVDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B6A204E65B300B5B34B /* CVDelay.swift */; };
 		45053B70204E65CF00B5B34B /* CVBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B6F204E65CF00B5B34B /* CVBaseViewController.swift */; };
 		45053B72204E65E300B5B34B /* CVBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B71204E65E300B5B34B /* CVBaseTableViewController.swift */; };
 		45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B73204E755800B5B34B /* CVBaseNavigationController.swift */; };
@@ -43,6 +43,9 @@
 		451C9D272064F7F10075FA08 /* CVSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C9D262064F7F10075FA08 /* CVSettingModel.swift */; };
 		45283E2820B801060040808F /* CVSortTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45283E2720B801060040808F /* CVSortTabView.swift */; };
 		453643FB2056310400897E6B /* CVTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453643FA2056310400897E6B /* CVTimerButton.swift */; };
+		453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2920ECB870006994A5 /* CVTabBarItem.swift */; };
+		453BFB2C20ECBE2D006994A5 /* CVBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */; };
+		453BFB2E20ECC745006994A5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */; };
 		453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F7B5920A044AD00933E55 /* Array+Extension.swift */; };
 		4542FE2420B3EA6C00869655 /* CVPickerViewReusingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */; };
 		4542FE2620B3EB8A00869655 /* CVDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */; };
@@ -149,7 +152,7 @@
 		45053B66204E65B300B5B34B /* CVPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPlaceholderTextView.swift; sourceTree = "<group>"; };
 		45053B67204E65B300B5B34B /* CVExpandTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVExpandTextView.swift; sourceTree = "<group>"; };
 		45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVKeyboardTextView.swift; sourceTree = "<group>"; };
-		45053B6A204E65B300B5B34B /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
+		45053B6A204E65B300B5B34B /* CVDelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDelay.swift; sourceTree = "<group>"; };
 		45053B6F204E65CF00B5B34B /* CVBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseViewController.swift; sourceTree = "<group>"; };
 		45053B71204E65E300B5B34B /* CVBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseTableViewController.swift; sourceTree = "<group>"; };
 		45053B73204E755800B5B34B /* CVBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -168,6 +171,9 @@
 		451C9D262064F7F10075FA08 /* CVSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSettingModel.swift; sourceTree = "<group>"; };
 		45283E2720B801060040808F /* CVSortTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSortTabView.swift; sourceTree = "<group>"; };
 		453643FA2056310400897E6B /* CVTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimerButton.swift; sourceTree = "<group>"; };
+		453BFB2920ECB870006994A5 /* CVTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTabBarItem.swift; sourceTree = "<group>"; };
+		453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBadgeView.swift; sourceTree = "<group>"; };
+		453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		453F7B5920A044AD00933E55 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPickerViewReusingView.swift; sourceTree = "<group>"; };
 		4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDatePickerView.swift; sourceTree = "<group>"; };
@@ -379,6 +385,7 @@
 				453F7B5920A044AD00933E55 /* Array+Extension.swift */,
 				45DE7EC920AAD6230094A0B3 /* NSObject+Extension.swift */,
 				45090E4420B2890400F71746 /* CGRect+Extension.swift */,
+				453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -431,7 +438,7 @@
 		45053B69204E65B300B5B34B /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				45053B6A204E65B300B5B34B /* DispatchQueue+Delay.swift */,
+				45053B6A204E65B300B5B34B /* CVDelay.swift */,
 				45B44D7820528E1D00A67F6D /* CVTimer.swift */,
 			);
 			path = Timer;
@@ -501,6 +508,8 @@
 			children = (
 				45B15BEC205A74FB008C4F94 /* CVTabbarController.swift */,
 				DE8D89E72082070E0043BFC8 /* CVTabBar.swift */,
+				453BFB2920ECB870006994A5 /* CVTabBarItem.swift */,
+				453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */,
 			);
 			path = TabbarController;
 			sourceTree = "<group>";
@@ -1035,6 +1044,7 @@
 				45090E4320B2787100F71746 /* CVPickerView.swift in Sources */,
 				45053B72204E65E300B5B34B /* CVBaseTableViewController.swift in Sources */,
 				45053B70204E65CF00B5B34B /* CVBaseViewController.swift in Sources */,
+				453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */,
 				45EE80102099AC790005DB6C /* CVCalendarModel.swift in Sources */,
 				45DB84D4209C44BE00149215 /* CVCalendarMonthModel.swift in Sources */,
 				45053B6D204E65B300B5B34B /* CVKeyboardTextView.swift in Sources */,
@@ -1043,6 +1053,7 @@
 				4542FE2620B3EB8A00869655 /* CVDatePickerView.swift in Sources */,
 				DE8D89EC2082DBF00043BFC8 /* CVRefreshAnimator.swift in Sources */,
 				DE8D89E62081891A0043BFC8 /* Font+Extension.swift in Sources */,
+				453BFB2E20ECC745006994A5 /* UIViewController+Extension.swift in Sources */,
 				45920B4A20B7A90500F9FBD6 /* CVPageTabMaskView.swift in Sources */,
 				45F68013207B54FC001DEDF4 /* CVHomeModel.swift in Sources */,
 				45B15BE8205A0E4B008C4F94 /* SelfAware.swift in Sources */,
@@ -1089,7 +1100,7 @@
 				45E9FFD8205F8C6800CF7E38 /* CVFileHandle.swift in Sources */,
 				45EE800E2099ABBB0005DB6C /* CVCalendarLogic.swift in Sources */,
 				DE8D89EA208250EC0043BFC8 /* CVHomeViewModel.swift in Sources */,
-				45053B6E204E65B300B5B34B /* DispatchQueue+Delay.swift in Sources */,
+				45053B6E204E65B300B5B34B /* CVDelay.swift in Sources */,
 				45DF437E20B69AAD00919ED1 /* CVPageTabBarView.swift in Sources */,
 				45B44D7920528E1D00A67F6D /* CVTimer.swift in Sources */,
 				45053B63204E488800B5B34B /* String+Extension.swift in Sources */,
@@ -1105,6 +1116,7 @@
 				455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */,
 				45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */,
 				4542FE2420B3EA6C00869655 /* CVPickerViewReusingView.swift in Sources */,
+				453BFB2C20ECBE2D006994A5 /* CVBadgeView.swift in Sources */,
 				450194C920734B0B00777328 /* Double+Extension.swift in Sources */,
 				45DF438420B69FA200919ED1 /* CVTestViewController.swift in Sources */,
 				45E813F42069E5F900E39853 /* Encrypt.swift in Sources */,

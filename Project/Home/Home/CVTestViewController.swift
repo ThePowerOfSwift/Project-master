@@ -33,7 +33,7 @@ class CVTestViewController: CVBaseViewController {
             self.tabbar1.backgroundColor = UIColor.grayColor_cc
             self.tabbar1.reloadData()
             
-            DispatchQueue.main.delay(5) {
+            cv_delay(1) { [unowned self] in
                 self.title_1 = ["北京", "推荐", "问题", "有奖竞答", "发钱了", "热点", "新闻", "关注", "视频", "小火山视频", "soho"];
                 self.tabbar.reloadData()
             }
@@ -143,14 +143,10 @@ extension CVTestViewController: CVPageTabBarDelegate, CVPageTabBarDataSource {
         CVLog(message: index)
         
         if tabBar == self.tabbar3 {
-            DispatchQueue.main.delay(2) { [weak self] in
-                
-                if let weakSelf = self {
-                    weakSelf.title_3 = ["分类", "3132132", "地点"]
+            cv_delay(2) { [unowned self] in
+                self.title_3 = ["分类", "3132132", "地点"]
 //                    weakSelf.tabbar3.reloadData()
-                    weakSelf.tabbar3.reloadData(index: index, state: .normal, animation: true)
-                }
-                
+                self.tabbar3.reloadData(index: index, state: .normal, animation: true)
             }
         }
     }

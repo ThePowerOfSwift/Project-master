@@ -19,11 +19,6 @@ class CVHomeHeaderView: UIView {
         self.banner.makeConstraints { (make) in
             make.edges.equalTo(self)
         }
-        
-        DispatchQueue.main.delay(3) {
-//            self.banner.autoScrollTimeInterval = 1;
-        }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
