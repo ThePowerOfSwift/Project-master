@@ -137,7 +137,7 @@ struct CVClient {
 extension CVClient {
 
     var param: Dictionary<String, Any> {
-        return ["deviceType":DeviceName, "idfa":COM.UUID, "opversion":SysVersion, "req_sec":"1522376970", "version":"3.84"]
+        return ["deviceType":cv_deviceName, "idfa":cv_UUID, "opversion":cv_sysVersion, "req_sec":"1522376970", "version":"3.84"]
     }
     
     func sign(_ param:[String: Any]) -> [String : Any] {

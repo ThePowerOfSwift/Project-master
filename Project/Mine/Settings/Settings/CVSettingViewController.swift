@@ -16,7 +16,7 @@ class CVSettingViewController: CVBaseViewController {
     
     lazy var tableView: UITableView = {
         let tableView = cv_tableView(delegate: self, dataSource: self, super: self.view)
-        tableView.frame = CGRect.init(x: 0, y: cv_navigation_height(), width: SCREEN_WIDTH, height: thisViewHeight)
+        tableView.frame = CGRect.init(x: 0, y: cv_safeNavBarHeight, width: SCREEN_WIDTH, height: thisViewHeight)
         return tableView
     }()
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class CVSettingViewController: CVBaseViewController {
         self.cacheSize = CVFileHandle.fileSizeFormat(CVFileHandle.fileSize(atPath: CachesPath) + CVFileHandle.fileSize(atPath: TmpPath))
         let langu = CVSettingModel.init(LS(self, key: "LanguageSetting", comment: "语言"), .language, nil)
         let cache = CVSettingModel.init(LS(self, key: "CleanCache", comment: "清空缓存"), .cleanCache, cacheSize)
-        let version = CVSettingModel.init(LS(self, key: "AppVersion", comment: "版本"), .appVersion, "v\(COM.appVersion)")
+        let version = CVSettingModel.init(LS(self, key: "AppVersion", comment: "版本"), .appVersion, "v\(cv_appVersion)")
         self.dataSource = [langu, cache, version]
         self.tableView.register(CVSettingCell.self, forCellReuseIdentifier: "cell")
         self.tableView.tableFooterView = UIView()

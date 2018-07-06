@@ -24,10 +24,6 @@ final class CVCommon {
 
     /// 单例
     static let `default` = CVCommon()
-    let appDisplayName = Bundle.main.infoDictionary!["CFBundleDisplayName"] as? String // 程序名称
-    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String   // 主程序版本号
-    let appBuildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String     // build版本
-    let UUID = CVKeyChain.appIdentifier()   // 设备的唯一标示UUID
     
     func currentLanguage() -> String {
         return CVLanguageHelper.getCurrentRunningLanguage()
@@ -46,9 +42,6 @@ final class CVCommon {
         return UserDefaults.standard.value(forKey: key)
     }
     
-
-    
-    
     // MARK: ActionSheet 弹框
     @discardableResult
     func actionSheet(vc: UIViewController, title: String?, sheets: [String], callBack:(@escaping (_ index: Int)->(Void))) -> UIAlertController {
@@ -66,19 +59,7 @@ final class CVCommon {
         vc.present(alertController, animated: true, completion: nil)
         return alertController
     }
-    
-    
-    
-    /// 取随机数
-    func arc4random(min: UInt32 = 0, max: UInt32) -> UInt32 {
-        guard max > min else { return 0 }
-        return Darwin.arc4random() % max + min
-    }
-    
-//    func arc4random(max: UInt32) -> UInt32 {
-//        return arc4random(min: 0, max: max)
-//    }
-    
+
 }
 
 

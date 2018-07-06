@@ -13,12 +13,12 @@ extension UIFont {
 
     /// 根据 设计图 进行文字大小的适配
     static func systemFont_375(ofSize: CGFloat) -> UIFont {
-        return UIFont.systemFont(ofSize: kFormat_375(x: ofSize))
+        return UIFont.systemFont(ofSize: cv_format_375(x: ofSize))
     }
     
     /// 根据 设计图 进行文字大小的适配
     static func boldSystemFont_375(ofSize: CGFloat) -> UIFont {
-        return UIFont.boldSystemFont(ofSize: kFormat_375(x: ofSize))
+        return UIFont.boldSystemFont(ofSize: cv_format_375(x: ofSize))
     }
 }
 

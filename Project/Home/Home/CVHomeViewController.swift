@@ -28,7 +28,7 @@ class CVHomeViewController: CVBaseViewController {
         self.tableView.tableFooterView = cv_view(super: nil)
         self.tableView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
-            make.top.equalTo(cv_navigation_height())
+            make.top.equalTo(cv_safeNavBarHeight)
             make.height.equalTo(thisViewHeight)
         }
 

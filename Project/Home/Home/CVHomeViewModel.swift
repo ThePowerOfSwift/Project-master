@@ -21,7 +21,7 @@ class CVHomeViewModel {
         for _ in 1...5 {
             let m = CVHomeModel()
             m.text = "text"
-            m.number = Int(COM.arc4random(max: 100))
+            m.number = Int(cv_arc4random(max: 100))
             array.append(m)
         }
         
@@ -48,7 +48,7 @@ class CVHomeViewModel {
             for _ in 1...5 {
                 let m = CVHomeModel()
                 m.text = "text"
-                m.number = Int(COM.arc4random(max: 100))
+                m.number = Int(cv_arc4random(max: 100))
                 array.append(m)
             }
             let json = array.toJSONString()
@@ -73,9 +73,9 @@ class CVHomeViewModel {
                 m.url = imagesURLStrings[i]
                 m.title = "我阿斯顿发了；就啊；是的发生；附加费；  空间很渴望和宽容和痛苦玩儿v比如去；上课你看；来上课了的烦恼爱的色放开机按键ad斯洛伐克的酸辣粉阿斯顿发了可能阿斯顿发顺丰阿斯蒂芬挨个如果我二哥发过阿达儿去玩儿阿萨德"
 
-                m.font = UIFont.systemFont(ofSize: CGFloat(COM.arc4random(max: 4) + 12))
+                m.font = UIFont.systemFont(ofSize: CGFloat(cv_arc4random(max: 4) + 12))
                 m.textColor = UIColor.randomColor
-                m.numberOfLines = Int(COM.arc4random(max: 5))
+                m.numberOfLines = Int(cv_arc4random(max: 5))
                 arr.append(m)
             }
             

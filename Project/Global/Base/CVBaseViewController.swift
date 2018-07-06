@@ -12,31 +12,32 @@ class CVBaseViewController: UIViewController {
 
     var thisViewHeight: CGFloat {
         get {
-            var top: CGFloat = 0.0, bottom: CGFloat = 0.0
-            if self.navigationBar != nil && self.navigationBar!.isHidden == false {
-                top = cv_navigation_height()
-            } else {
-                top = cv_safeAreaInsetsIn(view: self.view).top
+            var navBarHeight: CGFloat = 0.0, tabBarHeight: CGFloat = 0.0
+            if self.cv_navigationBar.isHidden == false {
+                navBarHeight = 44
             }
-            if self.tabBarController != nil && self.tabBarController!.tabBar.isHidden == false {
-                bottom = self.tabBarController!.tabBar.frame.height
+            if self.tabBarController != nil {
+                let baseTabBarController = (self.tabBarController! as! CVBaseTabbarController)
+                if baseTabBarController.cv_tabbar.isHidden == false {
+                    tabBarHeight = 49
+                }
             }
-            bottom += cv_safeAreaInsetsIn(view: self.view).bottom
-            
-            return SCREEN_HEIGHT - top - bottom
+            return cv_safeScreenHeight - navBarHeight - tabBarHeight
         }
     }
     
-    var navigationBar: CVNavigationBar?
+    /// nav
+    var cv_navigationBar: CVNavigationBar!
     var leftBarButtonItem: CVBarButtonItem? {
         didSet {
-            if self.leftBarButtonItem != nil { self.navigationBar?.leftBarButtonItem = self.leftBarButtonItem }
+            if self.leftBarButtonItem != nil { self.cv_navigationBar.leftBarButtonItem = self.leftBarButtonItem }
         }
     }
+    
 
     override var title: String? {
         didSet {
-            self.navigationBar?.title = self.title;
+            self.cv_navigationBar?.title = self.title;
         }
     }
     
@@ -67,13 +68,11 @@ class CVBaseViewController: UIViewController {
     
     // MARK: 导航栏 Nav
     private func setNavigationBar() {
-        if self.navigationController != nil {
-            self.navigationBar = CVNavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: cv_navigation_height()))
-            self.view.addSubview(self.navigationBar!)
-            // self.navigationBar!.isShadowHidden = false
-            self.navigationBar!.isBottomLineHidden = false
-            self.navigationBar!.margin = 5
-        }
+        self.cv_navigationBar = CVNavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: cv_safeNavBarHeight))
+        self.view.addSubview(self.cv_navigationBar!)
+        // self.navigationBar.isShadowHidden = false
+        self.cv_navigationBar.isBottomLineHidden = false
+        self.cv_navigationBar.margin = 5
         
         if self.navigationController?.viewControllers.count == 1 {
             self.leftBarButtonItem = nil
@@ -83,9 +82,7 @@ class CVBaseViewController: UIViewController {
     }
     
     public func bringNavBarFront() {
-        if let view = self.navigationBar {
-            self.view.bringSubview(toFront: view)
-        }
+        self.view.bringSubview(toFront: self.cv_navigationBar)
     }
     
     public func layoutNavigationItem() {

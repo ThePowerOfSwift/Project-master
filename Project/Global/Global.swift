@@ -32,7 +32,10 @@ func CVLog<N>(message: N, file: String = #file, method: String = #function, line
 /// 屏幕尺寸
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
-let SCREEN_HEIGHT_S = cv_screen_height_safe()
+let cv_safeAreaInsets = cv_safeAreaInsetsIn(view: cv_AppDelegate.window)
+let cv_safeScreenHeight = cv_screen_height_safe()
+let cv_safeNavBarHeight = cv_navigation_height()
+let cv_safeTabBarHeight = cv_tabBar_height()
 let cv_AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
 /// 系统版本
@@ -42,9 +45,8 @@ let IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
 let IOS11 = (UIDevice.current.systemVersion as NSString).doubleValue >= 11.0
 
 /// 根据 375 的设计图，进行尺寸变换
-let kFormat_375 = SCREEN_WIDTH / 375;
-func kFormat_375(x: CGFloat) -> CGFloat {
-    return kFormat_375 * x
+func cv_format_375(x: CGFloat) -> CGFloat {
+    return SCREEN_WIDTH / 375 * x
 }
 /** 这个参数,看公司项目UI图 具体是哪款机型,默认  iphone6
  RealUISrceenWidth  (4/4s 5/5s) 320.0  (6/6s 7/7s 8/8s) 375.0  (6p/6sp 7p/7ps 8p/8ps)  414.0 (x) 375
@@ -52,13 +54,20 @@ func kFormat_375(x: CGFloat) -> CGFloat {
  */
 
 /// 系统版本号
-let SysVersion = UIDevice.current.systemVersion
+let cv_sysVersion = UIDevice.current.systemVersion
 /// 系统名称("iOS", "tvOS", "watchOS", "macOS")
-let SysName = UIDevice.current.systemName
+let cv_sysName = UIDevice.current.systemName
 /// 设备名称
-let DeviceName = PhoneDeviceModel.get()
+let cv_deviceName = PhoneDeviceModel.get()
+/// 程序名称
+let cv_appDisplayName = Bundle.main.infoDictionary!["CFBundleDisplayName"] as? String
+/// 主程序版本号
+let cv_appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+/// build版本
+let cv_appBuildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+// 设备的唯一标示UUID
+let cv_UUID = CVKeyChain.appIdentifier()
 
-let cv_safeAreaInsets = cv_safeAreaInsetsIn(view: cv_AppDelegate.window)
 /// 安全区域
 func cv_safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
     
@@ -73,21 +82,23 @@ func cv_safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
     }
 }
 
-func cv_screen_height_safe() -> CGFloat {
+/// 屏幕的安全高度：屏幕高-上安全区域-下安全区域
+private func cv_screen_height_safe() -> CGFloat {
     let insets = cv_safeAreaInsetsIn(view: cv_AppDelegate.window)
     return SCREEN_HEIGHT - insets.top - insets.bottom
 }
 
-
-func cv_navigation_height() -> CGFloat {
-//    if #available(iOS 11.0, *) {
-        let safeAreaTop: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        return 44.0 + safeAreaTop;
-//    } else {
-//        return 64.0;
-//    }
+/// 导航栏的高度：导航栏高（44）+ 状态栏高（普通的20，iPhoneX是44）
+private func cv_navigation_height() -> CGFloat {
+    let safeAreaTop: CGFloat = UIApplication.shared.statusBarFrame.size.height
+    return 44.0 + safeAreaTop;
 }
 
+/// tabBar的高度：tabBar高（49）+ 下安全序区域（普通是0，iPhoneX是34）
+private func cv_tabBar_height() -> CGFloat {
+    let height = 49 + cv_safeAreaInsets.bottom
+    return height
+}
 
 
 /// 国际化
@@ -129,6 +140,13 @@ let ApplicationSupportPath = NSSearchPathForDirectoriesInDomains(.applicationSup
 let TmpPath = NSTemporaryDirectory()
 // 沙盒主目录路径
 let HomePath = NSHomeDirectory()
+
+
+/// 取随机数
+func cv_arc4random(min: UInt32 = 0, max: UInt32) -> UInt32 {
+    guard max > min else { return 0 }
+    return Darwin.arc4random() % max + min
+}
 
 // MARK: 获取手机设备型号  4s 5 5s 6 6p
 // 获取手机型号 5s 6 6p 6ps等

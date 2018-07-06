@@ -24,7 +24,7 @@ class CVMineViewController: CVBaseViewController {
 
     // MARK: Navigation
     override func layoutNavigationItem() {
-        self.navigationBar!.rightBarButtonItem = CVBarButtonItem.item(title: LS(self, key: "Setting", comment: "设置"), target: self, action: #selector(settingAction))
+        self.cv_navigationBar!.rightBarButtonItem = CVBarButtonItem.item(title: LS(self, key: "Setting", comment: "设置"), target: self, action: #selector(settingAction))
     }
     
     @objc func settingAction() {
