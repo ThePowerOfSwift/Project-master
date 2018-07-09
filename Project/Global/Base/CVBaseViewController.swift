@@ -32,7 +32,11 @@ class CVBaseViewController: UIViewController {
     var cv_navigationBar: CVNavigationBar!
     var leftBarButtonItem: CVBarButtonItem? {
         didSet {
-            if self.leftBarButtonItem != nil { self.cv_navigationBar.leftBarButtonItem = self.leftBarButtonItem }
+            if self.leftBarButtonItem != nil {
+                self.cv_navigationBar.margin = -5
+                self.cv_navigationBar.leftBarButtonItem = self.leftBarButtonItem
+                
+            }
         }
     }
     

@@ -134,12 +134,6 @@ open class CVNavigationBar: UIView {
                 view.setTitleColor(self.textColor(), for: .normal)
                 view.center.y = kDefaultBarTop + kDefaultBarHeight / 2
                 self.addSubview(view)
-                // 如果是内置的titleLabel，则需要处理leftItem的长度
-                if let item = self.leftBarButtonItem, let view = item.button {
-                    if view.frame.width + self.margin > self.titleLabel.frame.minX {
-                        view.frame.size.width = self.titleLabel.frame.minX - self.margin
-                    }
-                }
             }
         }
     }
@@ -161,12 +155,6 @@ open class CVNavigationBar: UIView {
                 view.setTitleColor(self.textColor(), for: .normal)
                 view.center.y = kDefaultBarTop + kDefaultBarHeight / 2
                 self.addSubview(view)
-                // 如果是内置的titleLabel，则需要处理rightItem的长度
-                if let item = self.rightBarButtonItem, let view = item.button {
-                    if view.frame.width + self.margin < self.titleLabel.frame.maxX {
-                        view.frame.size.width = self.titleLabel.frame.minX - self.margin
-                    }
-                }
             }
         }
     }
@@ -188,7 +176,7 @@ open class CVNavigationBar: UIView {
                     view.setTitleColor(self.textColor(), for: .normal)
                     view.center.y = kDefaultBarTop + kDefaultBarHeight / 2
                     self.addSubview(view)
-                        x = view.frame.maxX + self.spaceBetweenItems
+                    x = view.frame.maxX + self.spaceBetweenItems
                 }
             }
         }

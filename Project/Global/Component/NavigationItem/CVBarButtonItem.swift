@@ -80,7 +80,7 @@ open class CVBarButtonItem: NSObject {
     }
     
     class func item(title: String, target: Any?, action: Selector?) -> CVBarButtonItem {
-        return self.item(title: title, highlightedTitle: nil, target: target, action: action)
+        return self.item(title: title, highlightedTitle: title, target: target, action: action)
     }
     
     class func item(image: UIImage, highlightedImage: UIImage?, target: Any?, action: Selector?) -> CVBarButtonItem {
@@ -93,7 +93,7 @@ open class CVBarButtonItem: NSObject {
     }
     
     class func item(image: UIImage, target: Any?, action: Selector?) -> CVBarButtonItem {
-        return self.item(image: image, highlightedImage: nil, target: target, action: action)
+        return self.item(image: image, highlightedImage: image, target: target, action: action)
     }
     
     class func item(title: String, image: UIImage, target: Any?, action: Selector?) -> CVBarButtonItem {
