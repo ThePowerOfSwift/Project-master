@@ -99,7 +99,7 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            CVCameraPhoto.instanse.showCameraSheet(vc: self) { (image) in
+            COM.actionSheet(vc: self, title: nil, sheets: ["A", "B"]) { (index) -> (Void) in
                 
             }
             
@@ -108,7 +108,7 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
             
             CVAlertView.show(title: "", message: "asdf", cancelButtonTitle: "nil", otherButtonTitle: "确定") { (alertView, index) in
-                CVLog(message: index)
+                CVLog(index)
             }
             
 //            let vc = CVTestViewController()
@@ -118,15 +118,15 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 2 {
             let money = "30元"
             let msg = "中奖了" + money
-//            CVAlertView.show(title: "提示", message: msg, cancelButtonTitle: nil, otherButtonTitles: "确定", "确定1", "确定2") { (alertView, index) in
-//                CVLog(message: index)
+//            CVAlertView.show(title: "提示", msg, cancelButtonTitle: nil, otherButtonTitles: "确定", "确定1", "确定2") { (alertView, index) in
+//                CVLog(index)
 //            }
             
             let alert = CVAlertView.init(title: nil, message: msg, delegate: nil, cancelButtonTitle: "cancel", otherButtonTitles: ["aa", "bb", "cc"])
             alert.animationOption = .topToCenter
             alert.cancelTitleColor = UIColor.red
             alert.otherTitleColor = UIColor.orange
-
+            alert.visual = false
             alert.attributedText = msg.setAttribute(.foregroundColor, value: UIColor.red, string: money)
             
             alert.show()
@@ -180,14 +180,14 @@ extension CVHomeViewController : CVPickerViewDelegate, CVPickerViewDataSource {
     }
     
     func cv_cancel(_ pickerView: CVPickerView) {
-        CVLog(message: "Cancel PickerView")
+        CVLog("Cancel PickerView")
     }
     
     func cv_done(_ pickerView: CVPickerView) {
-        CVLog(message: "Done PickerView")
+        CVLog("Done PickerView")
     }
     
     func cv_pickerView(_ pickerView: CVPickerView, didSelectRow row: Int, inComponent component: Int) {
-        CVLog(message: "clickItem: \(component)-\(row)")
+        CVLog("clickItem: \(component)-\(row)")
     }
 }

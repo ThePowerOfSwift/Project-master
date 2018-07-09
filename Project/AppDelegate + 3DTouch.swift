@@ -82,7 +82,7 @@ extension AppDelegate {
     /// 事件的响应
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        CVLog(message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)")
+        CVLog("\(shortcutItem.localizedTitle), \(shortcutItem.type)")
         
         CVAlertView.show(title: "提示", message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)", cancelButtonTitle: "取消", otherButtonTitle: "确定") { (alertView, index) in
             

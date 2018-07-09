@@ -210,7 +210,7 @@ extension CVCycleScrollView: UIScrollViewDelegate {
         let currentPage = page % self.dataSource.count
         self.pageControl.currentPage = currentPage
         if autoScroll || infiniteLoop {
-            CVLog(message: "\(pageControl.currentPage)");
+            CVLog("\(pageControl.currentPage)");
             self.collectionView.scrollToItem(at: IndexPath(item: pageControl.currentPage, section: 1), at: .left, animated: false)
         }
     }

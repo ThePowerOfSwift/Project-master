@@ -70,7 +70,7 @@ extension CVSettingViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.cellForRow(at: indexPath) as! CVSettingCell
             cell.detailLabel!.text = "0K"
         default:
-            CVLog(message: "Other")
+            CVLog("Other")
         }
     }
 }

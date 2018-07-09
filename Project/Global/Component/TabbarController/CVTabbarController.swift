@@ -10,10 +10,11 @@ import UIKit
 
 class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     
-    var cv_tabbar: CVTabBar!
-    var cv_tabbarItems: [CVTabBarItem] = []
-    var cv_showItems: [Int] = []   // 控制在tabbar上面显示的item
+    public var cv_tabbar: CVTabBar!
+    public var cv_tabbarItems: [CVTabBarItem] = []
+    public var cv_showItems: [Int] = []   // 控制在tabbar上面显示的item
     
+    private var cv_hidenTabBar: Bool = false
     
     override var viewControllers: [UIViewController]? {
         didSet {
@@ -48,6 +49,35 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARKL: - Public Method
+    /// 显示tabBar
+    public func showTabBar(animation: Bool = true) {
+        if self.cv_hidenTabBar {
+            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
+                
+                self.cv_tabbar.isHidden = false
+                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT - self.cv_tabbar.cv_height, SCREEN_WIDTH, self.cv_tabbar.cv_height)
+                
+            }) { (finish) in
+                self.cv_hidenTabBar = false
+            }
+        }
+    }
+    
+    /// 隐藏tabBar
+    public func hiddenTabBar(animation: Bool = true) {
+        if self.cv_hidenTabBar == false {
+            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
+                
+                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.cv_tabbar.cv_height)
+                
+            }) { (finish) in
+                self.cv_tabbar.isHidden = true
+                self.cv_hidenTabBar = true
+            }
+        }
     }
     
     // MARKL: - Private Method

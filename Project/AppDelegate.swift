@@ -14,7 +14,8 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var cv_tabBarController: CVTabbarController?
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
@@ -26,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 计算app的启动次数，app每启动一次，计数+1
         statisticsAppRuns(showReview: true)
         
-        self.window!.rootViewController = CVBaseTabbarController()
+        self.cv_tabBarController = CVBaseTabbarController()
+        self.window!.rootViewController = self.cv_tabBarController
         self.window!.makeKeyAndVisible()
         
         /// 键盘toolBar
@@ -43,13 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reachability = Reachability()!
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi {
-                CVLog(message: "网络： WiFi")
+                CVLog("网络： WiFi")
             } else {
-                CVLog(message: "网络： Cellular")
+                CVLog("网络： Cellular")
             }
         }
         reachability.whenUnreachable = { _ in
-            CVLog(message: "没有网")
+            CVLog("没有网")
         }
         
         do {

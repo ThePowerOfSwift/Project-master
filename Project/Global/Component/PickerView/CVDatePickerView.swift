@@ -161,11 +161,11 @@ extension CVDatePickerView : CVPickerViewDelegate, CVPickerViewDataSource {
     }
     
     func cv_cancel(_ pickerView: CVPickerView) {
-        CVLog(message: "Cancel Date PickerView")
+        CVLog("Cancel Date PickerView")
     }
     
     func cv_done(_ pickerView: CVPickerView) {
-        CVLog(message: "Done Date PickerView")
+        CVLog("Done Date PickerView")
         if let closure = self.ClosureOnCheckSelectedDate {
             let year = yearIndex + self.minimumDate.year
             let month = monthIndex + self.minimumDate.month

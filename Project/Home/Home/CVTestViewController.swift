@@ -140,7 +140,7 @@ extension CVTestViewController: CVPageTabBarDelegate, CVPageTabBarDataSource {
     
     /// 点击某一个tab标签的回调
     func cv_tabBar(_ tabBar: CVPageTabBarView, didSelected index: Int) {
-        CVLog(message: index)
+        CVLog(index)
         
         if tabBar == self.tabbar3 {
             cv_delay(2) { [unowned self] in

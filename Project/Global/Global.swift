@@ -22,7 +22,7 @@ import Kingfisher
  *   定义DUBUG宏 TARGETS --> Build Settings --> Swift Complier - Custom Flags --> Other Swift Flags --> DEBUG
  　　　　格式 -D DEBUG 。也就是声明的宏之前要加一个这样的符号 -D 。它会自动分成两行显示。
  */
-func CVLog<N>(message: N, file: String = #file, method: String = #function, line: Int = #line) {
+func CVLog<N>(_ message: N, file: String = #file, method: String = #function, line: Int = #line) {
     #if DEBUG // 若是Debug模式下，则打印
         let fileName = (file as NSString).lastPathComponent
         print("\n文件名: \(fileName)\n方法: \(method)\n行号: \(line)\n打印信息: \(message)");

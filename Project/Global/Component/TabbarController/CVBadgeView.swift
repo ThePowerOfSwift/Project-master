@@ -52,6 +52,7 @@ class CVBadgeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.red
+        self.isUserInteractionEnabled = false
         self.setup()
         self.corner(radius: self.cv_height / 2, maskToBoudse: true)
     }

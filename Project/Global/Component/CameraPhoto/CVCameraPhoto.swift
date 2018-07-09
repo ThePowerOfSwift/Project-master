@@ -47,7 +47,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                     })
                 }
             default:
-                CVLog(message: "完善 swift 的default")
+                CVLog("完善 swift 的default")
             }
         }
     }

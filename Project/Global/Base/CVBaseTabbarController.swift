@@ -34,8 +34,8 @@ class CVBaseTabbarController: CVTabbarController {
         // 首页
         let homeVC =  CVHomeViewController()
         let homeNav = CVBaseNavigationController(rootViewController: homeVC)
-        homeVC.cv_tabbarItem.setImage(UIImageNamed("Tabbar_Home_N"), title: nil/*LS(self, key: "Home", comment: "首页")*/, titleColor: UIColor.grayColor_99)
-        homeVC.cv_tabbarItem.setImageH(UIImageNamed("Tabbar_Home_H"), titleH: nil/*LS(self, key: "Home", comment: "首页")*/, titleColorH: UIColor.colorWithHex(0xFF6600))
+        homeVC.cv_tabbarItem.setImage(UIImageNamed("Tabbar_Home_N"), title: LS(self, key: "Home", comment: "首页"), titleColor: UIColor.grayColor_99)
+        homeVC.cv_tabbarItem.setImageH(UIImageNamed("Tabbar_Home_H"), titleH: LS(self, key: "Home", comment: "首页"), titleColorH: UIColor.colorWithHex(0xFF6600))
         
         // 我的
         let mineVC =  CVMineViewController()

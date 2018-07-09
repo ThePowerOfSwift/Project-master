@@ -27,7 +27,6 @@
 		45053B6D204E65B300B5B34B /* CVKeyboardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */; };
 		45053B6E204E65B300B5B34B /* CVDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B6A204E65B300B5B34B /* CVDelay.swift */; };
 		45053B70204E65CF00B5B34B /* CVBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B6F204E65CF00B5B34B /* CVBaseViewController.swift */; };
-		45053B72204E65E300B5B34B /* CVBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B71204E65E300B5B34B /* CVBaseTableViewController.swift */; };
 		45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B73204E755800B5B34B /* CVBaseNavigationController.swift */; };
 		45053B77204E77DA00B5B34B /* CVBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B76204E77DA00B5B34B /* CVBarButtonItem.swift */; };
 		45053B79204E7D0700B5B34B /* CVNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B78204E7D0700B5B34B /* CVNavigationBar.swift */; };
@@ -154,7 +153,6 @@
 		45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVKeyboardTextView.swift; sourceTree = "<group>"; };
 		45053B6A204E65B300B5B34B /* CVDelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDelay.swift; sourceTree = "<group>"; };
 		45053B6F204E65CF00B5B34B /* CVBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseViewController.swift; sourceTree = "<group>"; };
-		45053B71204E65E300B5B34B /* CVBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseTableViewController.swift; sourceTree = "<group>"; };
 		45053B73204E755800B5B34B /* CVBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBaseNavigationController.swift; sourceTree = "<group>"; };
 		45053B76204E77DA00B5B34B /* CVBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBarButtonItem.swift; sourceTree = "<group>"; };
 		45053B78204E7D0700B5B34B /* CVNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNavigationBar.swift; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				45053B6F204E65CF00B5B34B /* CVBaseViewController.swift */,
-				45053B71204E65E300B5B34B /* CVBaseTableViewController.swift */,
 				45053B73204E755800B5B34B /* CVBaseNavigationController.swift */,
 				45B15BEE205A7513008C4F94 /* CVBaseTabbarController.swift */,
 				DE8D89EB2082DBF00043BFC8 /* CVRefreshAnimator.swift */,
@@ -1042,7 +1039,6 @@
 				45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */,
 				450194C72073491600777328 /* Date+Extension.swift in Sources */,
 				45090E4320B2787100F71746 /* CVPickerView.swift in Sources */,
-				45053B72204E65E300B5B34B /* CVBaseTableViewController.swift in Sources */,
 				45053B70204E65CF00B5B34B /* CVBaseViewController.swift in Sources */,
 				453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */,
 				45EE80102099AC790005DB6C /* CVCalendarModel.swift in Sources */,

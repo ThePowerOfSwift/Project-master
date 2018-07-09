@@ -18,7 +18,7 @@ func showAppStoreReview() -> Void {
     let runs = getRunCounts()
     if (runs % minimumRunCount == 0) {
         if #available(iOS 10.3, *) {
-            CVLog(message: "已请求评分")
+            CVLog("已请求评分")
             SKStoreReviewController.requestReview()
         } else {
             let open_review = "itms-apps://itunes.apple.com/app/id\(CVConstans.app_id)?action=write-review";

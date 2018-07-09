@@ -91,7 +91,7 @@ struct CVClient {
             return (url, [.removePreviousFile,.createIntermediateDirectories])
         }
         if let data = resumData {
-            CVLog(message: data)
+            CVLog(data)
             return manager!.download(resumingWith: data, to: destination)
         }
         return manager!.download(handleUrl(path), method: .get, parameters: handleParameters(parameters), encoding: URLEncoding.default, headers: headers, to: destination)

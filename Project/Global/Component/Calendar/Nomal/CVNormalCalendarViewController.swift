@@ -31,7 +31,7 @@ class CVNormalCalendarViewController: CVBaseViewController {
     var isPagingEnabled: Bool = false
     
     deinit {
-        CVLog(message: "release normal calendar")
+        CVLog("release normal calendar")
     }
     
     override func viewDidLoad() {
