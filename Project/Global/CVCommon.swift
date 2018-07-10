@@ -41,24 +41,6 @@ final class CVCommon {
     func value(forKey key: String) -> Any? {
         return UserDefaults.standard.value(forKey: key)
     }
-    
-    // MARK: ActionSheet 弹框
-    @discardableResult
-    func actionSheet(vc: UIViewController, title: String?, sheets: [String], callBack:(@escaping (_ index: Int)->(Void))) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-        for (i, value) in sheets.enumerated() {
-            let alertAction = UIAlertAction(title: value, style: .default, handler: { (_) in
-                callBack(i)
-            })
-            alertController.addAction(alertAction)
-        }
-
-        let alertAction = UIAlertAction(title: LS(key: "Cancel", comment: "取消"), style: .cancel, handler: nil)
-        alertController.addAction(alertAction)
-
-        vc.present(alertController, animated: true, completion: nil)
-        return alertController
-    }
 
 }
 

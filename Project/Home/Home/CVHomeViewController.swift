@@ -17,7 +17,7 @@ class CVHomeViewController: CVBaseViewController {
     var viewModel: CVHomeViewModel = CVHomeViewModel()
     lazy var imageView = cv_imageView(image: nil, super: self.view)
     var pickView: CVPickerView!
-    
+    var sheet: CVActionSheet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +58,6 @@ class CVHomeViewController: CVBaseViewController {
             }
         }
         self.tableView.startRefreshing()
-        
-        
-       
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -99,59 +96,28 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            COM.actionSheet(vc: self, title: nil, sheets: ["A", "B"]) { (index) -> (Void) in
-                
+            CVCameraPhoto.instanse.showCameraSheet(vc: self) { (image) in
+                CVLog(image)
             }
             
 //            let vc = CVNormalCalendarViewController()
 //            self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {
             
-            CVAlertView.show(title: "", message: "asdf", cancelButtonTitle: "nil", otherButtonTitle: "确定") { (alertView, index) in
-                CVLog(index)
-            }
-            
-//            let vc = CVTestViewController()
-//            vc.index = indexPath.row
-//            self.navigationController?.pushViewController(vc, animated: true)
+
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
 
         } else if indexPath.row == 2 {
-            let money = "30元"
-            let msg = "中奖了" + money
-//            CVAlertView.show(title: "提示", msg, cancelButtonTitle: nil, otherButtonTitles: "确定", "确定1", "确定2") { (alertView, index) in
-//                CVLog(index)
-//            }
-            
-            let alert = CVAlertView.init(title: nil, message: msg, delegate: nil, cancelButtonTitle: "cancel", otherButtonTitles: ["aa", "bb", "cc"])
-            alert.animationOption = .topToCenter
-            alert.cancelTitleColor = UIColor.red
-            alert.otherTitleColor = UIColor.orange
-            alert.visual = false
-            alert.attributedText = msg.setAttribute(.foregroundColor, value: UIColor.red, string: money)
-            
-            alert.show()
-            
-//            let vc = CVTestViewController()
-//            vc.index = indexPath.row
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 3 {
-            
-            let string = "1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n3. gogogo\n1. ALERT\n2. message\n30. gogogo --"
-            
-            let alert = CVAlertView.init(title: nil, message: string, delegate: nil, cancelButtonTitle: "cancel", otherButtonTitles: ["aa", "bb", "cc"])
-            alert.animationOption = .topToCenter
-            alert.textAlignment = .left
-            alert.cancelTitleColor = UIColor.red
-            alert.otherTitleColor = UIColor.purple
-            alert.attributedText = string.setNumberColor(UIColor.red, font: UIFont.font_18)!.addLineSpace(14)?.addKern(4)
 
-            alert.show()
-            
-            
-            
-//            let vc = CVTestViewController()
-//            vc.index = indexPath.row
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = CVTestViewController()
+            vc.index = indexPath.row
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

@@ -29,11 +29,7 @@ enum CVAlertViewAnimationOptions {
     case topToCenter    // 从上到中间
 }
 
-enum CVTextAlignment {
-    case left
-    case center
-    case right
-}
+
 
 protocol CVAlertViewDelegate {
     /// alert 被点击时的回调
@@ -134,8 +130,6 @@ class CVAlertView: UIView {
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         
         messageScrollView = UIScrollView(frame: CGRect(x: margin_left, y: 22, width: contentWidth - margin_left * 2, height: 0))
-        messageScrollView.showsVerticalScrollIndicator = false
-        messageScrollView.showsHorizontalScrollIndicator = false
         
         messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: messageScrollView.frame.width, height: 0))
         messageLabel.textColor = UIColor.black
@@ -165,7 +159,7 @@ class CVAlertView: UIView {
         
         // 标题
         self.title = title
-        self.titleLabel.text   = title
+        self.titleLabel.text = title
         
         // 消息
         self.message = message
@@ -480,7 +474,7 @@ class CVAlertView: UIView {
     // MARK: - Actions
     
     /// 点击了取消按钮
-    @objc func onClickCancel(button: UIButton) {
+    @objc private func onClickCancel(button: UIButton) {
         self.delegate?.alertView(alertView: self, clickedButtonAtIndex: 0)
         if let aBlock = self.clickButtonBlock {
             aBlock(self, 0)
@@ -489,7 +483,7 @@ class CVAlertView: UIView {
     }
     
     /// 点击了其他的按钮
-    @objc func onClickOther(button: UIButton) {
+    @objc private func onClickOther(button: UIButton) {
         let buttonIndex = self.otherButtonArray.index(of: button)! + 1
         self.delegate?.alertView(alertView: self, clickedButtonAtIndex: buttonIndex)
         if let aBlock = self.clickButtonBlock {
