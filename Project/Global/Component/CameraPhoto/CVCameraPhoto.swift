@@ -11,11 +11,16 @@ import UIKit
 
 class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    static let instanse = CVCameraPhoto()
+    private static let instanse = CVCameraPhoto()
     
     private var callBack: ((_ value: UIImage) -> Void)?
     
-    func showCameraSheet(vc: UIViewController, _ call: @escaping ((_ value: UIImage) -> Void)) {
+    class func showCameraSheet(vc: UIViewController, _ call: @escaping ((_ value: UIImage) -> Void)) {
+        CVCameraPhoto.instanse.showCameraSheet(vc: vc, call)
+    }
+    
+    
+    private func showCameraSheet(vc: UIViewController, _ call: @escaping ((_ value: UIImage) -> Void)) {
         
         self.callBack = call
         

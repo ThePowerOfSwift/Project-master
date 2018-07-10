@@ -96,7 +96,7 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-            CVCameraPhoto.instanse.showCameraSheet(vc: self) { (image) in
+            CVCameraPhoto.showCameraSheet(vc: self) { (image) in
                 CVLog(image)
             }
             
