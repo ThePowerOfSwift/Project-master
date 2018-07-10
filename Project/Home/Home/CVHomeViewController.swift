@@ -104,10 +104,17 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
 //            self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {
             
+            CVAlertView.show(title: "nil", message: "asdf", cancelButtonTitle: "asdf", otherButtonTitles: "a", "a","a","a","a","a","a","a","a","a","a") { (index) in
+                
+            }
+            
+//            CVActionSheet.show(title: "nil", sheets: "a", "a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","b") { (index) in
+//
+//            }
 
-            let vc = CVTestViewController()
-            vc.index = indexPath.row
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = CVTestViewController()
+//            vc.index = indexPath.row
+//            self.navigationController?.pushViewController(vc, animated: true)
 
         } else if indexPath.row == 2 {
             let vc = CVTestViewController()

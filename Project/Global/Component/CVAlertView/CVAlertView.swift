@@ -20,7 +20,7 @@ private let color_button_title_other = UIColor.init(red: 70.0/255, green: 130.0/
 private let color_button_bg_image = UIColor.init(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
 private let color_line = UIColor.init(red: 219.0/255, green: 219.0/255, blue: 219.0/255, alpha: 1.0)
 
-typealias CVAlertViewClickButtonClosure = ((_ alertView: CVAlertView, _ buttonIndex: Int) -> Void)?
+typealias CVAlertViewClosure = ((_ buttonIndex: Int) -> Void)?
 
 /// alertView出现时的动画
 enum CVAlertViewAnimationOptions {
@@ -29,16 +29,8 @@ enum CVAlertViewAnimationOptions {
     case topToCenter    // 从上到中间
 }
 
-
-
-protocol CVAlertViewDelegate {
-    /// alert 被点击时的回调
-    func alertView(alertView: CVAlertView, clickedButtonAtIndex: Int)
-}
-
 class CVAlertView: UIView {
     
-    public var delegate: CVAlertViewDelegate?
     public var animationOption: CVAlertViewAnimationOptions = .none
     public var textAlignment: CVTextAlignment = .center {
         willSet {
@@ -111,7 +103,7 @@ class CVAlertView: UIView {
     
     private var cancelButtonTitle: String?
     private var otherButtonTitles: [String]? = []
-    private var clickButtonBlock: CVAlertViewClickButtonClosure
+    private var clickButtonClosure: CVAlertViewClosure
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -153,7 +145,7 @@ class CVAlertView: UIView {
     }
     
     /// 遍历构造器
-    public convenience init(title: String?, message: String?, delegate: CVAlertViewDelegate?, cancelButtonTitle: String?, otherButtonTitles: [String]?) {
+    public convenience init(title: String?, message: String?, cancelButtonTitle: String?, otherButtonTitles: [String]?, clickButtonClosure: CVAlertViewClosure) {
         
         self.init()
         
@@ -167,7 +159,7 @@ class CVAlertView: UIView {
         self.messageLabel.text = message
         self.messageLabel.sizeToFit()
         
-        self.delegate = delegate
+        self.clickButtonClosure = clickButtonClosure
         self.cancelButtonTitle = cancelButtonTitle
         
         if var others = otherButtonTitles {
@@ -186,7 +178,7 @@ class CVAlertView: UIView {
     
     // MARK: - Public Method
     @discardableResult
-    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonBlock: CVAlertViewClickButtonClosure) -> CVAlertView {
+    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonClosure: CVAlertViewClosure) -> CVAlertView {
         var others: [String] = []
         for c in otherButtonTitles {
             if let string = c {
@@ -195,17 +187,8 @@ class CVAlertView: UIView {
                 break
             }
         }
-        let alertView = CVAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: cancelButtonTitle, otherButtonTitles: others)
-        alertView.clickButtonBlock = clickButtonBlock
-        alertView.show()
-        return alertView
-    }
-    
-    @discardableResult
-    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitle: String?, clickButtonBlock: CVAlertViewClickButtonClosure) -> CVAlertView {
-        let others: [String] = otherButtonTitle != nil ? [otherButtonTitle!] : []
-        let alertView = CVAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: cancelButtonTitle, otherButtonTitles: others)
-        alertView.clickButtonBlock = clickButtonBlock
+        let alertView = CVAlertView(title: title, message: message, cancelButtonTitle: cancelButtonTitle, otherButtonTitles: others, clickButtonClosure: clickButtonClosure)
+        alertView.clickButtonClosure = clickButtonClosure
         alertView.show()
         return alertView
     }
@@ -475,9 +458,8 @@ class CVAlertView: UIView {
     
     /// 点击了取消按钮
     @objc private func onClickCancel(button: UIButton) {
-        self.delegate?.alertView(alertView: self, clickedButtonAtIndex: 0)
-        if let aBlock = self.clickButtonBlock {
-            aBlock(self, 0)
+        if let aBlock = self.clickButtonClosure {
+            aBlock(0)
         }
         self.remove()
     }
@@ -485,9 +467,8 @@ class CVAlertView: UIView {
     /// 点击了其他的按钮
     @objc private func onClickOther(button: UIButton) {
         let buttonIndex = self.otherButtonArray.index(of: button)! + 1
-        self.delegate?.alertView(alertView: self, clickedButtonAtIndex: buttonIndex)
-        if let aBlock = self.clickButtonBlock {
-            aBlock(self, buttonIndex)
+        if let aBlock = self.clickButtonClosure {
+            aBlock(buttonIndex)
         }
         self.remove()
     }

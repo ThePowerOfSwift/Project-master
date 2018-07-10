@@ -10,6 +10,8 @@ import UIKit
 
 private let screenWidth  = UIScreen.main.bounds.size.width
 private let screenHeight = UIScreen.main.bounds.size.height
+private let safe_area_top = cv_safeAreaInsets.top
+private let safe_area_bottom = cv_safeAreaInsets.bottom
 private let height_button: CGFloat = 50
 private let height_bottom_view: CGFloat = 70
 private let margin_left: CGFloat = 10
@@ -113,26 +115,25 @@ class CVActionSheet: UIView {
     
     // MARK: - init
     override init(frame: CGRect) {
-        contentView = UIView(frame: CGRect(x: margin_left, y: 0.0, width: screenWidth - 2 * margin_left, height: 0))
+        contentView = UIView()
         contentView.backgroundColor = UIColor.clear
         contentView.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
         contentView.layer.cornerRadius  = 10
         contentView.layer.masksToBounds = true
         
-        titleLabel = UILabel(frame: CGRect(x: margin_left, y: 22, width: contentView.frame.height - margin_left * 2, height: 0))
+        titleLabel = UILabel()
         titleLabel.textColor = color_title
         titleLabel.textAlignment = .center
         titleLabel.font = self.titleFont
         
-        scrollView = UIScrollView(frame: CGRect(x: margin_left, y: 22, width: contentView.frame.height - margin_left * 2, height: 0))
+        scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.clear
         
         
-        bottomView = UIView(frame: CGRect(x: 0, y: screenHeight - height_bottom_view, width: screenWidth, height: height_bottom_view))
+        bottomView = UIView()
         bottomView.backgroundColor = UIColor.clear
         
         effectView = UIVisualEffectView()
-        effectView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         effectView.effect = nil
         effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         super.init(frame: frame)
@@ -258,7 +259,7 @@ class CVActionSheet: UIView {
         // cancel
         let title = self.cancelButtonTitle
         let selector = #selector(onClickCancel(button:))
-        let cancelY = (self.bottomView.frame.height - height_button) / 2
+        let cancelY = (height_bottom_view - height_button) / 2
         // cancel
         let cancelBtn = generateButton(frame: CGRect(x: 0, y: cancelY, width: screenWidth - 2 * margin_left, height: height_button), title: title, target: self, action: selector)
         cancelBtn.setTitleColor(color_button_title_cancel, for: .normal)
@@ -291,19 +292,19 @@ class CVActionSheet: UIView {
         if self.title == nil || self.title?.count == 0 {
             contentViewHeight = scrollH
         }
-        if contentViewHeight > screenHeight - 30 {  // 屏幕上边留最少30的边距
+        if contentViewHeight > screenHeight - safe_area_bottom - safe_area_top - 30 {  // 屏幕上边留最少30的边距
             if self.title == nil || self.title?.count == 0 {
-                contentViewHeight = screenHeight - 30 - height_bottom_view
+                contentViewHeight = screenHeight - safe_area_bottom - safe_area_top - 30 - height_bottom_view
                 scrollH = contentViewHeight
             } else {
-                contentViewHeight = screenHeight - 30 - height_bottom_view
+                contentViewHeight = screenHeight - safe_area_bottom - safe_area_top - 30 - height_bottom_view
                 scrollH = contentViewHeight - (self.titleLabel.frame.maxY + space)
             }
         }
         
         let width = screenWidth - margin_left * 2
         
-        self.contentView_Y = screenHeight - contentViewHeight - height_bottom_view
+        self.contentView_Y = screenHeight - safe_area_bottom - contentViewHeight - height_bottom_view
         
         self.contentView.frame = CGRect(x: margin_left, y: self.contentView_Y, width: width, height: contentViewHeight)
         self.titleLabel.frame = CGRect(x: labelX, y: labelY, width: labelW, height: size.height)

@@ -30,7 +30,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                     vc.present(picker, animated: true, completion: nil)   // 打开相机
                 } else {
                     
-                    CVAlertView.show(title: LS(key: "Tip", comment: "提示"), message: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancelButtonTitle: LS(key: "Cancel", comment: "取消"), otherButtonTitle: nil, clickButtonBlock: { (alertView, index) in
+                    CVAlertView.show(title: LS(key: "Tip", comment: "提示"), message: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancelButtonTitle: LS(key: "Cancel", comment: "取消"), otherButtonTitles: nil, clickButtonClosure: { (index) in
                         
                     })
                 }
@@ -42,7 +42,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                     picker.allowsEditing = true // 允许编辑
                     vc.present(picker, animated: true, completion: nil)   // 打开相机
                 } else {
-                    CVAlertView.show(title: LS(key: "Tip", comment: "提示"), message: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancelButtonTitle: LS(key: "Cancel", comment: "取消"), otherButtonTitle: nil, clickButtonBlock: { (alertView, index) in
+                    CVAlertView.show(title: LS(key: "Tip", comment: "提示"), message: LS(self, key: "NotSupportVideo", comment: "该设备不支持摄像"), cancelButtonTitle: LS(key: "Cancel", comment: "取消"), otherButtonTitles: nil, clickButtonClosure: { (index) in
                         
                     })
                 }

@@ -11,7 +11,7 @@ import UIKit
 
 extension AppDelegate {
     
-    private enum Pointer {
+    private struct Pointer {
         static var locationVC: String = "locationVC"
         static var commitVC: String = "commitVC"
         static var sourceVC: String = "sourceVC"
@@ -22,7 +22,7 @@ extension AppDelegate {
             objc_setAssociatedObject(self, &Pointer.locationVC, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
         get {
-            return objc_getAssociatedObject(self, &Pointer.locationVC) as! UIViewController
+            return objc_getAssociatedObject(self, &Pointer.locationVC) as? UIViewController
         }
     }
     var commitVC: UIViewController? {
@@ -30,7 +30,7 @@ extension AppDelegate {
             objc_setAssociatedObject(self, &Pointer.commitVC, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
         get {
-            return objc_getAssociatedObject(self, &Pointer.commitVC) as! UIViewController
+            return objc_getAssociatedObject(self, &Pointer.commitVC) as? UIViewController
         }
     }
     var sourceVC: UIViewController? {
@@ -38,7 +38,7 @@ extension AppDelegate {
             objc_setAssociatedObject(self, &Pointer.sourceVC, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
         get {
-            return objc_getAssociatedObject(self, &Pointer.sourceVC) as! UIViewController
+            return objc_getAssociatedObject(self, &Pointer.sourceVC) as? UIViewController
         }
     }
 
@@ -84,7 +84,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         CVLog("\(shortcutItem.localizedTitle), \(shortcutItem.type)")
         
-        CVAlertView.show(title: "提示", message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)", cancelButtonTitle: "取消", otherButtonTitle: "确定") { (alertView, index) in
+        CVAlertView.show(title: "提示", message: "\(shortcutItem.localizedTitle), \(shortcutItem.type)", cancelButtonTitle: "取消", otherButtonTitles: "确定") { (index) in
             
         }
         
