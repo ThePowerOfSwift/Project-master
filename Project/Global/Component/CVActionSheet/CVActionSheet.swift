@@ -108,6 +108,9 @@ class CVActionSheet: UIView {
     private var sheets: [String] = []
     private var clickButtonClosure: CVActionSheetClosure
     
+    private var contentView_Y: CGFloat = 0
+    private var bottomView_Y: CGFloat = 0
+    
     // MARK: - init
     override init(frame: CGRect) {
         contentView = UIView(frame: CGRect(x: margin_left, y: 0.0, width: screenWidth - 2 * margin_left, height: 0))
@@ -156,9 +159,13 @@ class CVActionSheet: UIView {
         }
         self.sheets = others
         
+        self.clickButtonClosure = clickButtonClosure
+        
         self.setupDefault()
         self.setupButton()
         self.updateFrame()
+        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapGesture)))
     }
     
     // MARK: - Public Method
@@ -197,12 +204,15 @@ class CVActionSheet: UIView {
         
         UIApplication.shared.keyWindow?.addSubview(self)
         
-        self.contentView.alpha = 0.0
-        UIView.animate(withDuration: 0.34, animations: { [unowned self] in
+        self.contentView.frame.origin.y = screenHeight
+        self.bottomView.frame.origin.y = screenHeight + self.contentView.frame.height
+
+        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
             if self.visual == true {
                 self.effectView.effect = UIBlurEffect(style: .dark)
             }
-            self.contentView.alpha = 1.0
+            self.contentView.frame.origin.y = self.contentView_Y
+            self.bottomView.frame.origin.y = self.bottomView_Y
         })
     }
     
@@ -263,7 +273,6 @@ class CVActionSheet: UIView {
         self.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         self.effectView.frame = self.bounds
         
-        
         // 标题
         let labelX: CGFloat = margin_left
         let labelY: CGFloat = 5
@@ -294,13 +303,17 @@ class CVActionSheet: UIView {
         
         let width = screenWidth - margin_left * 2
         
-        self.contentView.frame = CGRect(x: margin_left, y: screenHeight - contentViewHeight - height_bottom_view, width: width, height: contentViewHeight)
+        self.contentView_Y = screenHeight - contentViewHeight - height_bottom_view
         
+        self.contentView.frame = CGRect(x: margin_left, y: self.contentView_Y, width: width, height: contentViewHeight)
         self.titleLabel.frame = CGRect(x: labelX, y: labelY, width: labelW, height: size.height)
         let y: CGFloat = (self.title == nil || self.title?.count == 0) ? 0 : self.titleLabel.frame.maxY + space
         self.scrollView.frame = CGRect(x: 0, y: y, width: width, height: scrollH)
         self.scrollView.contentSize = CGSize(width: width, height: height_button * CGFloat(self.buttonArray.count))
-        self.bottomView.frame = CGRect(x: self.contentView.frame.minX, y: self.contentView.frame.maxY, width: width, height: height_bottom_view)
+        
+        
+        self.bottomView_Y = self.contentView.frame.maxY
+        self.bottomView.frame = CGRect(x: self.contentView.frame.minX, y: self.bottomView_Y, width: width, height: height_bottom_view)
         
     }
 
@@ -340,7 +353,8 @@ class CVActionSheet: UIView {
             if self.visual == true {
                 self.effectView.effect = nil
             }
-            self.contentView.alpha = 0.0
+            self.contentView.frame.origin.y = screenHeight
+            self.bottomView.frame.origin.y = screenHeight + self.contentView.frame.height
         }, completion: { [unowned self] (finished: Bool) in
             self.removeFromSuperview()
         })
@@ -365,5 +379,10 @@ class CVActionSheet: UIView {
         }
         self.selectedIndex = buttonIndex - 1
         self.remove()
+    }
+    
+    /// 手势：点击屏幕消失
+    @objc private func onTapGesture() {
+        self.onClickCancel(button: self.cancelButton)
     }
 }

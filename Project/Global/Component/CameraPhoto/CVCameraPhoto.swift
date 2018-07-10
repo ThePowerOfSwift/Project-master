@@ -19,7 +19,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
         
         self.callBack = call
         
-        CVActionSheet.show(title: LS(self, key: "Title", comment: "选择图片"), sheets: LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")) { [unowned self] (index) in
+        let actionSheet = CVActionSheet(title: LS(self, key: "Title", comment: "选择图片"), sheets: [LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")]) { [unowned self] (index) in
             switch index {
             case 1:     // 相机
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -50,6 +50,8 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
                 CVLog("完善 swift 的default")
             }
         }
+        actionSheet.visual = false
+        actionSheet.show()
     }
     
     // MARK: 获取系统的图片
