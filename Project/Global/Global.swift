@@ -29,7 +29,7 @@ func CVLog<N>(_ message: N, file: String = #file, method: String = #function, li
     #endif
 }
 
-/// 屏幕尺寸
+// MARK: - 屏幕尺寸
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.height
 let cv_safeAreaInsets = cv_safeAreaInsetsIn(view: cv_AppDelegate.window)
@@ -38,12 +38,13 @@ let cv_safeNavBarHeight = cv_navigation_height()
 let cv_safeTabBarHeight = cv_tabBar_height()
 let cv_AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
-/// 系统版本
+// MARK: - 系统版本
 let IOS8 = (UIDevice.current.systemVersion as NSString).doubleValue >= 8.0
 let IOS9 = (UIDevice.current.systemVersion as NSString).doubleValue >= 9.0
 let IOS10 = (UIDevice.current.systemVersion as NSString).doubleValue >= 10.0
 let IOS11 = (UIDevice.current.systemVersion as NSString).doubleValue >= 11.0
 
+// MARK: - 屏幕适配
 /// 根据 375 的设计图，进行尺寸变换
 func cv_format_375(x: CGFloat) -> CGFloat {
     return SCREEN_WIDTH / 375 * x
@@ -53,6 +54,7 @@ func cv_format_375(x: CGFloat) -> CGFloat {
  RealUISrceenHeight (4/4s) 修改480 (5/5s) 568.0  (6/6s 7/7s 8/8s) 667.0  (6p/6sp 7p/7ps 8p/8ps) 736.0  (x) 812 (备用)
  */
 
+// MARK: - 设备信息，版本号
 /// 系统版本号
 let cv_sysVersion = UIDevice.current.systemVersion
 /// 系统名称("iOS", "tvOS", "watchOS", "macOS")
@@ -68,6 +70,7 @@ let cv_appBuildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! Stri
 // 设备的唯一标示UUID
 let cv_UUID = CVKeyChain.appIdentifier()
 
+// MARK: - 安全域
 /// 安全区域
 func cv_safeAreaInsetsIn(view: UIView?) -> UIEdgeInsets {
     
@@ -101,7 +104,7 @@ private func cv_tabBar_height() -> CGFloat {
 }
 
 
-/// 国际化
+// MARK: - 国际化
 func LS(key: String, comment: String?) -> String {
     return LS(nil, key: key, comment: comment)
 }
@@ -128,7 +131,7 @@ func LS(_ target: Any?, key: String, comment: String?) -> String {
 }
 
 
-/// 目录路径
+// MARK: - 目录路径
 // Documents目录路径
 let DocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
 let LibraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
@@ -142,17 +145,31 @@ let TmpPath = NSTemporaryDirectory()
 let HomePath = NSHomeDirectory()
 
 
-/// 取随机数
+// MARK: - 取随机数
 func cv_arc4random(min: UInt32 = 0, max: UInt32) -> UInt32 {
     guard max > min else { return 0 }
     return Darwin.arc4random() % max + min
 }
 
 
-/// 文本的位置
+// MARK: - 文本的位置
 enum CVTextAlignment {
     case left
     case center
     case right
 }
 
+// MARK: - 电话呼叫
+/// - phone: 被叫方的电话号码
+/// - immediately: 是否跳过确认提示 默认需要确认
+/// - Return: 不支持电话功能时返回 false
+@discardableResult
+public func cv_call(_ phone: String, immediately: Bool = false) -> Bool {
+    let typeString = immediately ? "tel" : "telprompt"
+    if let callURL = URL(string: typeString + "://" + phone),
+        UIApplication.shared.canOpenURL(callURL) {
+        UIApplication.shared.openURL(callURL)
+        return true
+    }
+    return false
+}

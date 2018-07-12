@@ -41,6 +41,8 @@
 		451C9D252064F3C40075FA08 /* CVSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C9D242064F3C40075FA08 /* CVSettingCell.swift */; };
 		451C9D272064F7F10075FA08 /* CVSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C9D262064F7F10075FA08 /* CVSettingModel.swift */; };
 		45283E2820B801060040808F /* CVSortTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45283E2720B801060040808F /* CVSortTabView.swift */; };
+		452F9B0820F72DD800E8597E /* CVHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F9B0720F72DD800E8597E /* CVHUD.swift */; };
+		452F9B0A20F73FD300E8597E /* CVHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 452F9B0920F73FD300E8597E /* CVHUD.bundle */; };
 		453643FB2056310400897E6B /* CVTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453643FA2056310400897E6B /* CVTimerButton.swift */; };
 		453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2920ECB870006994A5 /* CVTabBarItem.swift */; };
 		453BFB2C20ECBE2D006994A5 /* CVBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */; };
@@ -48,6 +50,7 @@
 		453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F7B5920A044AD00933E55 /* Array+Extension.swift */; };
 		4542FE2420B3EA6C00869655 /* CVPickerViewReusingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */; };
 		4542FE2620B3EB8A00869655 /* CVDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */; };
+		45524A4B20F4AA3C000BB796 /* CVProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45524A4A20F4AA3C000BB796 /* CVProgressHUD.swift */; };
 		455D8ABC206CB77100BBACBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8ABB206CB77100BBACBD /* Api.swift */; };
 		455D8AC3206CBA2800BBACBD /* CVClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8AC2206CBA2800BBACBD /* CVClient.swift */; };
 		455FA02D2092F1E00061B33A /* CVUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02C2092F1E00061B33A /* CVUtil.swift */; };
@@ -170,6 +173,8 @@
 		451C9D242064F3C40075FA08 /* CVSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSettingCell.swift; sourceTree = "<group>"; };
 		451C9D262064F7F10075FA08 /* CVSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSettingModel.swift; sourceTree = "<group>"; };
 		45283E2720B801060040808F /* CVSortTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSortTabView.swift; sourceTree = "<group>"; };
+		452F9B0720F72DD800E8597E /* CVHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVHUD.swift; sourceTree = "<group>"; };
+		452F9B0920F73FD300E8597E /* CVHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CVHUD.bundle; sourceTree = "<group>"; };
 		453643FA2056310400897E6B /* CVTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimerButton.swift; sourceTree = "<group>"; };
 		453BFB2920ECB870006994A5 /* CVTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTabBarItem.swift; sourceTree = "<group>"; };
 		453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBadgeView.swift; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 		453F7B5920A044AD00933E55 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPickerViewReusingView.swift; sourceTree = "<group>"; };
 		4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDatePickerView.swift; sourceTree = "<group>"; };
+		45524A4A20F4AA3C000BB796 /* CVProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVProgressHUD.swift; sourceTree = "<group>"; };
 		455D8ABB206CB77100BBACBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		455D8AC2206CBA2800BBACBD /* CVClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVClient.swift; sourceTree = "<group>"; };
 		455FA02C2092F1E00061B33A /* CVUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVUtil.swift; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 		45053B64204E65B300B5B34B /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				45524A4920F4AA20000BB796 /* CVProgressHUD */,
 				458EC67920F30D2600CF07AA /* CVActionSheet */,
 				45B3248020EA257300D30DBD /* CVAlertView */,
 				45DF437820B690D600919ED1 /* CVPageController */,
@@ -487,6 +494,16 @@
 				92B012400AEB94A7E12C06C2 /* Pods_ProjectUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45524A4920F4AA20000BB796 /* CVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				45524A4A20F4AA3C000BB796 /* CVProgressHUD.swift */,
+				452F9B0720F72DD800E8597E /* CVHUD.swift */,
+				452F9B0920F73FD300E8597E /* CVHUD.bundle */,
+			);
+			path = CVProgressHUD;
 			sourceTree = "<group>";
 		};
 		455D8ABE206CB9B600BBACBD /* Client */ = {
@@ -848,6 +865,7 @@
 				45053B27204E35A400B5B34B /* LaunchScreen.storyboard in Resources */,
 				4514A708207C6773000F0CFD /* 1.json in Resources */,
 				45B6B88F20592A3300F01F1B /* Localizable.strings in Resources */,
+				452F9B0A20F73FD300E8597E /* CVHUD.bundle in Resources */,
 				45B6B889205924B200F01F1B /* InfoPlist.strings in Resources */,
 				45053B24204E35A400B5B34B /* Assets.xcassets in Resources */,
 				DE8D89F9208353F30043BFC8 /* cycle_placeholder.png in Resources */,
@@ -1048,6 +1066,7 @@
 			files = (
 				45B15BEA205A6D80008C4F94 /* CVCommon.swift in Sources */,
 				455D8ABC206CB77100BBACBD /* Api.swift in Sources */,
+				452F9B0820F72DD800E8597E /* CVHUD.swift in Sources */,
 				453643FB2056310400897E6B /* CVTimerButton.swift in Sources */,
 				45B44D722052202400A67F6D /* UIImage+Extension.swift in Sources */,
 				45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */,
@@ -1091,6 +1110,7 @@
 				45DB84DA209C5E6100149215 /* CVNomalCalendarFlowLayout.swift in Sources */,
 				45B15BED205A74FB008C4F94 /* CVTabbarController.swift in Sources */,
 				45DB84DD209DE43800149215 /* CVNormalCalendarHeaderView.swift in Sources */,
+				45524A4B20F4AA3C000BB796 /* CVProgressHUD.swift in Sources */,
 				45B15C0C205A7F90008C4F94 /* CVMineViewController.swift in Sources */,
 				45053B6B204E65B300B5B34B /* CVPlaceholderTextView.swift in Sources */,
 				453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */,
