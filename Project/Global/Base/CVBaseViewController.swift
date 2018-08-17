@@ -32,7 +32,6 @@ class CVBaseViewController: UIViewController {
     override var cv_leftBarButtonItem: CVBarButtonItem? {
         didSet {
             if self.cv_leftBarButtonItem != nil {
-                self.cv_navigationBar?.margin = -5
                 self.cv_navigationBar?.leftBarButtonItem = self.cv_leftBarButtonItem
             }
         }
@@ -140,7 +139,7 @@ class CVBaseViewController: UIViewController {
         self.view.addSubview(self.cv_navigationBar!)
         // self.navigationBar.isShadowHidden = false
         self.cv_navigationBar?.isBottomLineHidden = false
-        self.cv_navigationBar?.margin = 5
+        self.cv_navigationBar?.margin = 0
         
         if self.navigationController?.viewControllers.count == 1 {
             self.cv_leftBarButtonItem = nil

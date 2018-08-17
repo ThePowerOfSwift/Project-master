@@ -13,7 +13,7 @@ private let kDefaultTitleColor: UIColor = UIColor.blue
 private let kDefaultBtnHeight: CGFloat = 40
 
 open class CVBarButtonItem: NSObject {
-    // MARK: Property
+    /* 公有属性 */
     var title: String? {
         didSet { self.button!.setTitle(title, for: .normal) }
     }
@@ -54,7 +54,10 @@ open class CVBarButtonItem: NSObject {
 //            self.updateContentSpace(position: self.position, space: space)
         }
     }
+    public var customView: UIView?
+
     
+    /* 私有属性 */
     private var space: CGFloat = 0 // title 和 image 之间 的距离
     private var imageN: UIImage? { didSet { self.button!.setImage(self.imageN, for: .normal) } }
     private var imageH: UIImage? { didSet { self.button!.setImage(self.imageH, for: .highlighted) } }
@@ -67,8 +70,10 @@ open class CVBarButtonItem: NSObject {
         button.setTitleColor(kDefaultTitleColor, for: .normal)
         return button
     }()
-    public var customView: UIView?
-    
+}
+
+// MARK: 公有方法
+extension CVBarButtonItem {
     // MARK: Init
     class func item(title: String, highlightedTitle: String?, target: Any?, action: Selector?) -> CVBarButtonItem {
         let item = CVBarButtonItem()
@@ -104,7 +109,10 @@ open class CVBarButtonItem: NSObject {
         item.updateFrame()
         return item
     }
-    
+}
+
+// MARK: - 私有方法
+fileprivate extension CVBarButtonItem {
     // MARK: - Method
     
     private func addAction(_ target: Any?, _ action: Selector?) {
@@ -121,10 +129,10 @@ open class CVBarButtonItem: NSObject {
         let height: CGFloat = kDefaultBtnHeight
         let currentTitle: String? = self.isHighlighted ? self.highlightedTitle : self.title
         let currentImage: UIImage? = self.isHighlighted ? self.imageH : self.imageN
-
+        
         var titleW: CGFloat = 0.0
         if let text = currentTitle {
-            titleW = text.autoWidth(font: self.button!.titleLabel!.font, fixedHeight: height)
+            titleW = text.autoWidth(font: self.button!.titleLabel!.font, fixedHeight: height) + 20  // 文字预留一些边缘距离
         }
         
         var imageW: CGFloat = 0
