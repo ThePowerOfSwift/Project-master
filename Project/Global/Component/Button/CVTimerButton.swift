@@ -69,16 +69,19 @@ class CVTimerButton: UIView {
         self.button.titleLabel?.font = self.font
         self.addSubview(self.button)
         
-        CVTimer.timer(timeInterval: 1, closure: { [unowned self] () -> Bool in
-            self.max -= 1
-            if let string = self.disableTitle {
-                self.button!.setTitle(string.replacingOccurrences(of: kCounting, with: String(self.max)), for: .disabled)
+        CVTimer.timer(timeInterval: 1, closure: { [weak self] () -> Bool in
+            
+            guard let strongSelf = self else { return false}
+            
+            strongSelf.max -= 1
+            if let string = strongSelf.disableTitle {
+                strongSelf.button!.setTitle(string.replacingOccurrences(of: kCounting, with: String(strongSelf.max)), for: .disabled)
             }
             
-            if self.max == 0 {
-                self.button!.isEnabled = true
-                if let changed = self.stateDidChanged {
-                    changed(self, false)
+            if strongSelf.max == 0 {
+                strongSelf.button!.isEnabled = true
+                if let changed = strongSelf.stateDidChanged {
+                    changed(strongSelf, false)
                 }
                 return false    // 停止timer
             }

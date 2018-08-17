@@ -76,7 +76,7 @@ class CVCycleScrollView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.collectionView = cv_collectionViwe(delegate: self, dataSource: self, super: self)
+        self.collectionView = cv_collectionView(delegate: self, dataSource: self, super: self)
         self.collectionView.collectionViewLayout = self.flowLayout!
         self.collectionView.register(CVCycleCell.self, forCellWithReuseIdentifier: "Cell")
         self.collectionView.isPagingEnabled = true
@@ -104,9 +104,12 @@ class CVCycleScrollView: UIView {
     }
     
     func defaultTimer() -> CVTimer {
-        let t = CVTimer.timer(timeInterval: 1) { [unowned self] () -> Bool in
-            if self.autoScroll {
-                self.nextImage()
+        let t = CVTimer.timer(timeInterval: 1) { [weak self] () -> Bool in
+            
+            guard let strongSelf = self else { return false }
+            
+            if strongSelf.autoScroll {
+                strongSelf.nextImage()
             }
             return true
         }

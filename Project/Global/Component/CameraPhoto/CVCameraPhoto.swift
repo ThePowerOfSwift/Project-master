@@ -24,12 +24,14 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
         
         self.callBack = call
         
-        let actionSheet = CVActionSheet(title: LS(self, key: "Title", comment: "选择图片"), sheets: [LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")]) { [unowned self] (index) in
+        let actionSheet = CVActionSheet(title: LS(self, key: "Title", comment: "选择图片"), sheets: [LS(self, key: "Camera", comment: "相机"), LS(self, key: "Photo", comment: "照片")]) { [weak self] (index) in
+            guard let strongSelf = self else { return }
+            
             switch index {
             case 1:     // 相机
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     let picker = UIImagePickerController()  // 创建图片控制器
-                    picker.delegate = self  // 设置代理
+                    picker.delegate = strongSelf  // 设置代理
                     picker.sourceType = UIImagePickerControllerSourceType.camera    // 设置来源
                     picker.allowsEditing = true // 允许编辑
                     vc.present(picker, animated: true, completion: nil)   // 打开相机
@@ -42,7 +44,7 @@ class CVCameraPhoto : NSObject, UIImagePickerControllerDelegate, UINavigationCon
             case 2:     // 相册
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                     let picker = UIImagePickerController()  // 创建图片控制器
-                    picker.delegate = self  // 设置代理
+                    picker.delegate = strongSelf  // 设置代理
                     picker.sourceType = UIImagePickerControllerSourceType.photoLibrary    // 设置来源
                     picker.allowsEditing = true // 允许编辑
                     vc.present(picker, animated: true, completion: nil)   // 打开相机

@@ -14,5 +14,12 @@ extension Array where Element: Equatable {
         if let index = index(of: object) {  
             remove(at: index)  
         }  
-    }  
+    }
+    
+    mutating func remove(_ objects: [Element]) {
+
+        for obj in objects {
+            self.remove(obj)
+        }
+    }
 }  

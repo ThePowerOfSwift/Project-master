@@ -94,14 +94,16 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     /// 初始化tabbarItem
     private func initialTabBarItem(_ item: CVTabBarItem, index: Int) {
         item.index = index
-        item.clickItem = { [unowned self] (tabBarItem: CVTabBarItem) in
+        item.clickItem = { [weak self] (tabBarItem: CVTabBarItem) in
             
-            for (_, key) in self.cv_showItems.enumerated() {
-                let item = self.cv_tabbarItems[key]
+            guard let strongSelf = self else { return }
+            
+            for (_, key) in strongSelf.cv_showItems.enumerated() {
+                let item = strongSelf.cv_tabbarItems[key]
                 item.isSelected = false
             }
             tabBarItem.isSelected = true
-            self.selectedIndex = tabBarItem.index
+            strongSelf.selectedIndex = tabBarItem.index
         }
         self.cv_tabbarItems.append(item)
     }

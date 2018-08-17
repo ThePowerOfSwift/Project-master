@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var cv_tabBarController: CVTabbarController?
+    var cv_isAllowAutorotate: Bool = false      // 是否允许横屏，默认false，如果某一页面需要，在viewDidAppear中设为true，在viewDidDisAppear中设为false
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

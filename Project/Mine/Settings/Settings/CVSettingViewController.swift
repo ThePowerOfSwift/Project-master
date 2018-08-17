@@ -25,7 +25,7 @@ class CVSettingViewController: CVBaseViewController {
         self.title = LS(self, key: "Title", comment: "设置")
         
         // 计算缓存
-        self.cacheSize = CVFileHandle.fileSizeFormat(CVFileHandle.fileSize(atPath: CachesPath) + CVFileHandle.fileSize(atPath: TmpPath))
+        self.cacheSize = CVFileHandle.fileSizeFormat(CVFileHandle.fileSize(atPath: CVCachesPath) + CVFileHandle.fileSize(atPath: CVTmpPath))
         let langu = CVSettingModel.init(LS(self, key: "LanguageSetting", comment: "语言"), .language, nil)
         let cache = CVSettingModel.init(LS(self, key: "CleanCache", comment: "清空缓存"), .cleanCache, cacheSize)
         let version = CVSettingModel.init(LS(self, key: "AppVersion", comment: "版本"), .appVersion, "v\(cv_appVersion)")

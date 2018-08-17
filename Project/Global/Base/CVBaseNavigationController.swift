@@ -10,6 +10,18 @@ import UIKit
 
 class CVBaseNavigationController: CVNavigationController {
 
+    override var shouldAutorotate: Bool {
+        return self.viewControllers.last?.shouldAutorotate ?? false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return self.viewControllers.last?.supportedInterfaceOrientations ?? .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return self.viewControllers.last?.preferredInterfaceOrientationForPresentation ?? .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hidesBottomBarWhenPushed = true

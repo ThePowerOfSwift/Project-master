@@ -3,3 +3,4 @@
 //
 
 #import <CommonCrypto/CommonDigest.h>
+#import <UIKit/UIGestureRecognizerSubclass.h>

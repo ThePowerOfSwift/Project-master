@@ -13,6 +13,19 @@ class CVBaseTabbarController: CVTabbarController {
 
     var isChangedLanguage: Bool = false
     
+    /* 开启屏幕旋转 */
+    override var shouldAutorotate: Bool {
+        return self.selectedViewController?.shouldAutorotate ?? false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return self.selectedViewController?.supportedInterfaceOrientations ?? .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return self.selectedViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
+    }
+    
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: kCVAppWillChangeLanguageNotification, object: nil)

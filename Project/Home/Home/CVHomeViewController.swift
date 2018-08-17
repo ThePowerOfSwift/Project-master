@@ -8,7 +8,7 @@
 //
 
 import UIKit
-
+import Photos
 
 class CVHomeViewController: CVBaseViewController {
 
@@ -96,13 +96,24 @@ extension CVHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             
-//            CVHUD.showFullScreenHUD(message: "hello")
-//                CVHUD.showMessageHUD message: "message")
-            CVHUD.showWaittingHUD(message: "hello", onView: self.view, superClickable: true)
-//            CVHUD.showMessageHUD(message: "恭喜你！！！！！！！！", delay: 4)
-//            CVHUD.showSucceedHUD(message: "SUCCESS")
-//            CVHUD.showWarningHUD(message: "fasdfasfsfasfasfasfasfasfasfasdfasdfasfasdfafadasdfadfasdfadfadfadfadfadfadfadsfadfadfadfadfadfadfadfadfadfadfadfadfad")
-           
+            
+//            CVAlbumListViewController.show(self) { (image) in
+//                CVLog(image.size)
+//            }
+            
+            CVAlbumListViewController.show(self, clip: CGRectMake(20, 200, 300, 20)) { (image) in
+                CVLog(image.size)
+            }
+            
+//            let album = CVAlbumListViewController()
+//            album.multiSelect = true
+//            album.willSelectPhotos = { (results: [PHAsset]) in
+//                CVLog(results.count)
+//            }
+//
+//
+//            self.navigationController?.pushViewController(album, animated: true)
+
 //            let vc = CVNormalCalendarViewController()
 //            self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 1 {

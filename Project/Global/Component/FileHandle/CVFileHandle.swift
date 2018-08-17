@@ -8,10 +8,10 @@
 
 import Foundation
 
-class CVFileHandle {
+struct CVFileHandle {
     
     /// 创建一个文件夹
-    class func createFolder(path: String) {
+    static func createFolder(path: String) {
         
         let fileManager: FileManager = FileManager.default
         if fileManager.fileExists(atPath: path) == false {
@@ -21,17 +21,24 @@ class CVFileHandle {
     }
     
     /// 创建一个文件
-    class func createFileAtPath(fileName: String,  filePath: String) {
+    static func createFileAtPath(fileName: String, contents: Data?, filePath: String) {
         let manager = FileManager.default
-        let file = filePath + "/" + fileName
+        self.createFolder(path: filePath)
+        
+        let file: String
+        if filePath.hasSuffix("/") {
+            file = filePath + fileName
+        } else {
+            file = filePath + "/" + fileName
+        }
         let exist = manager.fileExists(atPath: file)
         if !exist { // 如果不存在，则创建文件
-             manager.createFile(atPath: file, contents:nil, attributes:nil)
+             manager.createFile(atPath: file, contents:contents, attributes:nil)
         }
     }
     
     /// 获取指定路径下的所有目录和文件, deep为true时，会递归遍历子文件夹
-    class func findAllFiles(atPath path: String, deep: Bool) -> [String]? {
+    static func findAllFiles(atPath path: String, deep: Bool) -> [String]? {
         if deep {
             let contentsOfPaths = FileManager.default.subpaths(atPath: path)
             return contentsOfPaths!
@@ -42,14 +49,14 @@ class CVFileHandle {
     }
     
     /// 获取文件的属性，比如创建时间、大小、类型等
-    class func attributesForFile(path: String) -> [FileAttributeKey : Any]? {
+    static func attributesForFile(path: String) -> [FileAttributeKey : Any]? {
         
         let attributes = try? FileManager.default.attributesOfItem(atPath: path) // 结果为Dictionary类型
         return attributes
     }
     
     /// 计算单个文件的大小
-    class func fileSize(atPath path: String) -> Int64 {
+    static func fileSize(atPath path: String) -> Int64 {
         
         let manager = FileManager.default
         if manager.fileExists(atPath: path) {
@@ -61,7 +68,7 @@ class CVFileHandle {
         }
         return 0;
     }
-    class func fileSizeFormat(_ fileSize: Int64) -> String {
+    static func fileSizeFormat(_ fileSize: Int64) -> String {
         
         var string = ""
         switch fileSize {
@@ -78,7 +85,7 @@ class CVFileHandle {
     }
     
     /// 计算某个文件夹的大小
-    class func folderSize(atPath path: String) -> Int64 {
+    static func folderSize(atPath path: String) -> Int64 {
         let files = self.findAllFiles(atPath: path, deep: true)
         var totalSize: Int64 = 0
         if let files = files {
@@ -90,43 +97,43 @@ class CVFileHandle {
     }
     
     /// 获取文件的路径
-    class func filePath(path: String) -> String {
+    static func filePath(path: String) -> String {
         return (path as NSString).deletingLastPathComponent
     }
     
     /// 删除文件夹或者文件
-    class func removeFile(atPath path: String) {
+    static func removeFile(atPath path: String) {
         try? FileManager.default.removeItem(atPath: path)
     }
     
     /// 清空缓存
-    class func cleanCache() {
+    static func cleanCache() {
         // 1. 清空 cache 包
-        self.removeFile(atPath: CachesPath)
+        self.removeFile(atPath: CVCachesPath)
         // 2. 清空 tmp 包
-        self.removeFile(atPath: TmpPath)
+        self.removeFile(atPath: CVTmpPath)
     }
 }
 
-class CVPlistHandle {
+struct CVPlistHandle {
     
-    private class func check(_ plistName: String) -> String {
+    private static func check(_ plistName: String) -> String {
         return (plistName as NSString).deletingPathExtension
     }
     
-    private class func fullPath(_ plistName: String, _ path: String?) -> String {
+    private static func fullPath(_ plistName: String, _ path: String?) -> String {
         
         var filePath = ""
         if let path = path {
             filePath = path + ("/" + check(plistName) + ".plist")
         } else {
-            filePath = LibraryPath + ("/" + check(plistName) + ".plist")
+            filePath = CVLibraryPath + ("/" + check(plistName) + ".plist")
         }
         return filePath
     }
     
     /// 创建一个plist文件
-    class func createPist(plistName: String, path: String?) {
+    static func createPist(plistName: String, path: String?) {
         
         let filePath = fullPath(plistName, path)
         // 不存在plist文件就创建
@@ -140,7 +147,7 @@ class CVPlistHandle {
     }
     
     /// 写入plist值 ：注： force为true时，可能会覆盖原有的value值
-    class func setValue(_ value: Any, key: String, force: Bool = false, plistName: String, path: String?) {
+    static func setValue(_ value: Any, key: String, force: Bool = false, plistName: String, path: String?) {
         
         let filePath = fullPath(plistName, path)
 
@@ -157,7 +164,7 @@ class CVPlistHandle {
     }
     
     /// 获取某一个key的对象
-    class func getValueForKey(_ key: String, plistName: String, path: String?) -> Any? {
+    static func getValueForKey(_ key: String, plistName: String, path: String?) -> Any? {
         
         let filePath = fullPath(plistName, path)
         // 读取plist文件的内容
@@ -167,7 +174,7 @@ class CVPlistHandle {
     }
     
     /// 获取plist所有对象
-    class func getAllPlistValue(plistName: String, path: String?) -> NSDictionary? {
+    static func getAllPlistValue(plistName: String, path: String?) -> NSDictionary? {
         
         let filePath = fullPath(plistName, path)
         let dataDictionary = NSDictionary(contentsOfFile: filePath)
@@ -175,7 +182,7 @@ class CVPlistHandle {
     }
     
     /// 删除plist的所有对象
-    class func removeAllPlistValue(plistName: String, path: String?) {
+    static func removeAllPlistValue(plistName: String, path: String?) {
         
         let filePath = fullPath(plistName, path)
         let dataDictionary = NSMutableDictionary(contentsOfFile: filePath)
@@ -189,7 +196,7 @@ class CVPlistHandle {
     }
     
     /// 删除plist的Key对象
-    class func removeKeyPlistValue(plistName: String, key: String, path: String?) {
+    static func removeKeyPlistValue(plistName: String, key: String, path: String?) {
         
         let filePath = fullPath(plistName, path)
         let dataDictionary = NSMutableDictionary(contentsOfFile: filePath)

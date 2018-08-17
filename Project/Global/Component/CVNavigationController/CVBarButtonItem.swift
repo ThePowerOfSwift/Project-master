@@ -105,7 +105,7 @@ open class CVBarButtonItem: NSObject {
         return item
     }
     
-    // MARK: Method
+    // MARK: - Method
     
     private func addAction(_ target: Any?, _ action: Selector?) {
         if action != nil {
@@ -138,11 +138,6 @@ open class CVBarButtonItem: NSObject {
             self.button!.center = CGPoint(x: self.button!.center.x, y: kDefaultBarCenterY)
         }
     }
-    
-//    public func updateContentSpace(position: UIButtonImagePosition, space: CGFloat) {
-//        
-//        self.updateFrame()
-//    }
 }
 
 

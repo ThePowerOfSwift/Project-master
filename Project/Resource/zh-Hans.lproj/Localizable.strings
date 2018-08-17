@@ -3,6 +3,7 @@
 "Cancel" = "取消";
 "Sure" = "确定";
 "Done" = "完成";
+"Choose" = "选取";
 "PullToRefresh" = "下拉刷新";
 "ReleaseToRefresh" = "松开刷新";
 "LoadingRefresh" = "正在刷新";
@@ -56,5 +57,9 @@
 "CVCameraPhoto.Camera" = "相机";
 "CVCameraPhoto.Photo" = "照片";
 "CVCameraPhoto.NotSupportVideo" = "该设备不支持摄像";
-
+"CVBigPhotoViewController.Look Photo" = "浏览大图";
+"CVThumbPhotoViewController.Choose Photo" = "选择图片";
+"CVThumbPhotoViewController.Totals" = "总共 %@ 张";
+"CVAlbumListViewController.Photos" = "图片库";
+"CVAlbumListViewController.No Photos Permissions" = "您已拒绝访问相册，是否重新允许我们访问您的相册";
 

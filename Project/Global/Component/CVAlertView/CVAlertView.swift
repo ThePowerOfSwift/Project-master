@@ -20,7 +20,7 @@ private let color_button_title_other = UIColor.init(red: 70.0/255, green: 130.0/
 private let color_button_bg_image = UIColor.init(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
 private let color_line = UIColor.init(red: 219.0/255, green: 219.0/255, blue: 219.0/255, alpha: 1.0)
 
-typealias CVAlertViewClosure = ((_ buttonIndex: Int) -> Void)?
+typealias CVAlertViewClosure = ((_ buttonIndex: Int) -> Void)
 
 /// alertView出现时的动画
 enum CVAlertViewAnimationOptions {
@@ -103,7 +103,7 @@ class CVAlertView: UIView {
     
     private var cancelButtonTitle: String?
     private var otherButtonTitles: [String]? = []
-    private var clickButtonClosure: CVAlertViewClosure
+    private var clickButtonClosure: CVAlertViewClosure?
     
     // MARK: - init
     override init(frame: CGRect) {
@@ -145,7 +145,7 @@ class CVAlertView: UIView {
     }
     
     /// 遍历构造器
-    public convenience init(title: String?, message: String?, cancelButtonTitle: String?, otherButtonTitles: [String]?, clickButtonClosure: CVAlertViewClosure) {
+    public convenience init(title: String?, message: String?, cancelButtonTitle: String?, otherButtonTitles: [String]?, clickButtonClosure: CVAlertViewClosure?) {
         
         self.init()
         
@@ -178,7 +178,7 @@ class CVAlertView: UIView {
     
     // MARK: - Public Method
     @discardableResult
-    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonClosure: CVAlertViewClosure) -> CVAlertView {
+    open class func show(title: String, message: String?, cancelButtonTitle: String?, otherButtonTitles: String? ... , clickButtonClosure: CVAlertViewClosure?) -> CVAlertView {
         var others: [String] = []
         for c in otherButtonTitles {
             if let string = c {
@@ -202,11 +202,12 @@ class CVAlertView: UIView {
             
         case .none:
             self.contentView.alpha = 0.0
-            UIView.animate(withDuration: 0.34, animations: { [unowned self] in
-                if self.visual == true {
-                    self.effectView.effect = UIBlurEffect(style: .dark)
+            UIView.animate(withDuration: 0.34, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = UIBlurEffect(style: .dark)
                 }
-                self.contentView.alpha = 1.0
+                strongSelf.contentView.alpha = 1.0
             })
             break
             
@@ -214,11 +215,12 @@ class CVAlertView: UIView {
             
             self.contentView.layer.setValue(0, forKeyPath: "transform.scale")
             UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .curveEaseIn, animations: {
-                [unowned self] in
-                if self.visual == true {
-                    self.effectView.effect = UIBlurEffect(style: .dark)
+                [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = UIBlurEffect(style: .dark)
                 }
-                self.contentView.layer.setValue(1.0, forKeyPath: "transform.scale")
+                strongSelf.contentView.layer.setValue(1.0, forKeyPath: "transform.scale")
             }, completion: { _ in
             })
             
@@ -228,11 +230,12 @@ class CVAlertView: UIView {
             let startPoint = CGPoint(x: center.x, y: self.contentView.frame.height)
             self.contentView.layer.position = startPoint
             
-            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .curveEaseIn, animations: { [unowned self] in
-                if self.visual == true {
-                    self.effectView.effect = UIBlurEffect(style: .dark)
+            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: .curveEaseIn, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = UIBlurEffect(style: .dark)
                 }
-                self.contentView.layer.position = self.center
+                strongSelf.contentView.layer.position = strongSelf.center
             }, completion: { _ in
             })
             break
@@ -418,37 +421,43 @@ class CVAlertView: UIView {
         switch self.animationOption {
         case .none:
             
-            UIView.animate(withDuration: 0.3, animations: { [unowned self] in
-                if self.visual == true {
-                    self.effectView.effect = nil
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = nil
                 }
-                self.contentView.alpha = 0.0
-            }, completion: { [unowned self] (finished: Bool) in
-                self.removeFromSuperview()
+                strongSelf.contentView.alpha = 0.0
+            }, completion: { [weak self] (finished: Bool) in
+                guard let strongSelf = self else { return }
+                strongSelf.removeFromSuperview()
             })
             
             break
             
         case .zoom:
-            UIView.animate(withDuration: 0.3, animations: { [unowned self] in
-                self.contentView.alpha = 0.0
-                if self.visual == true {
-                    self.effectView.effect = nil
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.contentView.alpha = 0.0
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = nil
                 }
-            }, completion: { [unowned self] (finished: Bool) in
-                    self.removeFromSuperview()
+            }, completion: { [weak self] (finished: Bool) in
+                guard let strongSelf = self else { return }
+                strongSelf.removeFromSuperview()
             })
             
             break
         case .topToCenter:
             let endPoint = CGPoint(x: center.x, y: frame.height + contentView.frame.height)
-            UIView.animate(withDuration: 0.3, animations: {
-                if self.visual == true {
-                    self.effectView.effect = nil
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                guard let strongSelf = self else { return }
+                if strongSelf.visual == true {
+                    strongSelf.effectView.effect = nil
                 }
-                self.contentView.layer.position = endPoint
-            }, completion: {[unowned self] (finished: Bool) in
-                self.removeFromSuperview()
+                strongSelf.contentView.layer.position = endPoint
+            }, completion: {[weak self] (finished: Bool) in
+                guard let strongSelf = self else { return }
+                strongSelf.removeFromSuperview()
             })
             break
         }

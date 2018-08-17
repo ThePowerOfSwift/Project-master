@@ -61,6 +61,7 @@ func cv_imageView(image: UIImage?, highlightImage: UIImage? = nil, super: UIView
     imageView.image = image
     imageView.highlightedImage = highlightImage ?? image
     imageView.contentMode = .scaleAspectFit
+    imageView.clipsToBounds = true
     if `super` != nil { `super`!.addSubview(imageView) }
     return imageView
 }
@@ -108,11 +109,7 @@ func cv_tableView_group(delegate: Any?, dataSource: Any?, super: UIView?) -> UIT
 }
 
 // MARK: - UICollectionView Create
-func cv_collectionViwe(delegate: Any?, dataSource: Any?, super: UIView?) -> UICollectionView {
-    return cv_collectionView(delegate: delegate, dataSource: dataSource, layout: UICollectionViewFlowLayout(), super: `super`)
-}
-
-func cv_collectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout, super: UIView?) -> UICollectionView {
+func cv_collectionView(delegate: Any?, dataSource: Any?, layout: UICollectionViewLayout = UICollectionViewFlowLayout(), super: UIView?) -> UICollectionView {
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
     collectionView.delegate = delegate as? UICollectionViewDelegate
     collectionView.dataSource = dataSource as? UICollectionViewDataSource

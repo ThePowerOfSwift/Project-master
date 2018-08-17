@@ -15,7 +15,7 @@ class CVBaseViewController: UIViewController {
     var thisViewHeight: CGFloat {
         get {
             var navBarHeight: CGFloat = 0.0, tabBarHeight: CGFloat = 0.0
-            if self.cv_navigationBar.isHidden == false {
+            if (self.cv_navigationBar?.isHidden)! == false {
                 navBarHeight = 44
             }
             if self.tabBarController != nil {
@@ -28,18 +28,15 @@ class CVBaseViewController: UIViewController {
         }
     }
     
-    /// nav
-    var cv_navigationBar: CVNavigationBar!
-    var leftBarButtonItem: CVBarButtonItem? {
+
+    override var cv_leftBarButtonItem: CVBarButtonItem? {
         didSet {
-            if self.leftBarButtonItem != nil {
-                self.cv_navigationBar.margin = -5
-                self.cv_navigationBar.leftBarButtonItem = self.leftBarButtonItem
-                
+            if self.cv_leftBarButtonItem != nil {
+                self.cv_navigationBar?.margin = -5
+                self.cv_navigationBar?.leftBarButtonItem = self.cv_leftBarButtonItem
             }
         }
     }
-    
 
     override var title: String? {
         didSet {
@@ -54,6 +51,11 @@ class CVBaseViewController: UIViewController {
         
         self.setNavigationBar()
         self.layoutNavigationItem()
+        
+        if #available(iOS 11.0, *) {
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
 
     
@@ -74,10 +76,20 @@ class CVBaseViewController: UIViewController {
         }
     }
     
+    /* 开启屏幕旋转 */
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return [.portrait, .landscapeLeft, .landscapeRight]
+    }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.bringNavBarFront()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,7 +100,8 @@ class CVBaseViewController: UIViewController {
         super.viewDidDisappear(animated)
         
     }
-    
+
+        
     /*
         push时，先掉 willMove， 再调 didMove， 此时 parent 都不为空
         pop时， 先掉 willMove， 再调 didMove， 此时 parent 都为空
@@ -126,18 +139,20 @@ class CVBaseViewController: UIViewController {
         self.cv_navigationBar = CVNavigationBar(frame: CGRect(x: 0.0, y: 0.0, width: SCREEN_WIDTH, height: cv_safeNavBarHeight))
         self.view.addSubview(self.cv_navigationBar!)
         // self.navigationBar.isShadowHidden = false
-        self.cv_navigationBar.isBottomLineHidden = false
-        self.cv_navigationBar.margin = 5
+        self.cv_navigationBar?.isBottomLineHidden = false
+        self.cv_navigationBar?.margin = 5
         
         if self.navigationController?.viewControllers.count == 1 {
-            self.leftBarButtonItem = nil
+            self.cv_leftBarButtonItem = nil
         } else {
-            self.leftBarButtonItem = CVBarButtonItem.item(image: UIImageNamed("back_black"), target: self, action: #selector(backToPrevious))
+            self.cv_leftBarButtonItem = CVBarButtonItem.item(image: UIImageNamed("back_black"), target: self, action: #selector(backToPrevious))
         }
     }
     
     public func bringNavBarFront() {
-        self.view.bringSubview(toFront: self.cv_navigationBar)
+        if let nav = self.cv_navigationBar {
+            self.view.bringSubview(toFront: nav)            
+        }
     }
     
     public func layoutNavigationItem() {

@@ -13,7 +13,7 @@ class CVHUD: NSObject {
     // MARK: - 全屏的HUD
     class func showFullScreenHUD(message: String) {
         
-        guard let view = UIApplication.shared.windows.last else { return }
+        guard let view = (UIApplication.shared.delegate as! AppDelegate).window else { return }
         // 创建 HUD
         let hud: CVProgressHUD = CVProgressHUD.showMessageHUD(addTo: view)
         
@@ -34,7 +34,7 @@ class CVHUD: NSObject {
         // 获取需要添加 HUD 的 View
         var tempView = onView
         if tempView == nil {
-            tempView = UIApplication.shared.windows.last
+            tempView = (UIApplication.shared.delegate as! AppDelegate).window
         }
         guard let view = tempView else { return }
         // 创建 HUD
@@ -55,7 +55,7 @@ class CVHUD: NSObject {
         // 获取需要添加 HUD 的 View
         var tempView = onView
         if tempView == nil {
-            tempView = UIApplication.shared.windows.last
+            tempView = (UIApplication.shared.delegate as! AppDelegate).window
         }
         guard let view = tempView else { return }
         // 创建 HUD
@@ -109,7 +109,7 @@ class CVHUD: NSObject {
         // 获取需要添加 HUD 的 View
         var tempView = onView
         if tempView == nil {
-            tempView = UIApplication.shared.windows.last
+            tempView = (UIApplication.shared.delegate as! AppDelegate).window
         }
         guard let view = tempView else { return }
         // 创建 HUD
@@ -118,7 +118,7 @@ class CVHUD: NSObject {
         let imageView = UIImageView(image: img)
         hud.customIndicatorView = imageView
         hud.detailText = message
-        
+    
         DispatchQueue.global().async {
             Thread.sleep(forTimeInterval: delay)
             DispatchQueue.main.async {
@@ -140,7 +140,7 @@ class CVHUD: NSObject {
     class func hideHUD(fromView view: UIView?) {
         var tempView = view
         if tempView == nil {
-            tempView = UIApplication.shared.windows.last
+            tempView = (UIApplication.shared.delegate as! AppDelegate).window
         }
         guard let view = tempView else { return }
         CVProgressHUD.hideHUD(forView: view, animated: true)

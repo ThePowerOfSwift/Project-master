@@ -3,6 +3,7 @@
 "Cancel" = "Cancel";
 "Sure" = "Sure";
 "Done" = "Done";
+"Choose" = "Choose";
 "PullToRefresh" = "Pull to refresh";
 "ReleaseToRefresh" = "Release to refresh";
 "LoadingRefresh" = "Loading...";
@@ -55,5 +56,8 @@
 "CVCameraPhoto.Camera" = "From Camera";
 "CVCameraPhoto.Photo" = "From Photo";
 "CVCameraPhoto.NotSupportVideo" = "TCV device does not support video";
-
-
+"CVBigPhotoViewController.Look Photo" = "Look Photo";
+"CVThumbPhotoViewController.Choose Photo" = "Choose Photo";
+"CVThumbPhotoViewController.Totals" = "A total of %@.";
+"CVAlbumListViewController.Photos" = "Photos";
+"CVAlbumListViewController.No Photos Permissions" = "You have refused to access photo album, whether or not to allow us to access your photo album";

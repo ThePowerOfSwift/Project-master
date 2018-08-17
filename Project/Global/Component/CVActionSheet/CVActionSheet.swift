@@ -22,7 +22,7 @@ private let color_button_title_other = UIColor.init(red: 70.0/255, green: 130.0/
 private let color_button_bg_image = UIColor.init(red: 235.0/255, green: 235.0/255, blue: 235.0/255, alpha: 1.0)
 private let color_line = UIColor.init(red: 219.0/255, green: 219.0/255, blue: 219.0/255, alpha: 1.0)
 
-typealias CVActionSheetClosure = ((_ buttonIndex: Int) -> Void)?
+typealias CVActionSheetClosure = (_ buttonIndex: Int) -> Void
 
 class CVActionSheet: UIView {
 
@@ -108,7 +108,7 @@ class CVActionSheet: UIView {
     
     private var cancelButtonTitle: String = LS(key: "Cancel", comment: "取消")
     private var sheets: [String] = []
-    private var clickButtonClosure: CVActionSheetClosure
+    private var clickButtonClosure: CVActionSheetClosure?
     
     private var contentView_Y: CGFloat = 0
     private var bottomView_Y: CGFloat = 0
@@ -145,7 +145,7 @@ class CVActionSheet: UIView {
     }
     
     /// 遍历构造器
-    public convenience init(title: String?, sheets: [String], clickButtonClosure: CVActionSheetClosure) {
+    public convenience init(title: String?, sheets: [String], clickButtonClosure: CVActionSheetClosure?) {
         self.init()
         
         // 标题
@@ -172,7 +172,7 @@ class CVActionSheet: UIView {
     // MARK: - Public Method
     
     @discardableResult
-    open class func show(title: String?, sheets: String... , clickButtonClosure: CVActionSheetClosure) -> CVActionSheet {
+    open class func show(title: String?, sheets: String... , clickButtonClosure: CVActionSheetClosure?) -> CVActionSheet {
         
         let actionSheet = CVActionSheet(title: title, sheets: sheets, clickButtonClosure: clickButtonClosure)
         actionSheet.show()
@@ -208,12 +208,13 @@ class CVActionSheet: UIView {
         self.contentView.frame.origin.y = screenHeight
         self.bottomView.frame.origin.y = screenHeight + self.contentView.frame.height
 
-        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
-            if self.visual == true {
-                self.effectView.effect = UIBlurEffect(style: .dark)
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            guard let strongSelf = self else { return }
+            if strongSelf.visual == true {
+                strongSelf.effectView.effect = UIBlurEffect(style: .dark)
             }
-            self.contentView.frame.origin.y = self.contentView_Y
-            self.bottomView.frame.origin.y = self.bottomView_Y
+            strongSelf.contentView.frame.origin.y = strongSelf.contentView_Y
+            strongSelf.bottomView.frame.origin.y = strongSelf.bottomView_Y
         })
     }
     
@@ -350,14 +351,16 @@ class CVActionSheet: UIView {
     
     /// 移除actionSheet
     private func remove() {
-        UIView.animate(withDuration: 0.3, animations: { [unowned self] in
-            if self.visual == true {
-                self.effectView.effect = nil
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            guard let strongSelf = self else { return }
+            if strongSelf.visual == true {
+                strongSelf.effectView.effect = nil
             }
-            self.contentView.frame.origin.y = screenHeight
-            self.bottomView.frame.origin.y = screenHeight + self.contentView.frame.height
-        }, completion: { [unowned self] (finished: Bool) in
-            self.removeFromSuperview()
+            strongSelf.contentView.frame.origin.y = screenHeight
+            strongSelf.bottomView.frame.origin.y = screenHeight + strongSelf.contentView.frame.height
+        }, completion: { [weak self] (finished: Bool) in
+            guard let strongSelf = self else { return }
+            strongSelf.removeFromSuperview()
         })
     }
 

@@ -107,7 +107,7 @@ private func cv_tabBar_height() -> CGFloat {
 // MARK: - 国际化
 func LS(key: String, comment: String?) -> String {
     return LS(nil, key: key, comment: comment)
-}
+}   
 func LS(_ target: Any?, key: String, comment: String?) -> String {
     
     // 第一步: 处理key， 如果 target存在，则从target中取header，如果不存在，则默认Common
@@ -133,16 +133,16 @@ func LS(_ target: Any?, key: String, comment: String?) -> String {
 
 // MARK: - 目录路径
 // Documents目录路径
-let DocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-let LibraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+let CVDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+let CVLibraryPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
 // Library/Caches目录路径方法
-let CachesPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+let CVCachesPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
 // Library/Application Support目录路径
-let ApplicationSupportPath = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
+let CVApplicationSupportPath = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
 // tmp目录路径
-let TmpPath = NSTemporaryDirectory()
+let CVTmpPath = NSTemporaryDirectory()
 // 沙盒主目录路径
-let HomePath = NSHomeDirectory()
+let CVHomePath = NSHomeDirectory()
 
 
 // MARK: - 取随机数
