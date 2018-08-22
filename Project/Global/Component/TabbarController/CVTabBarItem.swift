@@ -152,7 +152,9 @@ class CVTabBarItem: UIView {
             }
             
             self.button.frame = self.bounds
-            self.badgeView.cv_right(15).cv_top(5)
+            self.badgeView.cv_rightEqualTo(15)
+            self.badgeView.cv_topEqualTo(15)
+//            self.badgeView.cv_right(15).cv_top(5)
         }
     }
     

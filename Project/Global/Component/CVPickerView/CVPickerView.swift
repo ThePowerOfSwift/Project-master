@@ -83,7 +83,8 @@ class CVPickerView: UIView {
     override func layoutSubviews() {
 //        super.layoutSubviews()
         self.contentView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height_picker + height_tool + cv_safeAreaInsets.bottom)
-        self.contentView.cv_bottom(0, fixHeight: true);
+      //  self.contentView.cv_bottom(0, fixHeight: true);
+        self.contentView.cv_bottomEqualTo(0)
         self.pickerView.frame = CGRectMake(0, height_tool, SCREEN_WIDTH, height_picker)
 //        self.maskingView.frame = self.pickerView.bounds
 //        self.maskingView.frame = CGRectMake(0, (self.pickerView.height - height_cell) / 2, self.pickerView.width, height_cell)
