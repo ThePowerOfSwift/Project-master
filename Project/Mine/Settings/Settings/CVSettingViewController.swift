@@ -16,7 +16,7 @@ class CVSettingViewController: CVBaseViewController {
     
     lazy var tableView: UITableView = {
         let tableView = cv_tableView(delegate: self, dataSource: self, super: self.view)
-        tableView.frame = CGRect.init(x: 0, y: cv_safeNavBarHeight, width: SCREEN_WIDTH, height: thisViewHeight)
+        tableView.frame = CGRect.init(x: 0, y: cv_safeNavBarHeight, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - cv_safeNavBarHeight)
         return tableView
     }()
     override func viewDidLoad() {

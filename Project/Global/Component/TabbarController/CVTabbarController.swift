@@ -48,48 +48,37 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+// MARK: 公有方法
+extension CVTabbarController {
+        /// 显示tabBar
+        public func showTabBar(animation: Bool = true) {
+            if self.cv_hidenTabBar {
+                UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
     
-    // MARKL: - Public Method
-//    /// 显示tabBar
-//    public func showTabBar(animation: Bool = true) {
-//        if self.cv_hidenTabBar {
-//            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
-//
-//                self.cv_tabbar.isHidden = false
-//                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT - self.cv_tabbar.cv_height, SCREEN_WIDTH, self.cv_tabbar.cv_height)
-//
-//            }) { (finish) in
-//                self.cv_hidenTabBar = false
-//            }
-//        }
-//    }
-//
-//    /// 隐藏tabBar
-//    public func hiddenTabBar(animation: Bool = true) {
-//        if self.cv_hidenTabBar == false {
-//            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
-//
-//                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.cv_tabbar.cv_height)
-//
-//            }) { (finish) in
-//                self.cv_tabbar.isHidden = true
-//                self.cv_hidenTabBar = true
-//            }
-//        }
-//    }
+                    self.tabBar.isHidden = false
+                    self.tabBar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.tabBar.cv_height)
     
-    // MARKL: - Private Method
-//    /// 隐藏真正的tabBar
-//    private func hidenRealTabBar()  {
-//        for view in self.view.subviews {
-//            if view.isKind(of: UITabBar.self) {
-//                view.isHidden = true
-//                view.frame.origin.y = SCREEN_HEIGHT + 100
-//            }
-//        }
-//    }
+                }) { (finish) in
+                    self.cv_hidenTabBar = false
+                }
+            }
+        }
     
+        /// 隐藏tabBar
+        public func hiddenTabBar(animation: Bool = true) {
+            if self.cv_hidenTabBar == false {
+                UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
     
+                    self.tabBar.frame = CGRectMake(0, SCREEN_HEIGHT - self.tabBar.cv_height, SCREEN_WIDTH, self.tabBar.cv_height)
+    
+                }) { (finish) in
+                    self.tabBar.isHidden = true
+                    self.cv_hidenTabBar = true
+                }
+            }
+        }
 }
 
 // MARK: 私有方法
@@ -116,6 +105,7 @@ extension CVTabbarController {
         for item in self.cv_tabbarItems {
             item.removeFromSuperview()
         }
+        
         if self.cv_showItems.count == 0 {  // 如果没有手动控制tabbar上显示的item，则直接从头布局
             for i in 0..<self.cv_tabbarItems.count {
                 self.cv_showItems.append(i)

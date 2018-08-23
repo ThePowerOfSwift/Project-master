@@ -10,25 +10,6 @@ import UIKit
 
 class CVBaseViewController: UIViewController {
     
-    private var _interactiveTransition: UIPercentDrivenInteractiveTransition?
-    
-    var thisViewHeight: CGFloat {
-        get {
-            var navBarHeight: CGFloat = 0.0, tabBarHeight: CGFloat = 0.0
-            if (self.cv_navigationBar?.isHidden)! == false {
-                navBarHeight = 44
-            }
-            if self.tabBarController != nil {
-                let baseTabBarController = (self.tabBarController! as! CVBaseTabbarController)
-                if baseTabBarController.cv_tabbar.isHidden == false {
-                    tabBarHeight = 49
-                }
-            }
-            return cv_safeScreenHeight - navBarHeight - tabBarHeight
-        }
-    }
-    
-
     override var cv_leftBarButtonItem: CVBarButtonItem? {
         didSet {
             if self.cv_leftBarButtonItem != nil {

@@ -29,7 +29,7 @@ class CVHomeViewController: CVBaseViewController {
         self.tableView.snp.makeConstraints { (make) in
             make.left.right.equalTo(self.view)
             make.top.equalTo(cv_safeNavBarHeight)
-            make.height.equalTo(thisViewHeight)
+            make.bottom.equalTo(-cv_safeTabBarHeight)
         }
 
         let headerView = CVHomeHeaderView()

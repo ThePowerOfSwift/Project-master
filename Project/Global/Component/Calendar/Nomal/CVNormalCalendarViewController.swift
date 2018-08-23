@@ -56,7 +56,7 @@ class CVNormalCalendarViewController: CVBaseViewController {
         self.collectionView.isPagingEnabled = self.isPagingEnabled
         self.collectionView.register(CVNormalCalendarCell.self, forCellWithReuseIdentifier: cellIdentify)
         self.collectionView.register(CVNormalCalendarHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentify)
-        self.collectionView.frame = CGRect(x: 0, y: cv_safeNavBarHeight, width: SCREEN_WIDTH, height: self.thisViewHeight)
+        self.collectionView.frame = CGRect(x: 0, y: cv_safeNavBarHeight, width: SCREEN_WIDTH, height: self.view.frame.height)
         
         self.adjustMonthPosition()
     }
