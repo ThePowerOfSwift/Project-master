@@ -19,7 +19,7 @@ class CVTabBar: UIView {
         }
     }
     
-    var hidenLine: Bool = false {    // 是否隐藏line
+    var hidenLine: Bool = true {    // 是否隐藏line
         willSet {
             self.line.isHidden = newValue
         }
@@ -60,6 +60,7 @@ class CVTabBar: UIView {
         
         // 上线的分割线
         self.line = cv_view(frame: CGRectMake(0, 0, SCREEN_WIDTH, 1), color: UIColor.colorWithRGB(218, green: 218, blue: 218), super: self)
+        self.line.isHidden = self.hidenLine
     }
 }
 

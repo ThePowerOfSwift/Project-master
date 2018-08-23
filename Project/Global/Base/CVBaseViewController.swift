@@ -38,8 +38,11 @@ class CVBaseViewController: UIViewController {
     }
 
     override var title: String? {
-        didSet {
-            self.cv_navigationBar?.title = self.title
+        set {
+            self.cv_navigationBar?.title = newValue
+        }
+        get {
+            return self.cv_navigationBar?.title
         }
     }
     
@@ -61,18 +64,6 @@ class CVBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.bringNavBarFront()
-        
-        if let nav = self.navigationController {
-            if nav as? CVNavigationController != nil {
-                self.cv_navigationController = nav as? CVNavigationController
-            }
-            
-            if nav.viewControllers.count == 2 { // push
-                if let tabVC = cv_AppDelegate.cv_tabBarController {
-                    tabVC.hiddenTabBar(animation: true)
-                }
-            }
-        }
     }
     
     /* 开启屏幕旋转 */
@@ -98,34 +89,6 @@ class CVBaseViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-    }
-
-        
-    /*
-        push时，先掉 willMove， 再调 didMove， 此时 parent 都不为空
-        pop时， 先掉 willMove， 再调 didMove， 此时 parent 都为空
-        手势侧滑时，先掉 willMove，parent为空，--如果最后返回了，则掉didMove，此时parent为空；--如果没有返回，还在此页面，则didMove不调用
-        总结：当确实返回了上一页，才走didMove方法，否则不走此方法，当此方法中parent为空时对应pop，不为空时对应push
-     */
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
-
-    }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        if parent != nil {  // push
-
-        } else { // pop
-            
-            if let navCon = self.cv_navigationController {
-                if navCon.viewControllers.count == 1 {
-                    if let tabVC = cv_AppDelegate.cv_tabBarController {
-                        tabVC.showTabBar(animation: true)
-                    }
-                }
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -39,11 +39,9 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hidenRealTabBar()
         self.cv_tabbar = CVTabBar()
-        self.cv_tabbar.hidenLine = false
-//        self.cv_tabbar.hidenShadow = false
-        self.view.addSubview(self.cv_tabbar)
+        self.tabBar.addSubview(self.cv_tabbar)
+        self.cv_tabbar.frame = self.tabBar.bounds
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,45 +50,50 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     // MARKL: - Public Method
-    /// 显示tabBar
-    public func showTabBar(animation: Bool = true) {
-        if self.cv_hidenTabBar {
-            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
-                
-                self.cv_tabbar.isHidden = false
-                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT - self.cv_tabbar.cv_height, SCREEN_WIDTH, self.cv_tabbar.cv_height)
-                
-            }) { (finish) in
-                self.cv_hidenTabBar = false
-            }
-        }
-    }
-    
-    /// 隐藏tabBar
-    public func hiddenTabBar(animation: Bool = true) {
-        if self.cv_hidenTabBar == false {
-            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
-                
-                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.cv_tabbar.cv_height)
-                
-            }) { (finish) in
-                self.cv_tabbar.isHidden = true
-                self.cv_hidenTabBar = true
-            }
-        }
-    }
+//    /// 显示tabBar
+//    public func showTabBar(animation: Bool = true) {
+//        if self.cv_hidenTabBar {
+//            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
+//
+//                self.cv_tabbar.isHidden = false
+//                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT - self.cv_tabbar.cv_height, SCREEN_WIDTH, self.cv_tabbar.cv_height)
+//
+//            }) { (finish) in
+//                self.cv_hidenTabBar = false
+//            }
+//        }
+//    }
+//
+//    /// 隐藏tabBar
+//    public func hiddenTabBar(animation: Bool = true) {
+//        if self.cv_hidenTabBar == false {
+//            UIView.animate(withDuration: animation ? 0.2 : 0.0, animations: {
+//
+//                self.cv_tabbar.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, self.cv_tabbar.cv_height)
+//
+//            }) { (finish) in
+//                self.cv_tabbar.isHidden = true
+//                self.cv_hidenTabBar = true
+//            }
+//        }
+//    }
     
     // MARKL: - Private Method
-    /// 隐藏真正的tabBar
-    private func hidenRealTabBar()  {
-        for view in self.view.subviews {
-            if view.isKind(of: UITabBar.self) {
-                view.isHidden = true
-                view.frame.origin.y = SCREEN_HEIGHT + 100
-            }
-        }
-    }
+//    /// 隐藏真正的tabBar
+//    private func hidenRealTabBar()  {
+//        for view in self.view.subviews {
+//            if view.isKind(of: UITabBar.self) {
+//                view.isHidden = true
+//                view.frame.origin.y = SCREEN_HEIGHT + 100
+//            }
+//        }
+//    }
     
+    
+}
+
+// MARK: 私有方法
+extension CVTabbarController {
     /// 初始化tabbarItem
     private func initialTabBarItem(_ item: CVTabBarItem, index: Int) {
         item.index = index
@@ -110,11 +113,9 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
     
     /// 更新cv_tabBar上面的item
     private func updateTabBar() {
-        
         for item in self.cv_tabbarItems {
             item.removeFromSuperview()
         }
-        
         if self.cv_showItems.count == 0 {  // 如果没有手动控制tabbar上显示的item，则直接从头布局
             for i in 0..<self.cv_tabbarItems.count {
                 self.cv_showItems.append(i)
@@ -122,7 +123,6 @@ class CVTabbarController: UITabBarController, UITabBarControllerDelegate {
         }
         
         if self.cv_showItems.count == 0 { return }
-        
         let width = SCREEN_WIDTH / CGFloat(self.cv_showItems.count)
         for (index, key) in self.cv_showItems.enumerated() {
             let item = self.cv_tabbarItems[key]
