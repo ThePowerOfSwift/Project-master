@@ -14,6 +14,11 @@ class CVMineViewController: CVBaseViewController {
         super.viewDidLoad()
 
         self.title = LS(self, key: "Title", comment: "我的")
+        
+        let label = cv_label(font: UIFont.font_10, text: "asdfasdfadsf", super: self.view)
+        label.frame = CGRectMake(0, 100, 80, 30)
+        label.backgroundColor = UIColor.red
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,9 +33,14 @@ class CVMineViewController: CVBaseViewController {
     }
     
     @objc func settingAction() {
-        
-        let settingVC = CVSettingViewController()
-        self.navigationController!.pushViewController(settingVC, animated: true)
+        driveScreen(to: .landscapeRight)
+//        let settingVC = CVSettingViewController()
+//        self.navigationController!.pushViewController(settingVC, animated: true)
+    }
+    
+    
+    private func driveScreen(to direction: UIInterfaceOrientation) {
+        UIDevice.current.setValue(direction.rawValue, forKey: "orientation")
     }
 
 }
