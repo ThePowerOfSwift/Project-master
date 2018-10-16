@@ -64,6 +64,7 @@
 		455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02E20930A900061B33A /* NSRange+Extension.swift */; };
 		455FA031209310120061B33A /* CVValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA030209310120061B33A /* CVValidate.swift */; };
 		4561EB3420DA32D100A44CEA /* CVSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561EB3320DA32D100A44CEA /* CVSubViewController.swift */; };
+		456886812175EF1F006178D7 /* CVImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456886802175EF1F006178D7 /* CVImageHelper.swift */; };
 		4572E24E20A9736100E8CD08 /* AppDelegate + 3DTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4572E24D20A9736100E8CD08 /* AppDelegate + 3DTouch.swift */; };
 		458DB89720FF2BF10055EE36 /* CVThumbPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB89620FF2BF10055EE36 /* CVThumbPhotoViewController.swift */; };
 		458DB89920FF2C040055EE36 /* CVBigPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB89820FF2C040055EE36 /* CVBigPhotoViewController.swift */; };
@@ -85,7 +86,6 @@
 		45B15C0E205A7FAA008C4F94 /* CVHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */; };
 		45B15C11205A7FE3008C4F94 /* CVLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */; };
 		45B3248220EA258D00D30DBD /* CVAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B3248120EA258D00D30DBD /* CVAlertView.swift */; };
-		45B44D722052202400A67F6D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D712052202400A67F6D /* UIImage+Extension.swift */; };
 		45B44D7620525F1C00A67F6D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */; };
 		45B44D7920528E1D00A67F6D /* CVTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7820528E1D00A67F6D /* CVTimer.swift */; };
 		45B6B889205924B200F01F1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45B6B88B205924B200F01F1B /* InfoPlist.strings */; };
@@ -212,6 +212,7 @@
 		455FA02E20930A900061B33A /* NSRange+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Extension.swift"; sourceTree = "<group>"; };
 		455FA030209310120061B33A /* CVValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVValidate.swift; sourceTree = "<group>"; };
 		4561EB3320DA32D100A44CEA /* CVSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubViewController.swift; sourceTree = "<group>"; };
+		456886802175EF1F006178D7 /* CVImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVImageHelper.swift; sourceTree = "<group>"; };
 		4572E24D20A9736100E8CD08 /* AppDelegate + 3DTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + 3DTouch.swift"; sourceTree = "<group>"; };
 		458DB89620FF2BF10055EE36 /* CVThumbPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVThumbPhotoViewController.swift; sourceTree = "<group>"; };
 		458DB89820FF2C040055EE36 /* CVBigPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBigPhotoViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +237,6 @@
 		45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVHomeViewController.swift; sourceTree = "<group>"; };
 		45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVLanguageViewController.swift; sourceTree = "<group>"; };
 		45B3248120EA258D00D30DBD /* CVAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVAlertView.swift; sourceTree = "<group>"; };
-		45B44D712052202400A67F6D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		45B44D7820528E1D00A67F6D /* CVTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimer.swift; sourceTree = "<group>"; };
 		45B6B885205923E500F01F1B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -412,13 +412,13 @@
 		45053B4B204E47D000B5B34B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				456886802175EF1F006178D7 /* CVImageHelper.swift */,
 				45AE661C205B5E8E000C1546 /* UIView+Creation.swift */,
 				45053B62204E488800B5B34B /* String+Extension.swift */,
 				45053B5D204E487D00B5B34B /* Time+Extension.swift */,
 				45053B5B204E487C00B5B34B /* UIColor+Extension.swift */,
 				45053B5C204E487D00B5B34B /* UITextView+Extension.swift */,
 				45053B5A204E487C00B5B34B /* UIView+Extension.swift */,
-				45B44D712052202400A67F6D /* UIImage+Extension.swift */,
 				45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */,
 				450194C62073491600777328 /* Date+Extension.swift */,
 				450194C820734B0B00777328 /* Double+Extension.swift */,
@@ -828,7 +828,6 @@
 				45053B16204E35A400B5B34B /* Frameworks */,
 				45053B17204E35A400B5B34B /* Resources */,
 				34258379B1802BFFF56AA54E /* [CP] Embed Pods Frameworks */,
-				194AC7A206DDB2D33EC1A5AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -847,8 +846,6 @@
 				45053B29204E35A400B5B34B /* Sources */,
 				45053B2A204E35A400B5B34B /* Frameworks */,
 				45053B2B204E35A400B5B34B /* Resources */,
-				25708FAE88809A39988562DA /* [CP] Embed Pods Frameworks */,
-				25CA278E6ED9D10F53942689 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -868,8 +865,6 @@
 				45053B34204E35A400B5B34B /* Sources */,
 				45053B35204E35A400B5B34B /* Frameworks */,
 				45053B36204E35A400B5B34B /* Resources */,
-				1E14E1C4FA21A3A72A195B07 /* [CP] Embed Pods Frameworks */,
-				946E3AD8FCFC00EE6540600B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -964,66 +959,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		194AC7A206DDB2D33EC1A5AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1E14E1C4FA21A3A72A195B07 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectUITests/Pods-ProjectUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25708FAE88809A39988562DA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25CA278E6ED9D10F53942689 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectTests/Pods-ProjectTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		34258379B1802BFFF56AA54E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,7 +968,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Project/Pods-Project-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonSwift/ChameleonSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMRefresh/GTMRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -1041,13 +975,11 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -1055,7 +987,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1098,21 +1029,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		946E3AD8FCFC00EE6540600B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ProjectUITests/Pods-ProjectUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D8B471AB78D5FBE01228B3C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1142,7 +1058,6 @@
 				455D8ABC206CB77100BBACBD /* Api.swift in Sources */,
 				452F9B0820F72DD800E8597E /* CVHUD.swift in Sources */,
 				453643FB2056310400897E6B /* CVTimerButton.swift in Sources */,
-				45B44D722052202400A67F6D /* UIImage+Extension.swift in Sources */,
 				45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */,
 				45F464E3212BF48800BFEF19 /* UILabel+Layout.swift in Sources */,
 				450194C72073491600777328 /* Date+Extension.swift in Sources */,
@@ -1178,6 +1093,7 @@
 				458EC67B20F30D5600CF07AA /* CVActionSheet.swift in Sources */,
 				45B44D7620525F1C00A67F6D /* UIButton+Extension.swift in Sources */,
 				45DF437A20B691B900919ED1 /* CVPageTabItem.swift in Sources */,
+				456886812175EF1F006178D7 /* CVImageHelper.swift in Sources */,
 				45E9792C206E1C850089A782 /* CVUploadParam.swift in Sources */,
 				45053B6C204E65B300B5B34B /* CVExpandTextView.swift in Sources */,
 				455D8AC3206CBA2800BBACBD /* CVClient.swift in Sources */,

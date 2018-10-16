@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-//import SwiftyJSON
 
 /// 定义一些回调的闭包
 typealias Success = (Any) -> (Void)
