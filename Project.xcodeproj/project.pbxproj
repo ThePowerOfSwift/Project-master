@@ -17,7 +17,7 @@
 		45053B32204E35A400B5B34B /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B31204E35A400B5B34B /* ProjectTests.swift */; };
 		45053B3D204E35A400B5B34B /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B3C204E35A400B5B34B /* ProjectUITests.swift */; };
 		45053B56204E483500B5B34B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B55204E483500B5B34B /* Global.swift */; };
-		45053B5E204E487D00B5B34B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5A204E487C00B5B34B /* UIView+Extension.swift */; };
+		45053B5E204E487D00B5B34B /* CVViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5A204E487C00B5B34B /* CVViewHelper.swift */; };
 		45053B5F204E487D00B5B34B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5B204E487C00B5B34B /* UIColor+Extension.swift */; };
 		45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5C204E487D00B5B34B /* UITextView+Extension.swift */; };
 		45053B61204E487D00B5B34B /* Time+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5D204E487D00B5B34B /* Time+Extension.swift */; };
@@ -164,7 +164,7 @@
 		45053B3C204E35A400B5B34B /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		45053B3E204E35A400B5B34B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45053B55204E483500B5B34B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		45053B5A204E487C00B5B34B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		45053B5A204E487C00B5B34B /* CVViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVViewHelper.swift; sourceTree = "<group>"; };
 		45053B5B204E487C00B5B34B /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		45053B5C204E487D00B5B34B /* UITextView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		45053B5D204E487D00B5B34B /* Time+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Time+Extension.swift"; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 				45053B5D204E487D00B5B34B /* Time+Extension.swift */,
 				45053B5B204E487C00B5B34B /* UIColor+Extension.swift */,
 				45053B5C204E487D00B5B34B /* UITextView+Extension.swift */,
-				45053B5A204E487C00B5B34B /* UIView+Extension.swift */,
+				45053B5A204E487C00B5B34B /* CVViewHelper.swift */,
 				45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */,
 				450194C62073491600777328 /* Date+Extension.swift */,
 				450194C820734B0B00777328 /* Double+Extension.swift */,
@@ -1139,7 +1139,7 @@
 				45053B7B204E81AB00B5B34B /* CVNavigationController.swift in Sources */,
 				455FA02D2092F1E00061B33A /* CVUtil.swift in Sources */,
 				45053B77204E77DA00B5B34B /* CVBarButtonItem.swift in Sources */,
-				45053B5E204E487D00B5B34B /* UIView+Extension.swift in Sources */,
+				45053B5E204E487D00B5B34B /* CVViewHelper.swift in Sources */,
 				45283E2820B801060040808F /* CVSortTabView.swift in Sources */,
 				45090E4720B29B5900F71746 /* CVPickerViewProtocol.swift in Sources */,
 				458DB89920FF2C040055EE36 /* CVBigPhotoViewController.swift in Sources */,

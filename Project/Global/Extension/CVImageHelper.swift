@@ -14,6 +14,10 @@ public enum UIImageContentMode {
     case scaleToFill, scaleAspectFit, scaleAspectFill
 }
 
+public func UIImageNamed(_ name: String) -> UIImage {
+    return UIImage(named: name)!
+}
+
 public extension UIImage {
     /// 创建一个单例shared，用来缓存图片
     static var shared: NSCache<AnyObject, AnyObject>! {
@@ -251,7 +255,12 @@ extension UIImage {
         return crop(bounds: insetRect)
     }
     
-
+    /// 按照比例放缩
+    func resize(scale: CGFloat) -> UIImage? {
+        let toSize = CGSize(width: self.size.width * scale, height: self.size.height * scale)
+        return self.resize(toSize: toSize)
+    }
+    
     /// 对图片进行放缩
     func resize(toSize: CGSize, contentMode: UIImageContentMode = .scaleToFill) -> UIImage? {
         let horizontalRatio = size.width / self.size.width;

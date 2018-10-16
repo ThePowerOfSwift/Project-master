@@ -26,7 +26,7 @@ open class CVBarButtonItem: NSObject {
         didSet {
             if var icon = self.image {
                 if icon.size.height > kDefaultBtnHeight {
-                    icon = icon.scaleImage(scale: kDefaultBtnHeight / icon.size.height)!
+                    icon = icon.resize(scale: kDefaultBtnHeight / icon.size.height)!
                 }
                 self.imageN = icon
             } else {
@@ -39,7 +39,7 @@ open class CVBarButtonItem: NSObject {
         didSet {
             if var icon = highlightedImage {
                 if icon.size.height > kDefaultBtnHeight {
-                    icon = icon.scaleImage(scale: kDefaultBtnHeight / icon.size.height)!
+                    icon = icon.resize(scale: kDefaultBtnHeight / icon.size.height)!
                 }
                 self.imageH = icon
             } else {
