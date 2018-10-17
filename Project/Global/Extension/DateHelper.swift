@@ -1,5 +1,5 @@
 //
-//  Date+Extension.swift
+//  DateHelper.swift
 //  Project
 //
 //  Created by caven on 2018/4/3.
@@ -442,32 +442,5 @@ extension Date {
     /// self 比 date 更晚一些
     func isLaterToDate(_ date: Date, ignoreTime: Bool = true) -> Bool {
         return self.compare(date, ignoreTime: ignoreTime) == .later
-    }
-}
-
-// MARK: - 运算符重载
-extension Date {
-    static func ==(left: Date, right: Date) -> Bool {
-        return left.isEqualToDate(right)
-    }
-    
-    static func ===(left: Date, right: Date) -> Bool {
-        return left.isEqualToDate(right, ignoreTime: false)
-    }
-    
-    static func >(left: Date, right: Date) -> Bool {
-        return left.isEarlierToDate(right)
-    }
-    
-    static func >>(left: Date, right: Date) -> Bool {
-        return left.isEarlierToDate(right, ignoreTime: false)
-    }
-    
-    static func <(left: Date, right: Date) -> Bool {
-        return left.isLaterToDate(right)
-    }
-    
-    static func <<(left: Date, right: Date) -> Bool {
-        return left.isLaterToDate(right, ignoreTime: false)
     }
 }

@@ -1,6 +1,6 @@
 //
-//  CVImageHelper.swift
-//  CVImageHelper
+//  UIImageHelper.swift
+//  UIImageHelper
 //
 //  Created by caven on 2018/10/16.
 //  Copyright © 2018 com.caven. All rights reserved.
@@ -14,10 +14,12 @@ public enum UIImageContentMode {
     case scaleToFill, scaleAspectFit, scaleAspectFill
 }
 
+/// 生成图片image
 public func UIImageNamed(_ name: String) -> UIImage {
     return UIImage(named: name)!
 }
 
+// MARK: -
 public extension UIImage {
     /// 创建一个单例shared，用来缓存图片
     static var shared: NSCache<AnyObject, AnyObject>! {

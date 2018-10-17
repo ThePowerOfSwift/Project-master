@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		188A6F90EB87B42D91EBA166 /* Pods_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B012400AEB94A7E12C06C2 /* Pods_ProjectUITests.framework */; };
-		450194C72073491600777328 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450194C62073491600777328 /* Date+Extension.swift */; };
-		450194C920734B0B00777328 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450194C820734B0B00777328 /* Double+Extension.swift */; };
+		450194C72073491600777328 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450194C62073491600777328 /* DateHelper.swift */; };
+		450194C920734B0B00777328 /* DoubleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450194C820734B0B00777328 /* DoubleHelper.swift */; };
 		450194CB20734D6E00777328 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450194CA20734D6E00777328 /* Dictionary+Extension.swift */; };
 		45053B1D204E35A400B5B34B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B1C204E35A400B5B34B /* AppDelegate.swift */; };
 		45053B24204E35A400B5B34B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45053B23204E35A400B5B34B /* Assets.xcassets */; };
@@ -17,11 +17,11 @@
 		45053B32204E35A400B5B34B /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B31204E35A400B5B34B /* ProjectTests.swift */; };
 		45053B3D204E35A400B5B34B /* ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B3C204E35A400B5B34B /* ProjectUITests.swift */; };
 		45053B56204E483500B5B34B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B55204E483500B5B34B /* Global.swift */; };
-		45053B5E204E487D00B5B34B /* CVViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5A204E487C00B5B34B /* CVViewHelper.swift */; };
-		45053B5F204E487D00B5B34B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5B204E487C00B5B34B /* UIColor+Extension.swift */; };
-		45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5C204E487D00B5B34B /* UITextView+Extension.swift */; };
-		45053B61204E487D00B5B34B /* Time+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5D204E487D00B5B34B /* Time+Extension.swift */; };
-		45053B63204E488800B5B34B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B62204E488800B5B34B /* String+Extension.swift */; };
+		45053B5E204E487D00B5B34B /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5A204E487C00B5B34B /* UIViewHelper.swift */; };
+		45053B5F204E487D00B5B34B /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5B204E487C00B5B34B /* UIColorHelper.swift */; };
+		45053B60204E487D00B5B34B /* UITextViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5C204E487D00B5B34B /* UITextViewHelper.swift */; };
+		45053B61204E487D00B5B34B /* CVTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B5D204E487D00B5B34B /* CVTimeHelper.swift */; };
+		45053B63204E488800B5B34B /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B62204E488800B5B34B /* StringHelper.swift */; };
 		45053B6B204E65B300B5B34B /* CVPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B66204E65B300B5B34B /* CVPlaceholderTextView.swift */; };
 		45053B6C204E65B300B5B34B /* CVExpandTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B67204E65B300B5B34B /* CVExpandTextView.swift */; };
 		45053B6D204E65B300B5B34B /* CVKeyboardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */; };
@@ -32,9 +32,9 @@
 		45053B79204E7D0700B5B34B /* CVNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B78204E7D0700B5B34B /* CVNavigationBar.swift */; };
 		45053B7B204E81AB00B5B34B /* CVNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45053B7A204E81AB00B5B34B /* CVNavigationController.swift */; };
 		45078E99210FFAEE00DB5850 /* CVPhoto.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 45078E98210FFAEE00DB5850 /* CVPhoto.bundle */; };
-		45078E9B2110466600DB5850 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45078E9A2110466600DB5850 /* Bundle+Extension.swift */; };
+		45078E9B2110466600DB5850 /* BundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45078E9A2110466600DB5850 /* BundleHelper.swift */; };
 		45090E4320B2787100F71746 /* CVPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45090E4220B2787100F71746 /* CVPickerView.swift */; };
-		45090E4520B2890400F71746 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45090E4420B2890400F71746 /* CGRect+Extension.swift */; };
+		45090E4520B2890400F71746 /* CGRectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45090E4420B2890400F71746 /* CGRectHelper.swift */; };
 		45090E4720B29B5900F71746 /* CVPickerViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45090E4620B29B5900F71746 /* CVPickerViewProtocol.swift */; };
 		4514506B204F969000E83F97 /* CVCustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4514506A204F969000E83F97 /* CVCustomTitleView.swift */; };
 		4514506E204FD26200E83F97 /* AppStoreReview.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4514506D204FD26200E83F97 /* AppStoreReview.swift.swift */; };
@@ -53,18 +53,18 @@
 		453643FB2056310400897E6B /* CVTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453643FA2056310400897E6B /* CVTimerButton.swift */; };
 		453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2920ECB870006994A5 /* CVTabBarItem.swift */; };
 		453BFB2C20ECBE2D006994A5 /* CVBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */; };
-		453BFB2E20ECC745006994A5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */; };
-		453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F7B5920A044AD00933E55 /* Array+Extension.swift */; };
+		453BFB2E20ECC745006994A5 /* UIViewControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453BFB2D20ECC745006994A5 /* UIViewControllerHelper.swift */; };
+		453F7B5A20A044AD00933E55 /* ArrayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453F7B5920A044AD00933E55 /* ArrayHelper.swift */; };
 		4542FE2420B3EA6C00869655 /* CVPickerViewReusingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */; };
 		4542FE2620B3EB8A00869655 /* CVDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */; };
 		45524A4B20F4AA3C000BB796 /* CVProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45524A4A20F4AA3C000BB796 /* CVProgressHUD.swift */; };
 		455D8ABC206CB77100BBACBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8ABB206CB77100BBACBD /* Api.swift */; };
 		455D8AC3206CBA2800BBACBD /* CVClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D8AC2206CBA2800BBACBD /* CVClient.swift */; };
 		455FA02D2092F1E00061B33A /* CVUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02C2092F1E00061B33A /* CVUtil.swift */; };
-		455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02E20930A900061B33A /* NSRange+Extension.swift */; };
+		455FA02F20930A900061B33A /* NSRangeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA02E20930A900061B33A /* NSRangeHelper.swift */; };
 		455FA031209310120061B33A /* CVValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455FA030209310120061B33A /* CVValidate.swift */; };
 		4561EB3420DA32D100A44CEA /* CVSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561EB3320DA32D100A44CEA /* CVSubViewController.swift */; };
-		456886812175EF1F006178D7 /* CVImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456886802175EF1F006178D7 /* CVImageHelper.swift */; };
+		456886812175EF1F006178D7 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456886802175EF1F006178D7 /* UIImageHelper.swift */; };
 		4572E24E20A9736100E8CD08 /* AppDelegate + 3DTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4572E24D20A9736100E8CD08 /* AppDelegate + 3DTouch.swift */; };
 		458DB89720FF2BF10055EE36 /* CVThumbPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB89620FF2BF10055EE36 /* CVThumbPhotoViewController.swift */; };
 		458DB89920FF2C040055EE36 /* CVBigPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458DB89820FF2C040055EE36 /* CVBigPhotoViewController.swift */; };
@@ -74,7 +74,7 @@
 		458EC67D20F3143400CF07AA /* CVDeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458EC67C20F3143400CF07AA /* CVDeviceModel.swift */; };
 		45920B4A20B7A90500F9FBD6 /* CVPageTabMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45920B4920B7A90500F9FBD6 /* CVPageTabMaskView.swift */; };
 		45A112AF208077F000FCC661 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 45A112B1208077F000FCC661 /* Localizable.stringsdict */; };
-		45AE661D205B5E8E000C1546 /* UIView+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE661C205B5E8E000C1546 /* UIView+Creation.swift */; };
+		45AE661D205B5E8E000C1546 /* UIViewCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE661C205B5E8E000C1546 /* UIViewCreation.swift */; };
 		45AE6627205BC61A000C1546 /* CVChooseLanguageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE6626205BC61A000C1546 /* CVChooseLanguageCell.swift */; };
 		45AE6629205BC781000C1546 /* CVLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AE6628205BC781000C1546 /* CVLanguageModel.swift */; };
 		45B15BE8205A0E4B008C4F94 /* SelfAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15BE7205A0E4B008C4F94 /* SelfAware.swift */; };
@@ -86,7 +86,7 @@
 		45B15C0E205A7FAA008C4F94 /* CVHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */; };
 		45B15C11205A7FE3008C4F94 /* CVLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */; };
 		45B3248220EA258D00D30DBD /* CVAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B3248120EA258D00D30DBD /* CVAlertView.swift */; };
-		45B44D7620525F1C00A67F6D /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */; };
+		45B44D7620525F1C00A67F6D /* UIButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7520525F1C00A67F6D /* UIButtonHelper.swift */; };
 		45B44D7920528E1D00A67F6D /* CVTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B44D7820528E1D00A67F6D /* CVTimer.swift */; };
 		45B6B889205924B200F01F1B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45B6B88B205924B200F01F1B /* InfoPlist.strings */; };
 		45B6B88F20592A3300F01F1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45B6B89120592A3300F01F1B /* Localizable.strings */; };
@@ -98,7 +98,7 @@
 		45DB84DA209C5E6100149215 /* CVNomalCalendarFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84D9209C5E6100149215 /* CVNomalCalendarFlowLayout.swift */; };
 		45DB84DD209DE43800149215 /* CVNormalCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84DC209DE43800149215 /* CVNormalCalendarHeaderView.swift */; };
 		45DB84DF209DEA0000149215 /* CVCalendarWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DB84DE209DEA0000149215 /* CVCalendarWeekdayView.swift */; };
-		45DE7ECA20AAD6230094A0B3 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE7EC920AAD6230094A0B3 /* NSObject+Extension.swift */; };
+		45DE7ECA20AAD6230094A0B3 /* NSObjectHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE7EC920AAD6230094A0B3 /* NSObjectHelper.swift */; };
 		45DF437A20B691B900919ED1 /* CVPageTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DF437920B691B900919ED1 /* CVPageTabItem.swift */; };
 		45DF437E20B69AAD00919ED1 /* CVPageTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DF437D20B69AAD00919ED1 /* CVPageTabBarView.swift */; };
 		45DF438020B69C1D00919ED1 /* CVPageTabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DF437F20B69C1D00919ED1 /* CVPageTabBarProtocol.swift */; };
@@ -149,8 +149,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		450194C62073491600777328 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		450194C820734B0B00777328 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		450194C62073491600777328 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		450194C820734B0B00777328 /* DoubleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleHelper.swift; sourceTree = "<group>"; };
 		450194CA20734D6E00777328 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		45053B19204E35A400B5B34B /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45053B1C204E35A400B5B34B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,11 +164,11 @@
 		45053B3C204E35A400B5B34B /* ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectUITests.swift; sourceTree = "<group>"; };
 		45053B3E204E35A400B5B34B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45053B55204E483500B5B34B /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		45053B5A204E487C00B5B34B /* CVViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVViewHelper.swift; sourceTree = "<group>"; };
-		45053B5B204E487C00B5B34B /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		45053B5C204E487D00B5B34B /* UITextView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
-		45053B5D204E487D00B5B34B /* Time+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Time+Extension.swift"; sourceTree = "<group>"; };
-		45053B62204E488800B5B34B /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		45053B5A204E487C00B5B34B /* UIViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewHelper.swift; sourceTree = "<group>"; };
+		45053B5B204E487C00B5B34B /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHelper.swift; sourceTree = "<group>"; };
+		45053B5C204E487D00B5B34B /* UITextViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewHelper.swift; sourceTree = "<group>"; };
+		45053B5D204E487D00B5B34B /* CVTimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVTimeHelper.swift; sourceTree = "<group>"; };
+		45053B62204E488800B5B34B /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		45053B66204E65B300B5B34B /* CVPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVPlaceholderTextView.swift; sourceTree = "<group>"; };
 		45053B67204E65B300B5B34B /* CVExpandTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVExpandTextView.swift; sourceTree = "<group>"; };
 		45053B68204E65B300B5B34B /* CVKeyboardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVKeyboardTextView.swift; sourceTree = "<group>"; };
@@ -179,9 +179,9 @@
 		45053B78204E7D0700B5B34B /* CVNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNavigationBar.swift; sourceTree = "<group>"; };
 		45053B7A204E81AB00B5B34B /* CVNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNavigationController.swift; sourceTree = "<group>"; };
 		45078E98210FFAEE00DB5850 /* CVPhoto.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CVPhoto.bundle; sourceTree = "<group>"; };
-		45078E9A2110466600DB5850 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		45078E9A2110466600DB5850 /* BundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleHelper.swift; sourceTree = "<group>"; };
 		45090E4220B2787100F71746 /* CVPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPickerView.swift; sourceTree = "<group>"; };
-		45090E4420B2890400F71746 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
+		45090E4420B2890400F71746 /* CGRectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectHelper.swift; sourceTree = "<group>"; };
 		45090E4620B29B5900F71746 /* CVPickerViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPickerViewProtocol.swift; sourceTree = "<group>"; };
 		4514506A204F969000E83F97 /* CVCustomTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVCustomTitleView.swift; sourceTree = "<group>"; };
 		4514506D204FD26200E83F97 /* AppStoreReview.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift.swift; sourceTree = "<group>"; };
@@ -201,18 +201,18 @@
 		453643FA2056310400897E6B /* CVTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimerButton.swift; sourceTree = "<group>"; };
 		453BFB2920ECB870006994A5 /* CVTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTabBarItem.swift; sourceTree = "<group>"; };
 		453BFB2B20ECBE2D006994A5 /* CVBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBadgeView.swift; sourceTree = "<group>"; };
-		453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		453F7B5920A044AD00933E55 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		453BFB2D20ECC745006994A5 /* UIViewControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerHelper.swift; sourceTree = "<group>"; };
+		453F7B5920A044AD00933E55 /* ArrayHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayHelper.swift; sourceTree = "<group>"; };
 		4542FE2320B3EA6C00869655 /* CVPickerViewReusingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPickerViewReusingView.swift; sourceTree = "<group>"; };
 		4542FE2520B3EB8A00869655 /* CVDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDatePickerView.swift; sourceTree = "<group>"; };
 		45524A4A20F4AA3C000BB796 /* CVProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVProgressHUD.swift; sourceTree = "<group>"; };
 		455D8ABB206CB77100BBACBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		455D8AC2206CBA2800BBACBD /* CVClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVClient.swift; sourceTree = "<group>"; };
 		455FA02C2092F1E00061B33A /* CVUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVUtil.swift; sourceTree = "<group>"; };
-		455FA02E20930A900061B33A /* NSRange+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Extension.swift"; sourceTree = "<group>"; };
+		455FA02E20930A900061B33A /* NSRangeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRangeHelper.swift; sourceTree = "<group>"; };
 		455FA030209310120061B33A /* CVValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVValidate.swift; sourceTree = "<group>"; };
 		4561EB3320DA32D100A44CEA /* CVSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVSubViewController.swift; sourceTree = "<group>"; };
-		456886802175EF1F006178D7 /* CVImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVImageHelper.swift; sourceTree = "<group>"; };
+		456886802175EF1F006178D7 /* UIImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageHelper.swift; sourceTree = "<group>"; };
 		4572E24D20A9736100E8CD08 /* AppDelegate + 3DTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + 3DTouch.swift"; sourceTree = "<group>"; };
 		458DB89620FF2BF10055EE36 /* CVThumbPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVThumbPhotoViewController.swift; sourceTree = "<group>"; };
 		458DB89820FF2C040055EE36 /* CVBigPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBigPhotoViewController.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		45974F472068EB03009CD260 /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
 		45A112B0208077F000FCC661 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		45A112B2208077F100FCC661 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
-		45AE661C205B5E8E000C1546 /* UIView+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Creation.swift"; sourceTree = "<group>"; };
+		45AE661C205B5E8E000C1546 /* UIViewCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCreation.swift; sourceTree = "<group>"; };
 		45AE6626205BC61A000C1546 /* CVChooseLanguageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVChooseLanguageCell.swift; sourceTree = "<group>"; };
 		45AE6628205BC781000C1546 /* CVLanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVLanguageModel.swift; sourceTree = "<group>"; };
 		45B15BE7205A0E4B008C4F94 /* SelfAware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfAware.swift; sourceTree = "<group>"; };
@@ -237,7 +237,7 @@
 		45B15C0D205A7FAA008C4F94 /* CVHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVHomeViewController.swift; sourceTree = "<group>"; };
 		45B15C10205A7FE3008C4F94 /* CVLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVLanguageViewController.swift; sourceTree = "<group>"; };
 		45B3248120EA258D00D30DBD /* CVAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVAlertView.swift; sourceTree = "<group>"; };
-		45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		45B44D7520525F1C00A67F6D /* UIButtonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonHelper.swift; sourceTree = "<group>"; };
 		45B44D7820528E1D00A67F6D /* CVTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVTimer.swift; sourceTree = "<group>"; };
 		45B6B885205923E500F01F1B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		45B6B88A205924B200F01F1B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -252,7 +252,7 @@
 		45DB84D9209C5E6100149215 /* CVNomalCalendarFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNomalCalendarFlowLayout.swift; sourceTree = "<group>"; };
 		45DB84DC209DE43800149215 /* CVNormalCalendarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVNormalCalendarHeaderView.swift; sourceTree = "<group>"; };
 		45DB84DE209DEA0000149215 /* CVCalendarWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVCalendarWeekdayView.swift; sourceTree = "<group>"; };
-		45DE7EC920AAD6230094A0B3 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		45DE7EC920AAD6230094A0B3 /* NSObjectHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectHelper.swift; sourceTree = "<group>"; };
 		45DF437920B691B900919ED1 /* CVPageTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPageTabItem.swift; sourceTree = "<group>"; };
 		45DF437D20B69AAD00919ED1 /* CVPageTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPageTabBarView.swift; sourceTree = "<group>"; };
 		45DF437F20B69C1D00919ED1 /* CVPageTabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPageTabBarProtocol.swift; sourceTree = "<group>"; };
@@ -412,24 +412,24 @@
 		45053B4B204E47D000B5B34B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				456886802175EF1F006178D7 /* CVImageHelper.swift */,
-				45AE661C205B5E8E000C1546 /* UIView+Creation.swift */,
-				45053B62204E488800B5B34B /* String+Extension.swift */,
-				45053B5D204E487D00B5B34B /* Time+Extension.swift */,
-				45053B5B204E487C00B5B34B /* UIColor+Extension.swift */,
-				45053B5C204E487D00B5B34B /* UITextView+Extension.swift */,
-				45053B5A204E487C00B5B34B /* CVViewHelper.swift */,
-				45B44D7520525F1C00A67F6D /* UIButton+Extension.swift */,
-				450194C62073491600777328 /* Date+Extension.swift */,
-				450194C820734B0B00777328 /* Double+Extension.swift */,
+				456886802175EF1F006178D7 /* UIImageHelper.swift */,
+				45AE661C205B5E8E000C1546 /* UIViewCreation.swift */,
+				45053B62204E488800B5B34B /* StringHelper.swift */,
+				45053B5D204E487D00B5B34B /* CVTimeHelper.swift */,
+				45053B5B204E487C00B5B34B /* UIColorHelper.swift */,
+				45053B5C204E487D00B5B34B /* UITextViewHelper.swift */,
+				45053B5A204E487C00B5B34B /* UIViewHelper.swift */,
+				45B44D7520525F1C00A67F6D /* UIButtonHelper.swift */,
+				450194C62073491600777328 /* DateHelper.swift */,
+				450194C820734B0B00777328 /* DoubleHelper.swift */,
 				450194CA20734D6E00777328 /* Dictionary+Extension.swift */,
 				DE8D89E52081891A0043BFC8 /* Font+Extension.swift */,
-				455FA02E20930A900061B33A /* NSRange+Extension.swift */,
-				453F7B5920A044AD00933E55 /* Array+Extension.swift */,
-				45DE7EC920AAD6230094A0B3 /* NSObject+Extension.swift */,
-				45090E4420B2890400F71746 /* CGRect+Extension.swift */,
-				453BFB2D20ECC745006994A5 /* UIViewController+Extension.swift */,
-				45078E9A2110466600DB5850 /* Bundle+Extension.swift */,
+				455FA02E20930A900061B33A /* NSRangeHelper.swift */,
+				453F7B5920A044AD00933E55 /* ArrayHelper.swift */,
+				45DE7EC920AAD6230094A0B3 /* NSObjectHelper.swift */,
+				45090E4420B2890400F71746 /* CGRectHelper.swift */,
+				453BFB2D20ECC745006994A5 /* UIViewControllerHelper.swift */,
+				45078E9A2110466600DB5850 /* BundleHelper.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1060,7 +1060,7 @@
 				453643FB2056310400897E6B /* CVTimerButton.swift in Sources */,
 				45053B74204E755800B5B34B /* CVBaseNavigationController.swift in Sources */,
 				45F464E3212BF48800BFEF19 /* UILabel+Layout.swift in Sources */,
-				450194C72073491600777328 /* Date+Extension.swift in Sources */,
+				450194C72073491600777328 /* DateHelper.swift in Sources */,
 				45090E4320B2787100F71746 /* CVPickerView.swift in Sources */,
 				45053B70204E65CF00B5B34B /* CVBaseViewController.swift in Sources */,
 				453BFB2A20ECB870006994A5 /* CVTabBarItem.swift in Sources */,
@@ -1075,14 +1075,14 @@
 				458DB89720FF2BF10055EE36 /* CVThumbPhotoViewController.swift in Sources */,
 				DE8D89EC2082DBF00043BFC8 /* CVRefreshAnimator.swift in Sources */,
 				DE8D89E62081891A0043BFC8 /* Font+Extension.swift in Sources */,
-				453BFB2E20ECC745006994A5 /* UIViewController+Extension.swift in Sources */,
+				453BFB2E20ECC745006994A5 /* UIViewControllerHelper.swift in Sources */,
 				45920B4A20B7A90500F9FBD6 /* CVPageTabMaskView.swift in Sources */,
 				452A4C6021216B1600A330F6 /* CVBigPhotoFlowLayout.swift in Sources */,
 				45F68013207B54FC001DEDF4 /* CVHomeModel.swift in Sources */,
 				45B15BE8205A0E4B008C4F94 /* SelfAware.swift in Sources */,
 				45053B56204E483500B5B34B /* Global.swift in Sources */,
 				45AE6629205BC781000C1546 /* CVLanguageModel.swift in Sources */,
-				45053B5F204E487D00B5B34B /* UIColor+Extension.swift in Sources */,
+				45053B5F204E487D00B5B34B /* UIColorHelper.swift in Sources */,
 				45B15BEF205A7513008C4F94 /* CVBaseTabbarController.swift in Sources */,
 				DE8D89F32083190E0043BFC8 /* CVCycleCell.swift in Sources */,
 				45249E5B20FF04BF00153F86 /* CVAlbumListViewController.swift in Sources */,
@@ -1091,9 +1091,9 @@
 				45053B1D204E35A400B5B34B /* AppDelegate.swift in Sources */,
 				45053B79204E7D0700B5B34B /* CVNavigationBar.swift in Sources */,
 				458EC67B20F30D5600CF07AA /* CVActionSheet.swift in Sources */,
-				45B44D7620525F1C00A67F6D /* UIButton+Extension.swift in Sources */,
+				45B44D7620525F1C00A67F6D /* UIButtonHelper.swift in Sources */,
 				45DF437A20B691B900919ED1 /* CVPageTabItem.swift in Sources */,
-				456886812175EF1F006178D7 /* CVImageHelper.swift in Sources */,
+				456886812175EF1F006178D7 /* UIImageHelper.swift in Sources */,
 				45E9792C206E1C850089A782 /* CVUploadParam.swift in Sources */,
 				45053B6C204E65B300B5B34B /* CVExpandTextView.swift in Sources */,
 				455D8AC3206CBA2800BBACBD /* CVClient.swift in Sources */,
@@ -1110,7 +1110,7 @@
 				45B15C0C205A7F90008C4F94 /* CVMineViewController.swift in Sources */,
 				45053B6B204E65B300B5B34B /* CVPlaceholderTextView.swift in Sources */,
 				45249E5720FC87C300153F86 /* CVPhotoAlbum.swift in Sources */,
-				453F7B5A20A044AD00933E55 /* Array+Extension.swift in Sources */,
+				453F7B5A20A044AD00933E55 /* ArrayHelper.swift in Sources */,
 				45B6B89520592BA200F01F1B /* CVLanguageHelper.swift in Sources */,
 				4561EB3420DA32D100A44CEA /* CVSubViewController.swift in Sources */,
 				4514506E204FD26200E83F97 /* AppStoreReview.swift.swift in Sources */,
@@ -1120,11 +1120,11 @@
 				DE8D89FB20836BE60043BFC8 /* CVHomeHeaderView.swift in Sources */,
 				450194CB20734D6E00777328 /* Dictionary+Extension.swift in Sources */,
 				45B15C0A205A7F71008C4F94 /* CVSettingViewController.swift in Sources */,
-				45AE661D205B5E8E000C1546 /* UIView+Creation.swift in Sources */,
+				45AE661D205B5E8E000C1546 /* UIViewCreation.swift in Sources */,
 				4572E24E20A9736100E8CD08 /* AppDelegate + 3DTouch.swift in Sources */,
 				45B3248220EA258D00D30DBD /* CVAlertView.swift in Sources */,
 				451C9D252064F3C40075FA08 /* CVSettingCell.swift in Sources */,
-				45053B61204E487D00B5B34B /* Time+Extension.swift in Sources */,
+				45053B61204E487D00B5B34B /* CVTimeHelper.swift in Sources */,
 				4514506B204F969000E83F97 /* CVCustomTitleView.swift in Sources */,
 				45E813F9206A2EBD00E39853 /* CVKeychain.swift in Sources */,
 				45E9FFD8205F8C6800CF7E38 /* CVFileHandle.swift in Sources */,
@@ -1134,28 +1134,28 @@
 				45053B6E204E65B300B5B34B /* CVDelay.swift in Sources */,
 				45DF437E20B69AAD00919ED1 /* CVPageTabBarView.swift in Sources */,
 				45B44D7920528E1D00A67F6D /* CVTimer.swift in Sources */,
-				45053B63204E488800B5B34B /* String+Extension.swift in Sources */,
+				45053B63204E488800B5B34B /* StringHelper.swift in Sources */,
 				45E9FFD5205F599800CF7E38 /* CVChangeLanguageViewController.swift in Sources */,
 				45053B7B204E81AB00B5B34B /* CVNavigationController.swift in Sources */,
 				455FA02D2092F1E00061B33A /* CVUtil.swift in Sources */,
 				45053B77204E77DA00B5B34B /* CVBarButtonItem.swift in Sources */,
-				45053B5E204E487D00B5B34B /* CVViewHelper.swift in Sources */,
+				45053B5E204E487D00B5B34B /* UIViewHelper.swift in Sources */,
 				45283E2820B801060040808F /* CVSortTabView.swift in Sources */,
 				45090E4720B29B5900F71746 /* CVPickerViewProtocol.swift in Sources */,
 				458DB89920FF2C040055EE36 /* CVBigPhotoViewController.swift in Sources */,
-				45090E4520B2890400F71746 /* CGRect+Extension.swift in Sources */,
+				45090E4520B2890400F71746 /* CGRectHelper.swift in Sources */,
 				45C7674921267001005946AE /* UIView+Layout.swift in Sources */,
 				DE8D89F52083208B0043BFC8 /* CVCycleScrollModel.swift in Sources */,
 				45F7A3992112FDAD00794D2B /* AppDelegate + Screen.swift in Sources */,
-				45078E9B2110466600DB5850 /* Bundle+Extension.swift in Sources */,
-				455FA02F20930A900061B33A /* NSRange+Extension.swift in Sources */,
-				45053B60204E487D00B5B34B /* UITextView+Extension.swift in Sources */,
+				45078E9B2110466600DB5850 /* BundleHelper.swift in Sources */,
+				455FA02F20930A900061B33A /* NSRangeHelper.swift in Sources */,
+				45053B60204E487D00B5B34B /* UITextViewHelper.swift in Sources */,
 				4542FE2420B3EA6C00869655 /* CVPickerViewReusingView.swift in Sources */,
 				453BFB2C20ECBE2D006994A5 /* CVBadgeView.swift in Sources */,
-				450194C920734B0B00777328 /* Double+Extension.swift in Sources */,
+				450194C920734B0B00777328 /* DoubleHelper.swift in Sources */,
 				45DF438420B69FA200919ED1 /* CVTestViewController.swift in Sources */,
 				45E813F42069E5F900E39853 /* Encrypt.swift in Sources */,
-				45DE7ECA20AAD6230094A0B3 /* NSObject+Extension.swift in Sources */,
+				45DE7ECA20AAD6230094A0B3 /* NSObjectHelper.swift in Sources */,
 				45DB84D6209C49EC00149215 /* CVNormalCalendarViewController.swift in Sources */,
 				45145072204FD99F00E83F97 /* CVConstants.swift in Sources */,
 				45E9FFDB205F9C4400CF7E38 /* CVCameraPhoto.swift in Sources */,

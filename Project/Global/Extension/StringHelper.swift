@@ -1,6 +1,6 @@
 //
-//  String+Extension.swift
-//  CVKeyboardTextField
+//  StringhHelper.swift
+//  StringhHelper
 //
 //  Created by caven on 2018/3/2.
 //  Copyright © 2018年 com.caven. All rights reserved.

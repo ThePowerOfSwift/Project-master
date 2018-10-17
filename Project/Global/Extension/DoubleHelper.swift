@@ -1,5 +1,5 @@
 //
-//  Double+Extension.swift
+//  DoubleHelper.swift
 //  Project
 //
 //  Created by caven on 2018/4/3.

@@ -166,7 +166,7 @@ class CVTabBarItem: UIView {
             self.titleLabel.textColor = self.titleColorH
             self.titleLabel.font = self.titleFontH
             if self.imageH != nil && self.imageH!.size.width > self.cv_width {
-                let image = self.imageH!.scaleImage(scale: self.cv_width / self.imageH!.size.width)
+                let image = self.imageH!.resize(scale: self.cv_width / self.imageH!.size.width)
                 self.imageView.image = image
             } else {
                 self.imageView.image = self.imageH
@@ -177,7 +177,7 @@ class CVTabBarItem: UIView {
             self.titleLabel.textColor = self.titleColorN
             self.titleLabel.font = self.titleFontN
             if self.imageN != nil && self.imageN!.size.width > self.cv_width {
-                let image = self.imageN!.scaleImage(scale: self.cv_width / self.imageH!.size.width)
+                let image = self.imageN!.resize(scale: self.cv_width / self.imageH!.size.width)
                 self.imageView.image = image
             } else {
                 self.imageView.image = self.imageN
